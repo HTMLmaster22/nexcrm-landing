@@ -3,197 +3,622 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>NexCRM — CRM Built for Saudi Marketing Agencies</title>
+<title>NexCRM — The CRM Built for Saudi Business</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800;900&family=DM+Sans:wght@300;400;500;600&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet"/>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --dark:#060810;
-  --dark2:#0d1220;
-  --dark3:#141926;
-  --accent:#3b82f6;
-  --accent2:#6366f1;
-  --green:#25d366;
-  --text:#f0f4ff;
-  --text2:#8892aa;
-  --border:rgba(255,255,255,0.08);
-  --light-bg:#f8faff;
-  --light-bg2:#eef2ff;
-  --light-text:#0f172a;
-  --light-text2:#475569;
-  --radius:16px;
+  --ink:#080c14;
+  --ink2:#0e1420;
+  --ink3:#161d2e;
+  --blue:#2563eb;
+  --blue2:#4f46e5;
+  --cyan:#06b6d4;
+  --green:#16a34a;
+  --wa:#25d366;
+  --gold:#d97706;
+  --red:#dc2626;
+  --text:#f1f5ff;
+  --text2:#7c8ca8;
+  --border:rgba(255,255,255,0.07);
+  --r:18px;
 }
 html{scroll-behavior:smooth}
-body{font-family:'DM Sans',sans-serif;background:var(--dark);color:var(--text);overflow-x:hidden}
+body{font-family:'DM Sans',sans-serif;background:var(--ink);color:var(--text);overflow-x:hidden;cursor:default}
 body.ar{font-family:'Tajawal',sans-serif;direction:rtl}
 
-/* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 40px;height:68px;display:flex;align-items:center;justify-content:space-between;background:rgba(6,8,16,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:var(--ink)}
+::-webkit-scrollbar-thumb{background:var(--blue);border-radius:4px}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  height:64px;padding:0 40px;
+  display:flex;align-items:center;justify-content:space-between;
+  background:rgba(8,12,20,0.7);backdrop-filter:blur(24px);
+  border-bottom:1px solid var(--border);
+  transition:background 0.3s;
+}
 .nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
-.nav-logo-icon{width:36px;height:36px;background:linear-gradient(135deg,var(--accent),var(--accent2));border-radius:10px;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:900;font-size:18px;color:#fff}
-.nav-logo-text{font-family:'Syne',sans-serif;font-weight:800;font-size:20px;color:#fff}
-.nav-right{display:flex;align-items:center;gap:12px}
-.lang-toggle{background:rgba(255,255,255,0.08);border:1px solid var(--border);color:var(--text2);padding:7px 16px;border-radius:8px;cursor:pointer;font-size:13px;font-family:inherit;transition:all 0.2s}
-.lang-toggle:hover{background:rgba(255,255,255,0.14);color:#fff}
-.nav-cta{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;padding:8px 20px;border-radius:10px;border:none;cursor:pointer;font-size:14px;font-weight:600;font-family:inherit;text-decoration:none;transition:opacity 0.2s}
-.nav-cta:hover{opacity:0.85}
+.nav-logo-icon{
+  width:34px;height:34px;
+  background:linear-gradient(135deg,var(--blue),var(--blue2));
+  border-radius:10px;display:flex;align-items:center;justify-content:center;
+  font-family:'Syne',sans-serif;font-weight:900;font-size:17px;color:#fff;
+  box-shadow:0 4px 14px rgba(37,99,235,0.4);
+}
+.nav-logo-text{font-family:'Syne',sans-serif;font-weight:800;font-size:19px;color:#fff}
+.nav-right{display:flex;align-items:center;gap:10px}
+.nav-lang{
+  background:rgba(255,255,255,0.06);border:1px solid var(--border);
+  color:var(--text2);padding:6px 14px;border-radius:8px;
+  cursor:pointer;font-size:13px;font-family:inherit;transition:all 0.2s;
+}
+.nav-lang:hover{background:rgba(255,255,255,0.1);color:#fff}
+.nav-demo{
+  background:linear-gradient(135deg,var(--blue),var(--blue2));
+  color:#fff;padding:8px 20px;border-radius:10px;border:none;
+  cursor:pointer;font-size:14px;font-weight:600;font-family:inherit;
+  text-decoration:none;transition:all 0.2s;
+  box-shadow:0 4px 14px rgba(37,99,235,0.3);
+}
+.nav-demo:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(37,99,235,0.4)}
+.nav-book{
+  background:rgba(37,211,102,0.1);border:1px solid rgba(37,211,102,0.25);
+  color:var(--wa);padding:8px 18px;border-radius:10px;
+  cursor:pointer;font-size:13px;font-weight:600;font-family:inherit;
+  text-decoration:none;transition:all 0.2s;display:none;
+}
+@media(min-width:640px){.nav-book{display:inline-flex;align-items:center;gap:6px}}
+.nav-book:hover{background:rgba(37,211,102,0.18);color:#fff}
 
-/* HERO */
-.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:120px 24px 80px;position:relative;overflow:hidden}
-.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% -10%,rgba(59,130,246,0.18) 0%,transparent 60%),radial-gradient(ellipse 50% 40% at 80% 80%,rgba(99,102,241,0.1) 0%,transparent 50%);pointer-events:none}
-.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(59,130,246,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(59,130,246,0.04) 1px,transparent 1px);background-size:60px 60px;pointer-events:none}
-.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(37,211,102,0.1);border:1px solid rgba(37,211,102,0.25);color:var(--green);padding:6px 16px;border-radius:100px;font-size:13px;font-weight:500;margin-bottom:28px;animation:fadeUp 0.6s ease both}
-.hero-badge-dot{width:7px;height:7px;background:var(--green);border-radius:50%;animation:pulse 2s infinite}
-@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(0.8)}}
-.hero h1{font-family:'Syne',sans-serif;font-weight:900;font-size:clamp(42px,7vw,84px);line-height:1.0;letter-spacing:-2px;margin-bottom:24px;animation:fadeUp 0.7s 0.1s ease both}
-body.ar .hero h1{font-family:'Tajawal',sans-serif;letter-spacing:0;line-height:1.2}
-.hero h1 .accent{background:linear-gradient(135deg,var(--accent),#a78bfa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.hero-sub{font-size:clamp(16px,2.5vw,20px);color:var(--text2);max-width:600px;line-height:1.7;margin-bottom:40px;animation:fadeUp 0.7s 0.2s ease both}
-.hero-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;animation:fadeUp 0.7s 0.3s ease both}
-.btn-primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;padding:14px 32px;border-radius:12px;border:none;cursor:pointer;font-size:16px;font-weight:600;font-family:inherit;text-decoration:none;transition:all 0.2s;display:inline-flex;align-items:center;gap:8px}
-.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(59,130,246,0.35)}
-.btn-ghost{background:rgba(255,255,255,0.06);color:var(--text);padding:14px 32px;border-radius:12px;border:1px solid var(--border);cursor:pointer;font-size:16px;font-weight:500;font-family:inherit;text-decoration:none;transition:all 0.2s}
-.btn-ghost:hover{background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.2)}
-.hero-stats{display:flex;gap:48px;justify-content:center;margin-top:64px;animation:fadeUp 0.7s 0.4s ease both;flex-wrap:wrap}
-.hero-stat{text-align:center}
-.hero-stat-num{font-family:'Syne',sans-serif;font-weight:900;font-size:36px;background:linear-gradient(135deg,#fff,var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.hero-stat-label{font-size:13px;color:var(--text2);margin-top:4px}
-.hero-divider{width:1px;height:48px;background:var(--border);align-self:center}
+/* ── HERO ── */
+.hero{
+  min-height:100vh;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  text-align:center;
+  padding:100px 24px 60px;
+  position:relative;overflow:hidden;
+}
+.hero-mesh{
+  position:absolute;inset:0;pointer-events:none;
+  background:
+    radial-gradient(ellipse 70% 50% at 50% -5%,rgba(37,99,235,0.22) 0%,transparent 55%),
+    radial-gradient(ellipse 40% 35% at 80% 85%,rgba(79,70,229,0.14) 0%,transparent 50%),
+    radial-gradient(ellipse 30% 25% at 10% 70%,rgba(6,182,212,0.08) 0%,transparent 50%);
+}
+.hero-lines{
+  position:absolute;inset:0;pointer-events:none;
+  background-image:linear-gradient(rgba(37,99,235,0.035) 1px,transparent 1px),linear-gradient(90deg,rgba(37,99,235,0.035) 1px,transparent 1px);
+  background-size:52px 52px;
+  mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black 30%,transparent 70%);
+}
+.hero-pill{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(22,163,74,0.1);border:1px solid rgba(22,163,74,0.25);
+  color:#4ade80;padding:6px 18px;border-radius:100px;
+  font-size:13px;font-weight:500;margin-bottom:32px;
+  animation:up 0.8s ease both;
+}
+.hero-pill-dot{
+  width:7px;height:7px;background:#4ade80;border-radius:50%;
+  animation:blink 2s infinite;
+}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
+.hero h1{
+  font-family:'Syne',sans-serif;font-weight:900;
+  font-size:clamp(40px,7vw,88px);
+  line-height:0.95;letter-spacing:-3px;
+  margin-bottom:28px;
+  animation:up 0.8s 0.1s ease both;
+}
+body.ar .hero h1{font-family:'Tajawal',sans-serif;letter-spacing:0;line-height:1.15;font-size:clamp(36px,6vw,72px)}
+.hero h1 em{
+  font-style:normal;
+  background:linear-gradient(135deg,#60a5fa,#a78bfa,#34d399);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.hero-story{
+  font-size:clamp(16px,2.2vw,19px);
+  color:var(--text2);max-width:640px;
+  line-height:1.75;margin-bottom:44px;
+  animation:up 0.8s 0.2s ease both;
+  font-weight:300;
+}
+.hero-story strong{color:var(--text);font-weight:500}
+.hero-btns{
+  display:flex;gap:12px;justify-content:center;flex-wrap:wrap;
+  animation:up 0.8s 0.3s ease both;
+}
+.btn-main{
+  background:linear-gradient(135deg,var(--blue),var(--blue2));
+  color:#fff;padding:15px 36px;border-radius:12px;border:none;
+  cursor:pointer;font-size:16px;font-weight:700;font-family:inherit;
+  text-decoration:none;transition:all 0.25s;
+  box-shadow:0 8px 32px rgba(37,99,235,0.35);
+  display:inline-flex;align-items:center;gap:8px;
+}
+.btn-main:hover{transform:translateY(-2px);box-shadow:0 14px 40px rgba(37,99,235,0.45)}
+.btn-wa{
+  background:rgba(37,211,102,0.1);
+  border:1px solid rgba(37,211,102,0.3);
+  color:var(--wa);padding:15px 28px;border-radius:12px;
+  cursor:pointer;font-size:15px;font-weight:600;font-family:inherit;
+  text-decoration:none;transition:all 0.25s;
+  display:inline-flex;align-items:center;gap:8px;
+}
+.btn-wa:hover{background:rgba(37,211,102,0.18);border-color:rgba(37,211,102,0.5);color:#fff;transform:translateY(-2px)}
+.btn-ghost2{
+  background:rgba(255,255,255,0.05);
+  border:1px solid var(--border);
+  color:var(--text2);padding:15px 28px;border-radius:12px;
+  cursor:pointer;font-size:15px;font-weight:500;font-family:inherit;
+  text-decoration:none;transition:all 0.25s;
+}
+.btn-ghost2:hover{background:rgba(255,255,255,0.09);border-color:rgba(255,255,255,0.15);color:#fff}
 
-/* DEMO PREVIEW */
-.demo-section{padding:0 24px 80px;display:flex;justify-content:center}
-.demo-wrap{width:100%;max-width:1000px;border-radius:20px;border:1px solid var(--border);overflow:hidden;background:var(--dark2);box-shadow:0 40px 120px rgba(0,0,0,0.6);position:relative}
-.demo-bar{height:40px;background:var(--dark3);display:flex;align-items:center;padding:0 16px;gap:8px;border-bottom:1px solid var(--border)}
-.demo-dot{width:12px;height:12px;border-radius:50%}
-.demo-url{flex:1;background:rgba(255,255,255,0.05);border-radius:6px;height:24px;margin:0 12px;display:flex;align-items:center;padding:0 12px;font-size:12px;color:var(--text2)}
-.demo-screen{padding:20px;display:grid;grid-template-columns:180px 1fr;gap:16px;min-height:320px}
-.demo-sidebar{background:var(--dark3);border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:6px}
-.demo-nav-item{padding:8px 12px;border-radius:8px;font-size:12px;color:var(--text2);display:flex;align-items:center;gap:8px}
-.demo-nav-item.active{background:rgba(59,130,246,0.15);color:var(--accent)}
-.demo-nav-dot{width:6px;height:6px;border-radius:50%;background:currentColor}
-.demo-main{display:flex;flex-direction:column;gap:12px}
-.demo-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
-.demo-card{background:var(--dark3);border-radius:10px;padding:12px;border:1px solid var(--border)}
-.demo-card-label{font-size:10px;color:var(--text2);margin-bottom:4px}
-.demo-card-val{font-size:18px;font-weight:700;font-family:'Syne',sans-serif}
-.demo-table{background:var(--dark3);border-radius:10px;border:1px solid var(--border);overflow:hidden}
-.demo-table-row{display:flex;align-items:center;gap:10px;padding:9px 14px;border-bottom:1px solid var(--border);font-size:11px}
-.demo-table-row:last-child{border-bottom:none}
-.demo-pill{padding:2px 8px;border-radius:100px;font-size:10px;font-weight:600}
-.pill-new{background:rgba(59,130,246,0.15);color:#60a5fa}
-.pill-warm{background:rgba(245,158,11,0.15);color:#fbbf24}
-.pill-won{background:rgba(16,185,129,0.15);color:#34d399}
-.demo-ai-btn{background:rgba(37,211,102,0.1);border:1px solid rgba(37,211,102,0.2);color:var(--green);padding:2px 8px;border-radius:6px;font-size:10px;cursor:pointer}
-
-/* LIGHT SECTIONS */
-.light-section{background:#fff;color:var(--light-text)}
-.section{padding:100px 24px}
-.section-inner{max-width:1100px;margin:0 auto}
-.section-tag{display:inline-block;background:var(--light-bg2);color:var(--accent2);padding:6px 16px;border-radius:100px;font-size:13px;font-weight:600;margin-bottom:16px;border:1px solid rgba(99,102,241,0.2)}
-.section-tag.dark{background:rgba(59,130,246,0.1);color:var(--accent);border-color:rgba(59,130,246,0.2)}
-.section-title{font-family:'Syne',sans-serif;font-weight:900;font-size:clamp(32px,5vw,52px);line-height:1.1;letter-spacing:-1px;margin-bottom:16px}
-body.ar .section-title{font-family:'Tajawal',sans-serif;letter-spacing:0;line-height:1.3}
-.section-sub{font-size:17px;color:var(--light-text2);max-width:560px;line-height:1.7;margin-bottom:56px}
-.light-section .section-sub{color:var(--light-text2)}
-
-/* FEATURES */
-.features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-.feature-card{background:var(--light-bg);border-radius:20px;padding:28px;border:1px solid rgba(0,0,0,0.06);transition:all 0.3s;position:relative;overflow:hidden}
-.feature-card:hover{transform:translateY(-4px);box-shadow:0 20px 60px rgba(0,0,0,0.08);border-color:rgba(99,102,241,0.2)}
-.feature-icon{width:52px;height:52px;border-radius:16px;display:flex;align-items:center;justify-content:center;margin-bottom:20px}
-.feature-title{font-size:17px;font-weight:700;color:var(--light-text);margin-bottom:8px}
-.feature-desc{font-size:14px;color:var(--light-text2);line-height:1.6}
-.feature-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,transparent,rgba(99,102,241,0.03));pointer-events:none}
-
-/* COMPARISON */
-.compare-table{width:100%;border-collapse:collapse;border-radius:16px;overflow:hidden;border:1px solid rgba(0,0,0,0.08)}
-.compare-table th{padding:16px 20px;text-align:left;font-size:13px;font-weight:700;color:var(--light-text2);background:var(--light-bg);text-transform:uppercase;letter-spacing:0.5px}
-body.ar .compare-table th{text-align:right}
-.compare-table th:first-child{width:220px}
-.compare-table th.highlight{background:linear-gradient(135deg,rgba(59,130,246,0.08),rgba(99,102,241,0.08));color:var(--accent2)}
-.compare-table td{padding:14px 20px;font-size:14px;border-top:1px solid rgba(0,0,0,0.05);color:var(--light-text)}
-body.ar .compare-table td{text-align:right}
-.compare-table td.highlight{background:rgba(59,130,246,0.03)}
-.compare-table tr:hover td{background:var(--light-bg)}
-.compare-table tr:hover td.highlight{background:rgba(59,130,246,0.06)}
-.check{color:#22c55e;font-size:18px}
-.cross{color:#ef4444;font-size:18px}
-.partial{color:#f59e0b;font-size:14px}
-
-/* TESTIMONIAL */
-.testimonial-section{background:linear-gradient(135deg,var(--dark2),var(--dark3));padding:100px 24px}
-.testimonial-card{max-width:800px;margin:0 auto;text-align:center}
-.testimonial-quote{font-size:clamp(20px,3vw,28px);line-height:1.6;color:#fff;margin-bottom:32px;font-weight:300}
-body.ar .testimonial-quote{font-family:'Tajawal',sans-serif;font-weight:400}
-.testimonial-author{display:flex;align-items:center;justify-content:center;gap:14px}
-.testimonial-avatar{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#c8860a,#f59e0b);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:18px;color:#fff}
-.testimonial-name{font-weight:700;font-size:16px;color:#fff}
-.testimonial-role{font-size:13px;color:var(--text2)}
-.stars{color:#f59e0b;font-size:18px;margin-bottom:24px}
-
-/* PRICING */
-.pricing-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:800px;margin:0 auto}
-.pricing-card{border-radius:24px;padding:36px;border:1px solid rgba(0,0,0,0.08);background:#fff;position:relative}
-.pricing-card.pro{background:linear-gradient(135deg,var(--dark),var(--dark2));border-color:var(--accent);box-shadow:0 0 0 1px var(--accent),0 24px 80px rgba(59,130,246,0.2)}
-.pricing-badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;padding:4px 16px;border-radius:100px;font-size:12px;font-weight:700;white-space:nowrap}
-.pricing-plan{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--light-text2);margin-bottom:12px}
-.pricing-card.pro .pricing-plan{color:var(--text2)}
-.pricing-price{font-family:'Syne',sans-serif;font-weight:900;font-size:48px;color:var(--light-text);margin-bottom:4px}
-.pricing-card.pro .pricing-price{color:#fff}
-.pricing-period{font-size:14px;color:var(--light-text2);margin-bottom:28px}
-.pricing-card.pro .pricing-period{color:var(--text2)}
-.pricing-features{list-style:none;display:flex;flex-direction:column;gap:12px;margin-bottom:32px}
-.pricing-features li{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--light-text)}
-.pricing-card.pro .pricing-features li{color:var(--text)}
-.pricing-features li::before{content:'✓';width:20px;height:20px;background:rgba(34,197,94,0.1);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;color:#22c55e;flex-shrink:0;line-height:20px;text-align:center}
-.pricing-btn{width:100%;padding:14px;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;transition:all 0.2s;border:none;text-decoration:none;display:block;text-align:center}
-.pricing-btn.free{background:var(--light-bg);color:var(--light-text);border:1px solid rgba(0,0,0,0.1)}
-.pricing-btn.free:hover{background:var(--light-bg2)}
-.pricing-btn.paid{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff}
-.pricing-btn.paid:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(59,130,246,0.4)}
-
-/* CTA */
-.cta-section{background:linear-gradient(135deg,var(--accent),var(--accent2));padding:100px 24px;text-align:center}
-.cta-section h2{font-family:'Syne',sans-serif;font-weight:900;font-size:clamp(32px,5vw,56px);color:#fff;margin-bottom:16px;letter-spacing:-1px}
-body.ar .cta-section h2{font-family:'Tajawal',sans-serif;letter-spacing:0}
-.cta-section p{font-size:18px;color:rgba(255,255,255,0.8);margin-bottom:40px;max-width:500px;margin-left:auto;margin-right:auto}
-.cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
-.btn-white{background:#fff;color:var(--accent2);padding:14px 32px;border-radius:12px;border:none;cursor:pointer;font-size:16px;font-weight:700;font-family:inherit;text-decoration:none;transition:all 0.2s}
-.btn-white:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,0,0,0.2)}
-.btn-outline-white{background:transparent;color:#fff;padding:14px 32px;border-radius:12px;border:2px solid rgba(255,255,255,0.5);cursor:pointer;font-size:16px;font-weight:600;font-family:inherit;text-decoration:none;transition:all 0.2s}
-.btn-outline-white:hover{background:rgba(255,255,255,0.1);border-color:#fff}
-
-/* FOOTER */
-footer{background:var(--dark);border-top:1px solid var(--border);padding:40px 24px;text-align:center;color:var(--text2);font-size:13px}
-.footer-logo{font-family:'Syne',sans-serif;font-weight:900;font-size:22px;color:#fff;margin-bottom:8px}
-.footer-links{display:flex;gap:24px;justify-content:center;margin:16px 0;flex-wrap:wrap}
-.footer-links a{color:var(--text2);text-decoration:none;transition:color 0.2s}
-.footer-links a:hover{color:#fff}
-
-/* ANIMATIONS */
-@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
-.fade-up{opacity:0;transform:translateY(24px);transition:all 0.7s ease}
-.fade-up.visible{opacity:1;transform:translateY(0)}
-
-/* RESPONSIVE */
-@media(max-width:768px){
-  nav{padding:0 20px}
-  .features-grid{grid-template-columns:1fr}
-  .pricing-grid{grid-template-columns:1fr}
-  .compare-table{font-size:12px}
-  .compare-table th,.compare-table td{padding:10px 12px}
-  .hero-stats{gap:24px}
-  .hero-divider{display:none}
-  .demo-screen{grid-template-columns:1fr}
-  .demo-sidebar{display:none}
+/* ── HERO NUMBERS ── */
+.hero-nums{
+  display:flex;gap:0;margin-top:72px;
+  border:1px solid var(--border);border-radius:var(--r);
+  background:rgba(255,255,255,0.03);backdrop-filter:blur(10px);
+  overflow:hidden;
+  animation:up 0.8s 0.4s ease both;
+}
+.hero-num{
+  padding:20px 36px;text-align:center;flex:1;
+  border-right:1px solid var(--border);
+}
+.hero-num:last-child{border-right:none}
+.hero-num-val{
+  font-family:'Syne',sans-serif;font-weight:900;font-size:28px;
+  background:linear-gradient(135deg,#fff,#93c5fd);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  display:block;margin-bottom:4px;
+}
+.hero-num-label{font-size:12px;color:var(--text2)}
+@media(max-width:600px){
+  .hero-nums{flex-direction:column}
+  .hero-num{border-right:none;border-bottom:1px solid var(--border);padding:14px 20px}
+  .hero-num:last-child{border-bottom:none}
 }
 
-/* Saudi flag badge */
-.sa-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(0,100,0,0.15);border:1px solid rgba(0,150,0,0.25);color:#4ade80;padding:4px 12px;border-radius:100px;font-size:12px;font-weight:600}
+/* ── MOCK SCREEN ── */
+.screen-section{padding:0 24px 100px;display:flex;justify-content:center}
+.screen-wrap{
+  width:100%;max-width:960px;
+  background:var(--ink2);
+  border:1px solid rgba(255,255,255,0.09);
+  border-radius:22px;
+  box-shadow:0 60px 120px rgba(0,0,0,0.7),0 0 0 1px rgba(37,99,235,0.1);
+  overflow:hidden;
+  position:relative;
+}
+.screen-top{
+  height:38px;background:var(--ink3);
+  display:flex;align-items:center;padding:0 16px;gap:7px;
+  border-bottom:1px solid var(--border);
+}
+.s-dot{width:12px;height:12px;border-radius:50%}
+.s-url{
+  flex:1;margin:0 12px;height:22px;
+  background:rgba(255,255,255,0.05);border-radius:5px;
+  display:flex;align-items:center;padding:0 10px;
+  font-size:11px;color:var(--text2);
+}
+.screen-body{display:grid;grid-template-columns:160px 1fr;min-height:280px}
+.s-sidebar{background:rgba(0,0,0,0.2);padding:12px;display:flex;flex-direction:column;gap:4px;border-right:1px solid var(--border)}
+.s-nav{display:flex;align-items:center;gap:8px;padding:7px 10px;border-radius:8px;font-size:11px;color:var(--text2)}
+.s-nav.on{background:rgba(37,99,235,0.15);color:#93c5fd;font-weight:600}
+.s-nav-dot{width:5px;height:5px;border-radius:50%;background:currentColor;flex-shrink:0}
+.s-content{padding:14px;display:flex;flex-direction:column;gap:10px}
+.s-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.s-card{background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:10px;padding:10px 12px}
+.s-card-l{font-size:9px;color:var(--text2);margin-bottom:4px;text-transform:uppercase;letter-spacing:0.5px}
+.s-card-v{font-size:17px;font-weight:700;font-family:'Syne',sans-serif}
+.s-table{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.s-row{display:flex;align-items:center;gap:8px;padding:8px 12px;border-bottom:1px solid var(--border);font-size:10px}
+.s-row:last-child{border-bottom:none}
+.s-row.head{background:rgba(255,255,255,0.03);font-size:9px;color:var(--text2);font-weight:700;text-transform:uppercase;letter-spacing:0.5px}
+.s-pill{padding:2px 8px;border-radius:100px;font-size:9px;font-weight:600}
+.s-ai{background:rgba(37,211,102,0.1);border:1px solid rgba(37,211,102,0.2);color:var(--wa);padding:2px 8px;border-radius:6px;font-size:9px;cursor:pointer}
+@media(max-width:640px){.screen-body{grid-template-columns:1fr}.s-sidebar{display:none}.s-cards{grid-template-columns:1fr 1fr}}
+
+/* ── STORY SECTION ── */
+.story-section{
+  padding:120px 24px;
+  background:linear-gradient(180deg,var(--ink) 0%,#0a0f1e 100%);
+  position:relative;overflow:hidden;
+}
+.story-inner{max-width:1100px;margin:0 auto}
+.story-eyebrow{
+  font-size:13px;font-weight:600;color:var(--cyan);
+  text-transform:uppercase;letter-spacing:2px;margin-bottom:16px;
+}
+.story-h2{
+  font-family:'Syne',sans-serif;font-weight:900;
+  font-size:clamp(30px,5vw,56px);
+  line-height:1.05;letter-spacing:-1.5px;
+  margin-bottom:20px;max-width:680px;
+}
+body.ar .story-h2{font-family:'Tajawal',sans-serif;letter-spacing:0;line-height:1.25}
+.story-lead{
+  font-size:18px;color:var(--text2);line-height:1.7;
+  max-width:620px;margin-bottom:60px;font-weight:300;
+}
+.story-lead strong{color:var(--text);font-weight:500}
+.pain-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--border);border-radius:var(--r);overflow:hidden;margin-bottom:80px}
+.pain-card{background:var(--ink2);padding:28px 24px;position:relative}
+.pain-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(220,38,38,0.5),transparent)}
+.pain-num{font-family:'Syne',sans-serif;font-size:40px;font-weight:900;color:rgba(220,38,38,0.25);margin-bottom:8px;line-height:1}
+.pain-title{font-size:15px;font-weight:700;color:var(--text);margin-bottom:6px}
+.pain-desc{font-size:13px;color:var(--text2);line-height:1.6}
+.solution-strip{
+  background:linear-gradient(135deg,rgba(37,99,235,0.08),rgba(79,70,229,0.08));
+  border:1px solid rgba(37,99,235,0.15);
+  border-radius:var(--r);padding:40px;
+  display:flex;align-items:center;gap:32px;
+}
+.sol-icon{
+  width:64px;height:64px;flex-shrink:0;
+  background:linear-gradient(135deg,var(--blue),var(--blue2));
+  border-radius:18px;display:flex;align-items:center;justify-content:center;
+  box-shadow:0 8px 24px rgba(37,99,235,0.3);
+}
+.sol-text h3{font-size:20px;font-weight:700;margin-bottom:8px}
+.sol-text p{color:var(--text2);font-size:15px;line-height:1.6;font-weight:300}
+.sol-text p strong{color:var(--text);font-weight:500}
+@media(max-width:768px){
+  .pain-grid{grid-template-columns:1fr}
+  .solution-strip{flex-direction:column;text-align:center}
+}
+
+/* ── FEATURES ── */
+.features-section{
+  padding:120px 24px;
+  background:#fff;color:#0f172a;
+}
+.features-inner{max-width:1100px;margin:0 auto}
+.feat-eyebrow{
+  font-size:13px;font-weight:700;color:var(--blue2);
+  text-transform:uppercase;letter-spacing:2px;margin-bottom:16px;
+}
+.feat-h2{
+  font-family:'Syne',sans-serif;font-weight:900;
+  font-size:clamp(28px,4.5vw,52px);
+  line-height:1.05;letter-spacing:-1.5px;
+  color:#0f172a;margin-bottom:14px;
+}
+body.ar .feat-h2{font-family:'Tajawal',sans-serif;letter-spacing:0;line-height:1.25}
+.feat-sub{font-size:17px;color:#64748b;line-height:1.7;max-width:540px;margin-bottom:64px;font-weight:300}
+.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.feat-card{
+  background:#f8faff;border-radius:20px;padding:28px;
+  border:1px solid rgba(0,0,0,0.05);
+  transition:all 0.3s;position:relative;overflow:hidden;
+}
+.feat-card:hover{transform:translateY(-4px);box-shadow:0 20px 60px rgba(0,0,0,0.08);border-color:rgba(37,99,235,0.2)}
+.feat-card::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,transparent,rgba(37,99,235,0.02));
+  pointer-events:none;
+}
+.feat-icon{
+  width:48px;height:48px;border-radius:14px;
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:18px;
+}
+.feat-title{font-size:16px;font-weight:700;color:#0f172a;margin-bottom:8px}
+.feat-desc{font-size:13px;color:#64748b;line-height:1.65}
+.feat-tag{
+  display:inline-flex;align-items:center;gap:4px;
+  background:#eef2ff;color:var(--blue2);
+  padding:3px 10px;border-radius:100px;
+  font-size:11px;font-weight:600;margin-top:12px;
+}
+@media(max-width:768px){.feat-grid{grid-template-columns:1fr}}
+@media(min-width:640px) and (max-width:1023px){.feat-grid{grid-template-columns:1fr 1fr}}
+
+/* ── CAR DEALERSHIP SECTION ── */
+.dealer-section{
+  padding:120px 24px;
+  background:linear-gradient(135deg,#0a0f1e,#0e1525);
+  position:relative;overflow:hidden;
+}
+.dealer-section::before{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(ellipse 60% 50% at 100% 50%,rgba(37,99,235,0.1) 0%,transparent 60%);
+}
+.dealer-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.dealer-left .eyebrow{font-size:13px;font-weight:600;color:var(--gold);text-transform:uppercase;letter-spacing:2px;margin-bottom:16px}
+.dealer-left h2{
+  font-family:'Syne',sans-serif;font-weight:900;
+  font-size:clamp(28px,4vw,48px);
+  line-height:1.05;letter-spacing:-1.5px;margin-bottom:20px;
+}
+body.ar .dealer-left h2{font-family:'Tajawal',sans-serif;letter-spacing:0;line-height:1.2}
+.dealer-left p{font-size:16px;color:var(--text2);line-height:1.75;margin-bottom:32px;font-weight:300}
+.dealer-left p strong{color:var(--text);font-weight:500}
+.dealer-features{display:flex;flex-direction:column;gap:14px}
+.d-feat{
+  display:flex;align-items:flex-start;gap:14px;
+  padding:16px 18px;background:rgba(255,255,255,0.03);
+  border:1px solid var(--border);border-radius:12px;
+  transition:all 0.2s;
+}
+.d-feat:hover{background:rgba(37,99,235,0.06);border-color:rgba(37,99,235,0.2)}
+.d-feat-icon{
+  width:36px;height:36px;flex-shrink:0;
+  border-radius:10px;display:flex;align-items:center;justify-content:center;
+}
+.d-feat-text h4{font-size:14px;font-weight:700;margin-bottom:3px}
+.d-feat-text p{font-size:12px;color:var(--text2);line-height:1.5}
+.dealer-right{position:relative}
+.dealer-card{
+  background:var(--ink2);border:1px solid var(--border);
+  border-radius:20px;padding:24px;
+  box-shadow:0 40px 80px rgba(0,0,0,0.5);
+}
+.dc-header{display:flex;align-items:center;gap:12px;margin-bottom:20px}
+.dc-avatar{
+  width:44px;height:44px;border-radius:50%;
+  background:linear-gradient(135deg,#d97706,#f59e0b);
+  display:flex;align-items:center;justify-content:center;
+  font-weight:800;font-size:18px;color:#fff;
+}
+.dc-name{font-weight:700;font-size:15px}
+.dc-org{font-size:12px;color:var(--text2)}
+.dc-metrics{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px}
+.dc-metric{background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:10px;padding:12px}
+.dc-metric-val{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;margin-bottom:2px}
+.dc-metric-label{font-size:11px;color:var(--text2)}
+.dc-lead{
+  background:rgba(37,211,102,0.06);border:1px solid rgba(37,211,102,0.15);
+  border-radius:10px;padding:12px 14px;
+  display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:8px;
+}
+.dc-lead:last-child{margin-bottom:0}
+.dc-lead-name{font-size:13px;font-weight:600}
+.dc-lead-source{font-size:11px;color:var(--text2);margin-top:1px}
+.dc-badge{
+  background:rgba(37,99,235,0.15);color:#93c5fd;
+  padding:3px 9px;border-radius:100px;font-size:10px;font-weight:600;
+}
+@media(max-width:900px){
+  .dealer-inner{grid-template-columns:1fr;gap:48px}
+  .dealer-right{order:-1}
+}
+
+/* ── TESTIMONIALS ── */
+.testi-section{
+  padding:120px 24px;
+  background:#fff;
+}
+.testi-inner{max-width:1100px;margin:0 auto}
+.testi-eyebrow{font-size:13px;font-weight:700;color:#6366f1;text-transform:uppercase;letter-spacing:2px;margin-bottom:16px}
+.testi-h2{
+  font-family:'Syne',sans-serif;font-weight:900;
+  font-size:clamp(28px,4.5vw,48px);
+  letter-spacing:-1.5px;color:#0f172a;margin-bottom:56px;
+}
+body.ar .testi-h2{font-family:'Tajawal',sans-serif;letter-spacing:0}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.testi-card{
+  background:#f8faff;border-radius:20px;padding:28px;
+  border:1px solid rgba(0,0,0,0.05);
+  display:flex;flex-direction:column;
+}
+.testi-stars{color:#f59e0b;font-size:14px;margin-bottom:16px;letter-spacing:2px}
+.testi-quote{font-size:14px;color:#334155;line-height:1.7;flex:1;margin-bottom:20px;font-style:italic;font-weight:300}
+.testi-author{display:flex;align-items:center;gap:12px}
+.testi-av{
+  width:40px;height:40px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:800;font-size:16px;color:#fff;flex-shrink:0;
+}
+.testi-name{font-size:14px;font-weight:700;color:#0f172a}
+.testi-role{font-size:12px;color:#64748b}
+@media(max-width:768px){.testi-grid{grid-template-columns:1fr}}
+@media(min-width:640px) and (max-width:1023px){.testi-grid{grid-template-columns:1fr 1fr}}
+
+/* ── COMPARISON ── */
+.comp-section{
+  padding:120px 24px;
+  background:linear-gradient(180deg,#0a0f1e,var(--ink));
+}
+.comp-inner{max-width:900px;margin:0 auto}
+.comp-eyebrow{font-size:13px;font-weight:600;color:var(--cyan);text-transform:uppercase;letter-spacing:2px;margin-bottom:16px;text-align:center}
+.comp-h2{
+  font-family:'Syne',sans-serif;font-weight:900;
+  font-size:clamp(28px,4.5vw,48px);
+  letter-spacing:-1.5px;text-align:center;margin-bottom:56px;
+}
+body.ar .comp-h2{font-family:'Tajawal',sans-serif;letter-spacing:0}
+table.comp{width:100%;border-collapse:collapse;border-radius:16px;overflow:hidden}
+table.comp th{
+  padding:14px 18px;font-size:12px;font-weight:700;
+  text-align:left;color:var(--text2);text-transform:uppercase;letter-spacing:0.5px;
+  background:rgba(255,255,255,0.03);border-bottom:1px solid var(--border);
+}
+body.ar table.comp th{text-align:right}
+table.comp th.nex{
+  background:rgba(37,99,235,0.12);color:#93c5fd;
+  border-left:1px solid rgba(37,99,235,0.2);border-right:1px solid rgba(37,99,235,0.2);
+}
+table.comp td{
+  padding:13px 18px;font-size:13px;color:var(--text);
+  border-bottom:1px solid rgba(255,255,255,0.04);
+}
+body.ar table.comp td{text-align:right}
+table.comp td.nex{
+  background:rgba(37,99,235,0.05);
+  border-left:1px solid rgba(37,99,235,0.1);border-right:1px solid rgba(37,99,235,0.1);
+}
+table.comp tr:hover td{background:rgba(255,255,255,0.02)}
+table.comp tr:hover td.nex{background:rgba(37,99,235,0.08)}
+.ck{color:#22c55e}
+.cx{color:#ef4444;opacity:0.6}
+.cp{color:#f59e0b;font-size:12px}
+.comp-note{text-align:center;color:var(--text2);font-size:13px;margin-top:20px}
+@media(max-width:640px){table.comp{font-size:11px}table.comp th,table.comp td{padding:10px 10px}}
+
+/* ── PRICING ── */
+.price-section{
+  padding:120px 24px;background:#fff;
+}
+.price-inner{max-width:820px;margin:0 auto}
+.price-eyebrow{font-size:13px;font-weight:700;color:var(--blue2);text-transform:uppercase;letter-spacing:2px;margin-bottom:16px;text-align:center}
+.price-h2{
+  font-family:'Syne',sans-serif;font-weight:900;
+  font-size:clamp(28px,4.5vw,48px);
+  letter-spacing:-1.5px;color:#0f172a;text-align:center;margin-bottom:8px;
+}
+body.ar .price-h2{font-family:'Tajawal',sans-serif;letter-spacing:0}
+.price-sub{text-align:center;color:#64748b;font-size:16px;margin-bottom:56px;font-weight:300}
+.price-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.price-card{
+  border-radius:24px;padding:36px;
+  border:1px solid rgba(0,0,0,0.08);background:#f8faff;
+  position:relative;
+}
+.price-card.hot{
+  background:linear-gradient(145deg,#0e1525,#161d2e);
+  border-color:rgba(37,99,235,0.4);
+  box-shadow:0 0 0 1px rgba(37,99,235,0.2),0 40px 80px rgba(37,99,235,0.15);
+}
+.price-badge{
+  position:absolute;top:-14px;left:50%;transform:translateX(-50%);
+  background:linear-gradient(135deg,var(--blue),var(--blue2));
+  color:#fff;padding:5px 18px;border-radius:100px;
+  font-size:12px;font-weight:700;white-space:nowrap;
+  box-shadow:0 4px 14px rgba(37,99,235,0.4);
+}
+.price-plan{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#64748b;margin-bottom:10px}
+.price-card.hot .price-plan{color:var(--text2)}
+.price-amount{font-family:'Syne',sans-serif;font-weight:900;font-size:52px;color:#0f172a;line-height:1;margin-bottom:4px}
+.price-card.hot .price-amount{color:#fff}
+.price-period{font-size:13px;color:#64748b;margin-bottom:28px}
+.price-card.hot .price-period{color:var(--text2)}
+.price-list{list-style:none;display:flex;flex-direction:column;gap:11px;margin-bottom:32px}
+.price-list li{display:flex;align-items:center;gap:10px;font-size:14px;color:#334155}
+.price-card.hot .price-list li{color:var(--text)}
+.price-list li::before{
+  content:'✓';width:20px;height:20px;flex-shrink:0;
+  background:rgba(34,197,94,0.12);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:11px;color:#22c55e;line-height:20px;text-align:center;
+}
+.price-btn{
+  width:100%;padding:14px;border-radius:12px;
+  font-size:15px;font-weight:700;cursor:pointer;
+  font-family:inherit;transition:all 0.2s;
+  border:none;text-decoration:none;display:block;text-align:center;
+}
+.price-btn.free{background:#f1f5f9;color:#334155;border:1px solid rgba(0,0,0,0.08)}
+.price-btn.free:hover{background:#e2e8f0}
+.price-btn.paid{
+  background:linear-gradient(135deg,var(--blue),var(--blue2));
+  color:#fff;box-shadow:0 6px 20px rgba(37,99,235,0.3);
+}
+.price-btn.paid:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(37,99,235,0.4)}
+@media(max-width:640px){.price-grid{grid-template-columns:1fr}}
+
+/* ── CTA ── */
+.cta-section{
+  padding:120px 24px;
+  background:linear-gradient(135deg,var(--blue),var(--blue2));
+  text-align:center;position:relative;overflow:hidden;
+}
+.cta-section::before{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background-image:linear-gradient(rgba(255,255,255,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.04) 1px,transparent 1px);
+  background-size:48px 48px;
+}
+.cta-section h2{
+  font-family:'Syne',sans-serif;font-weight:900;
+  font-size:clamp(30px,5vw,60px);
+  color:#fff;margin-bottom:16px;letter-spacing:-1.5px;
+  position:relative;
+}
+body.ar .cta-section h2{font-family:'Tajawal',sans-serif;letter-spacing:0}
+.cta-section p{font-size:18px;color:rgba(255,255,255,0.75);margin-bottom:40px;max-width:480px;margin-left:auto;margin-right:auto;font-weight:300;position:relative}
+.cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;position:relative}
+.btn-white{
+  background:#fff;color:var(--blue2);
+  padding:15px 36px;border-radius:12px;border:none;
+  cursor:pointer;font-size:16px;font-weight:700;font-family:inherit;
+  text-decoration:none;transition:all 0.2s;
+  box-shadow:0 8px 24px rgba(0,0,0,0.2);
+}
+.btn-white:hover{transform:translateY(-2px);box-shadow:0 14px 36px rgba(0,0,0,0.25)}
+.btn-wa-cta{
+  background:rgba(255,255,255,0.12);border:2px solid rgba(255,255,255,0.3);
+  color:#fff;padding:15px 28px;border-radius:12px;
+  cursor:pointer;font-size:15px;font-weight:600;font-family:inherit;
+  text-decoration:none;transition:all 0.2s;display:inline-flex;align-items:center;gap:8px;
+}
+.btn-wa-cta:hover{background:rgba(255,255,255,0.2);border-color:#fff;transform:translateY(-2px)}
+
+/* ── FOOTER ── */
+footer{
+  background:var(--ink);
+  border-top:1px solid var(--border);
+  padding:48px 24px;text-align:center;
+}
+.footer-logo{font-family:'Syne',sans-serif;font-weight:900;font-size:22px;color:#fff;margin-bottom:8px}
+.footer-sub{font-size:13px;color:var(--text2);margin-bottom:20px}
+.footer-links{display:flex;gap:24px;justify-content:center;flex-wrap:wrap;margin-bottom:24px}
+.footer-links a{color:var(--text2);text-decoration:none;font-size:13px;transition:color 0.2s}
+.footer-links a:hover{color:#fff}
+.footer-copy{font-size:12px;color:rgba(255,255,255,0.25)}
+
+/* ── FLOATING WA ── */
+.wa-float{
+  position:fixed;bottom:28px;right:28px;z-index:300;
+  width:56px;height:56px;border-radius:50%;
+  background:var(--wa);
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 8px 24px rgba(37,211,102,0.4);
+  cursor:pointer;text-decoration:none;
+  transition:all 0.25s;
+  animation:float 3s ease-in-out infinite;
+}
+.wa-float:hover{transform:scale(1.1);box-shadow:0 12px 32px rgba(37,211,102,0.5)}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+
+/* ── ANIMATIONS ── */
+@keyframes up{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+.reveal{opacity:0;transform:translateY(32px);transition:all 0.75s cubic-bezier(0.16,1,0.3,1)}
+.reveal.in{opacity:1;transform:none}
+.reveal-d1{transition-delay:0.1s}
+.reveal-d2{transition-delay:0.2s}
+.reveal-d3{transition-delay:0.3s}
+
+/* ── MOBILE ── */
+@media(max-width:640px){
+  nav{padding:0 16px}
+  .hero{padding:80px 16px 40px}
+  .hero-nums{display:none}
+  .screen-section{padding:0 12px 60px}
+  .story-section,.features-section,.testi-section,.comp-section,.price-section,.cta-section{padding:80px 16px}
+  .dealer-section{padding:80px 16px}
+  .solution-strip{padding:24px}
+  .sol-text h3{font-size:17px}
+  .wa-float{bottom:20px;right:16px}
+}
 </style>
 </head>
 <body>
+
+<!-- FLOATING WA -->
+<a href="https://wa.me/966590599288" target="_blank" class="wa-float" title="WhatsApp us">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
 
 <!-- NAV -->
 <nav>
@@ -202,255 +627,389 @@ footer{background:var(--dark);border-top:1px solid var(--border);padding:40px 24
     <span class="nav-logo-text">NexCRM</span>
   </a>
   <div class="nav-right">
-    <button class="lang-toggle" onclick="toggleLang()" id="lang-btn">🇸🇦 عربي</button>
-    <a href="https://htmlmaster22.github.io/nexcrm/" target="_blank" class="nav-cta" id="nav-cta-btn">Try Free →</a>
+    <a href="https://wa.me/966590599288" target="_blank" class="nav-book" id="nav-book">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      <span id="book-text">Book a Demo</span>
+    </a>
+    <button class="nav-lang" onclick="toggleLang()" id="lang-btn">🇸🇦 عربي</button>
+    <a href="https://htmlmaster22.github.io/nexcrm/" target="_blank" class="nav-demo" id="nav-cta">Try Free →</a>
   </div>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-grid"></div>
+  <div class="hero-mesh"></div>
+  <div class="hero-lines"></div>
 
-  <div class="hero-badge">
-    <span class="hero-badge-dot"></span>
-    <span id="badge-text">Built for Saudi Marketing Agencies</span>
+  <div class="hero-pill">
+    <span class="hero-pill-dot"></span>
+    <span id="hero-badge">🇸🇦 Built for Saudi Business</span>
   </div>
 
-  <h1 id="hero-h1">The CRM that speaks<br/><span class="accent">Arabic, WhatsApp &</span><br/>Saudi business</h1>
+  <h1 id="hero-h1">Your leads are<br/><em>slipping away.</em><br/>Stop the leak.</h1>
 
-  <p class="hero-sub" id="hero-sub">Turn every lead from Snapchat, TikTok and Instagram into a closed deal. NexCRM is the only CRM with Hijri calendar, ZATCA VAT invoices, and Arabic-first design — built for the Saudi market.</p>
+  <p class="hero-story" id="hero-sub">Every day, your sales team is juggling <strong>WhatsApp, Excel, and sticky notes</strong> while your competitors are closing deals faster. NexCRM is the Arabic-first CRM that turns every Instagram, Snapchat and TikTok lead into a closed deal — built specifically for Saudi business.</p>
 
   <div class="hero-btns">
-    <a href="https://htmlmaster22.github.io/nexcrm/" target="_blank" class="btn-primary" id="hero-cta1">🚀 Start Free Today</a>
-    <a href="#features" class="btn-ghost" id="hero-cta2">See Features →</a>
+    <a href="https://htmlmaster22.github.io/nexcrm/" target="_blank" class="btn-main" id="hero-btn1">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="13 17 18 12 13 7"/><polyline points="6 17 11 12 6 7"/></svg>
+      <span id="hero-cta1">Start Free — No Card Needed</span>
+    </a>
+    <a href="https://wa.me/966590599288" target="_blank" class="btn-wa" id="hero-btn2">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      <span id="hero-cta2">Book a WhatsApp Demo</span>
+    </a>
   </div>
 
-  <div class="hero-stats">
-    <div class="hero-stat">
-      <div class="hero-stat-num">100%</div>
-      <div class="hero-stat-label" id="stat1-label">Saudi Market Fit</div>
+  <div class="hero-nums">
+    <div class="hero-num">
+      <span class="hero-num-val" id="n1">Free</span>
+      <span class="hero-num-label" id="n1l">vs $800/mo for HubSpot</span>
     </div>
-    <div class="hero-divider"></div>
-    <div class="hero-stat">
-      <div class="hero-stat-num">Free</div>
-      <div class="hero-stat-label" id="stat2-label">vs $800/month competitors</div>
+    <div class="hero-num">
+      <span class="hero-num-val" id="n2">Arabic</span>
+      <span class="hero-num-label" id="n2l">RTL-first design</span>
     </div>
-    <div class="hero-divider"></div>
-    <div class="hero-stat">
-      <div class="hero-stat-num">AI</div>
-      <div class="hero-stat-label" id="stat3-label">WhatsApp Reply Suggestions</div>
+    <div class="hero-num">
+      <span class="hero-num-val" id="n3">ZATCA</span>
+      <span class="hero-num-label" id="n3l">VAT invoices built-in</span>
     </div>
-    <div class="hero-divider"></div>
-    <div class="hero-stat">
-      <div class="hero-stat-num" style="-webkit-text-fill-color:#25d366">8+</div>
-      <div class="hero-stat-label" id="stat4-label">Modules built-in</div>
+    <div class="hero-num">
+      <span class="hero-num-val" id="n4">AI</span>
+      <span class="hero-num-label" id="n4l">WhatsApp reply generator</span>
     </div>
   </div>
 </section>
 
-<!-- DEMO PREVIEW -->
-<div class="demo-section">
-  <div class="demo-wrap">
-    <div class="demo-bar">
-      <div class="demo-dot" style="background:#ef4444"></div>
-      <div class="demo-dot" style="background:#f59e0b"></div>
-      <div class="demo-dot" style="background:#22c55e"></div>
-      <div class="demo-url">htmlmaster22.github.io/nexcrm</div>
+<!-- SCREEN MOCKUP -->
+<div class="screen-section">
+  <div class="screen-wrap">
+    <div class="screen-top">
+      <div class="s-dot" style="background:#ef4444"></div>
+      <div class="s-dot" style="background:#f59e0b"></div>
+      <div class="s-dot" style="background:#22c55e"></div>
+      <div class="s-url">htmlmaster22.github.io/nexcrm · NexCRM Dashboard</div>
     </div>
-    <div class="demo-screen">
-      <div class="demo-sidebar">
-        <div style="font-size:11px;color:var(--text2);padding:4px 8px;margin-bottom:4px;font-weight:700">MAIN</div>
-        <div class="demo-nav-item active"><div class="demo-nav-dot"></div>Dashboard</div>
-        <div class="demo-nav-item"><div class="demo-nav-dot"></div>Leads</div>
-        <div class="demo-nav-item"><div class="demo-nav-dot"></div>Pipeline</div>
-        <div class="demo-nav-item"><div class="demo-nav-dot"></div>WhatsApp Inbox</div>
-        <div style="font-size:11px;color:var(--text2);padding:4px 8px;margin:8px 0 4px;font-weight:700">MARKETING</div>
-        <div class="demo-nav-item"><div class="demo-nav-dot"></div>Campaigns</div>
-        <div class="demo-nav-item"><div class="demo-nav-dot"></div>Analytics</div>
-        <div class="demo-nav-item"><div class="demo-nav-dot"></div>Invoices</div>
+    <div class="screen-body">
+      <div class="s-sidebar">
+        <div style="font-size:10px;color:var(--text2);padding:4px 8px;font-weight:700;margin-bottom:2px">MAIN</div>
+        <div class="s-nav on"><div class="s-nav-dot"></div>Dashboard</div>
+        <div class="s-nav"><div class="s-nav-dot"></div>Leads</div>
+        <div class="s-nav"><div class="s-nav-dot"></div>Pipeline</div>
+        <div class="s-nav"><div class="s-nav-dot"></div>WhatsApp Inbox</div>
+        <div style="font-size:10px;color:var(--text2);padding:4px 8px;font-weight:700;margin:8px 0 2px">MARKETING</div>
+        <div class="s-nav"><div class="s-nav-dot"></div>Campaigns</div>
+        <div class="s-nav"><div class="s-nav-dot"></div>Analytics</div>
+        <div class="s-nav"><div class="s-nav-dot"></div>Invoices</div>
       </div>
-      <div class="demo-main">
-        <div class="demo-cards">
-          <div class="demo-card"><div class="demo-card-label">TOTAL LEADS</div><div class="demo-card-val" style="color:var(--accent)">247</div></div>
-          <div class="demo-card"><div class="demo-card-label">PIPELINE VALUE</div><div class="demo-card-val" style="color:#a78bfa">SAR 1.2M</div></div>
-          <div class="demo-card"><div class="demo-card-label">CONVERSION</div><div class="demo-card-val" style="color:var(--green)">34%</div></div>
-          <div class="demo-card"><div class="demo-card-label">AI SCORE AVG</div><div class="demo-card-val" style="color:#f59e0b">7.8/10</div></div>
+      <div class="s-content">
+        <div class="s-cards">
+          <div class="s-card"><div class="s-card-l">Total Leads</div><div class="s-card-v" style="color:#60a5fa">247</div></div>
+          <div class="s-card"><div class="s-card-l">Pipeline (SAR)</div><div class="s-card-v" style="color:#a78bfa">1.2M</div></div>
+          <div class="s-card"><div class="s-card-l">Conversion</div><div class="s-card-v" style="color:#34d399">34%</div></div>
+          <div class="s-card"><div class="s-card-l">AI Score Avg</div><div class="s-card-v" style="color:#fbbf24">7.8</div></div>
         </div>
-        <div class="demo-table">
-          <div class="demo-table-row" style="background:rgba(255,255,255,0.04);font-weight:700;font-size:10px;color:var(--text2)">
-            <span style="flex:2">NAME</span><span style="flex:1">SOURCE</span><span style="flex:1">STATUS</span><span style="flex:1">AI REPLY</span>
-          </div>
-          <div class="demo-table-row">
-            <span style="flex:2;font-weight:600">محمد الغامدي</span>
-            <span style="flex:1;color:#f59e0b">Snapchat</span>
-            <span style="flex:1"><span class="demo-pill pill-warm">Warm</span></span>
-            <span style="flex:1"><span class="demo-ai-btn">💬 AI</span></span>
-          </div>
-          <div class="demo-table-row">
-            <span style="flex:2;font-weight:600">Sara Al-Mutairi</span>
-            <span style="flex:1;color:#e1306c">Instagram</span>
-            <span style="flex:1"><span class="demo-pill pill-won">Won</span></span>
-            <span style="flex:1"><span class="demo-ai-btn">💬 AI</span></span>
-          </div>
-          <div class="demo-table-row">
-            <span style="flex:2;font-weight:600">Khalid Al-Dosari</span>
-            <span style="flex:1;color:#ff2d55">TikTok</span>
-            <span style="flex:1"><span class="demo-pill pill-new">New</span></span>
-            <span style="flex:1"><span class="demo-ai-btn">💬 AI</span></span>
-          </div>
+        <div class="s-table">
+          <div class="s-row head"><span style="flex:2">Name</span><span style="flex:1">Source</span><span style="flex:1">Status</span><span style="flex:1">AI</span></div>
+          <div class="s-row"><span style="flex:2;font-weight:600">محمد الغامدي</span><span style="flex:1;color:#fbbf24">Snapchat</span><span style="flex:1"><span class="s-pill" style="background:rgba(245,158,11,0.15);color:#fbbf24">Warm</span></span><span style="flex:1"><span class="s-ai">💬 AI Reply</span></span></div>
+          <div class="s-row"><span style="flex:2;font-weight:600">Sara Al-Mutairi</span><span style="flex:1;color:#f472b6">Instagram</span><span style="flex:1"><span class="s-pill" style="background:rgba(34,197,94,0.15);color:#34d399">Won ✓</span></span><span style="flex:1"><span class="s-ai">💬 AI Reply</span></span></div>
+          <div class="s-row"><span style="flex:2;font-weight:600">فهد العتيبي</span><span style="flex:1;color:#f87171">TikTok</span><span style="flex:1"><span class="s-pill" style="background:rgba(96,165,250,0.15);color:#60a5fa">New</span></span><span style="flex:1"><span class="s-ai">💬 AI Reply</span></span></div>
+          <div class="s-row"><span style="flex:2;font-weight:600">Nora Al-Qahtani</span><span style="flex:1;color:#34d399">WhatsApp</span><span style="flex:1"><span class="s-pill" style="background:rgba(167,139,250,0.15);color:#a78bfa">Active</span></span><span style="flex:1"><span class="s-ai">💬 AI Reply</span></span></div>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- FEATURES -->
-<section class="light-section section" id="features">
-  <div class="section-inner">
-    <div class="fade-up">
-      <span class="section-tag" id="feat-tag">Everything Saudi agencies need</span>
-      <h2 class="section-title" id="feat-title">Built different.<br/>Built for Saudi.</h2>
-      <p class="section-sub" id="feat-sub">Other CRMs are built for the US market and translated. NexCRM is built from the ground up for Saudi marketing agencies.</p>
+<!-- STORY / PAIN -->
+<section class="story-section">
+  <div class="story-inner">
+    <div class="reveal">
+      <div class="story-eyebrow" id="pain-eyebrow">The Reality</div>
+      <h2 class="story-h2" id="pain-h2">Sound familiar?</h2>
+      <p class="story-lead" id="pain-lead">You're running a <strong>successful agency</strong>. Clients trust you with their marketing. But behind the scenes, your team is drowning in chaos — and leads are falling through the cracks every single day.</p>
     </div>
-    <div class="features-grid fade-up">
-      <div class="feature-card">
-        <div class="feature-icon" style="background:rgba(37,211,102,0.1)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#25d366" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
-        <div class="feature-title" id="f1-title">Arabic-First Design</div>
-        <div class="feature-desc" id="f1-desc">Full RTL support, Arabic/English toggle, Tajawal font. Not an afterthought — built from day one for Arabic speakers.</div>
+    <div class="pain-grid reveal reveal-d1">
+      <div class="pain-card">
+        <div class="pain-num">01</div>
+        <div class="pain-title" id="p1t">The Excel Nightmare</div>
+        <div class="pain-desc" id="p1d">Your lead sheet has 400 rows, 6 tabs, and nobody knows which version is current. A lead who messaged 3 days ago just bought from your competitor.</div>
       </div>
-      <div class="feature-card">
-        <div class="feature-icon" style="background:rgba(37,211,102,0.1)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#25d366" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
-        <div class="feature-title" id="f2-title">WhatsApp Inbox + AI Replies</div>
-        <div class="feature-desc" id="f2-desc">See all lead conversations in one place. Claude AI generates personalized WhatsApp replies in Arabic or English with one tap.</div>
+      <div class="pain-card">
+        <div class="pain-num">02</div>
+        <div class="pain-title" id="p2t">The WhatsApp Chaos</div>
+        <div class="pain-desc" id="p2d">Sales reps are DMing from personal numbers. When they quit, they take the conversations with them. You have zero visibility into what's being said.</div>
       </div>
-      <div class="feature-card">
-        <div class="feature-icon" style="background:rgba(99,102,241,0.1)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#6366f1" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="3"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><circle cx="8" cy="15" r="1" fill="#6366f1"/><circle cx="12" cy="15" r="1" fill="#6366f1"/><circle cx="16" cy="15" r="1" fill="#6366f1"/></svg></div>
-        <div class="feature-title" id="f3-title">Hijri Calendar</div>
-        <div class="feature-desc" id="f3-desc">Dual Hijri/Gregorian date display throughout the CRM. Perfect for Saudi business workflows and Ramadan campaigns.</div>
+      <div class="pain-card">
+        <div class="pain-num">03</div>
+        <div class="pain-title" id="p3t">The Invoice Headache</div>
+        <div class="pain-desc" id="p3d">You're manually creating ZATCA invoices in Word, calculating 15% VAT by hand, and praying the QR code is right. Every invoice costs you 30 minutes.</div>
       </div>
-      <div class="feature-card">
-        <div class="feature-icon" style="background:rgba(245,158,11,0.1)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/></svg></div>
-        <div class="feature-title" id="f4-title">ZATCA VAT Invoices</div>
-        <div class="feature-desc" id="f4-desc">Generate ZATCA-compliant VAT invoices with QR codes automatically. SAR currency everywhere. Built for Saudi regulations.</div>
+    </div>
+    <div class="solution-strip reveal">
+      <div class="sol-icon">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
       </div>
-      <div class="feature-card">
-        <div class="feature-icon" style="background:rgba(59,130,246,0.1)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="18" rx="2"/><path d="M8 21V10M16 21V10M2 10h20M12 3v7"/><rect x="9" y="13" width="2" height="3" rx="0.5"/><rect x="13" y="13" width="2" height="3" rx="0.5"/></svg></div>
-        <div class="feature-title" id="f5-title">Multi-Client Agency Model</div>
-        <div class="feature-desc" id="f5-desc">Manage multiple clients from one login. Each client gets their own isolated workspace with custom branding and logo.</div>
+      <div class="sol-text">
+        <h3 id="sol-h">NexCRM solves all of this — in one place, in Arabic, for free.</h3>
+        <p id="sol-p">Every lead automatically captured. Every WhatsApp conversation tracked. Every invoice ZATCA-compliant with one click. <strong>Built for the Saudi market, not translated from Silicon Valley.</strong></p>
       </div>
-      <div class="feature-card">
-        <div class="feature-icon" style="background:rgba(239,68,68,0.1)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-        <div class="feature-title" id="f6-title">AI Lead Scoring</div>
-        <div class="feature-desc" id="f6-desc">Claude AI scores every lead 1-10, identifies strengths and risks, and recommends the best next action for your team.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features-section" id="features">
+  <div class="features-inner">
+    <div class="reveal">
+      <div class="feat-eyebrow" id="feat-eyebrow">What's Inside</div>
+      <h2 class="feat-h2" id="feat-h2">Everything your agency needs.<br/>Nothing you don't.</h2>
+      <p class="feat-sub" id="feat-sub">8 fully built modules. One login. No per-user fees. No setup fees. No American support team that doesn't understand Saudi business hours.</p>
+    </div>
+    <div class="feat-grid">
+      <div class="feat-card reveal">
+        <div class="feat-icon" style="background:rgba(37,211,102,0.1)">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <div class="feat-title" id="f1t">WhatsApp Inbox + AI Replies</div>
+        <div class="feat-desc" id="f1d">All your lead conversations in one place. Claude AI writes personalized Arabic or English WhatsApp replies in one tap — so your team closes faster.</div>
+        <span class="feat-tag">🤖 Claude AI</span>
+      </div>
+      <div class="feat-card reveal reveal-d1">
+        <div class="feat-icon" style="background:rgba(37,99,235,0.1)">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <div class="feat-title" id="f2t">AI Lead Scoring</div>
+        <div class="feat-desc" id="f2d">Every lead gets scored 1-10 by AI. Strengths, risks, and the exact next action your team should take. No more guessing who to call first.</div>
+        <span class="feat-tag">⚡ Instant</span>
+      </div>
+      <div class="feat-card reveal reveal-d2">
+        <div class="feat-icon" style="background:rgba(217,119,6,0.1)">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/></svg>
+        </div>
+        <div class="feat-title" id="f3t">ZATCA VAT Invoices</div>
+        <div class="feat-desc" id="f3d">Generate fully compliant VAT invoices with QR codes in 30 seconds. SAR currency. Arabic + English. Never hand-calculate VAT again.</div>
+        <span class="feat-tag">✅ ZATCA Ready</span>
+      </div>
+      <div class="feat-card reveal">
+        <div class="feat-icon" style="background:rgba(79,70,229,0.1)">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#4f46e5" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="3"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        </div>
+        <div class="feat-title" id="f4t">Hijri Calendar</div>
+        <div class="feat-desc" id="f4d">Dual Hijri and Gregorian dates everywhere. Schedule Ramadan campaigns, Eid follow-ups, and Saudi national holiday timelines naturally.</div>
+        <span class="feat-tag">🇸🇦 Saudi-first</span>
+      </div>
+      <div class="feat-card reveal reveal-d1">
+        <div class="feat-icon" style="background:rgba(6,182,212,0.1)">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#06b6d4" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        </div>
+        <div class="feat-title" id="f5t">Pipeline & Analytics</div>
+        <div class="feat-desc" id="f5d">Visual kanban board, monthly performance charts, lead source breakdown. Know exactly which platform is making you money and which is wasting your budget.</div>
+        <span class="feat-tag">📊 Real-time</span>
+      </div>
+      <div class="feat-card reveal reveal-d2">
+        <div class="feat-icon" style="background:rgba(22,163,74,0.1)">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="18" rx="2"/><path d="M8 21V10M16 21V10M2 10h20"/></svg>
+        </div>
+        <div class="feat-title" id="f6t">Multi-Client Agency</div>
+        <div class="feat-desc" id="f6d">Manage Majnoon Laila, RACKS, and 10 other clients from one login. Each client sees only their data. White-label branding per workspace.</div>
+        <span class="feat-tag">🏢 Agency-built</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CAR DEALERSHIP SECTION -->
+<section class="dealer-section" id="dealers">
+  <div class="dealer-inner">
+    <div class="dealer-left reveal">
+      <div class="eyebrow" id="deal-eyebrow">🚗 Built for Car Showrooms</div>
+      <h2 id="deal-h2">The showroom is busy.<br/>Your leads shouldn't be ignored.</h2>
+      <p id="deal-p">A customer DMs you on Snapchat about a Land Cruiser at 11pm. By 9am, they've already bought from a dealer who replied faster. <strong>NexCRM makes sure your team never misses a lead again.</strong></p>
+      <div class="dealer-features">
+        <div class="d-feat">
+          <div class="d-feat-icon" style="background:rgba(245,158,11,0.1)">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+          </div>
+          <div class="d-feat-text">
+            <h4 id="df1t">Instant Lead Alerts</h4>
+            <p id="df1d">Telegram notification the second a lead submits from any platform — Instagram, Snapchat, TikTok or your website form.</p>
+          </div>
+        </div>
+        <div class="d-feat">
+          <div class="d-feat-icon" style="background:rgba(37,211,102,0.1)">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <div class="d-feat-text">
+            <h4 id="df2t">AI WhatsApp Reply</h4>
+            <p id="df2d">One tap to generate a personalized Arabic WhatsApp reply. "مرحباً فهد، شكراً لاهتمامك بـ Land Cruiser..."</p>
+          </div>
+        </div>
+        <div class="d-feat">
+          <div class="d-feat-icon" style="background:rgba(37,99,235,0.1)">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+          </div>
+          <div class="d-feat-text">
+            <h4 id="df3t">Source Tracking</h4>
+            <p id="df3d">Know exactly which ad, platform and campaign brought the lead. Stop spending budget on Snapchat if Instagram is closing 80% of your deals.</p>
+          </div>
+        </div>
+        <div class="d-feat">
+          <div class="d-feat-icon" style="background:rgba(217,119,6,0.1)">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          </div>
+          <div class="d-feat-text">
+            <h4 id="df4t">ZATCA Invoices in 30 Seconds</h4>
+            <p id="df4d">Generate fully compliant VAT invoices for every sale. QR code, 15% VAT, seller details — all automatic. No accountant required.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="dealer-right reveal reveal-d2">
+      <div class="dealer-card">
+        <div class="dc-header">
+          <div class="dc-avatar">H</div>
+          <div>
+            <div class="dc-name">Hussein Motors — الرياض</div>
+            <div class="dc-org">Car Showroom · Active workspace</div>
+          </div>
+        </div>
+        <div class="dc-metrics">
+          <div class="dc-metric">
+            <div class="dc-metric-val" style="color:#60a5fa">47</div>
+            <div class="dc-metric-label">Leads this month</div>
+          </div>
+          <div class="dc-metric">
+            <div class="dc-metric-val" style="color:#34d399">SAR 1.8M</div>
+            <div class="dc-metric-label">Pipeline value</div>
+          </div>
+          <div class="dc-metric">
+            <div class="dc-metric-val" style="color:#fbbf24">38%</div>
+            <div class="dc-metric-label">Conversion rate</div>
+          </div>
+          <div class="dc-metric">
+            <div class="dc-metric-val" style="color:#a78bfa">8.2</div>
+            <div class="dc-metric-label">AI score avg</div>
+          </div>
+        </div>
+        <div class="dc-lead">
+          <div>
+            <div class="dc-lead-name">فهد السبيعي</div>
+            <div class="dc-lead-source">Snapchat · 11 minutes ago · New</div>
+          </div>
+          <span class="dc-badge">💬 AI Reply Ready</span>
+        </div>
+        <div class="dc-lead">
+          <div>
+            <div class="dc-lead-name">محمد العتيبي</div>
+            <div class="dc-lead-source">Instagram · 2 hours ago · Warm</div>
+          </div>
+          <span class="dc-badge" style="background:rgba(245,158,11,0.15);color:#fbbf24">⏰ Follow up</span>
+        </div>
+        <div class="dc-lead">
+          <div>
+            <div class="dc-lead-name">Nora Al-Qahtani</div>
+            <div class="dc-lead-source">TikTok · Yesterday · Won ✓</div>
+          </div>
+          <span class="dc-badge" style="background:rgba(34,197,94,0.15);color:#34d399">✓ Closed</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testi-section">
+  <div class="testi-inner">
+    <div class="reveal">
+      <div class="testi-eyebrow" id="testi-eyebrow">What They're Saying</div>
+      <h2 class="testi-h2" id="testi-h2">Saudi businesses are closing more deals.</h2>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card reveal">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-quote" id="t1q">"NexCRM transformed how we manage leads from our Snapchat campaigns. The Arabic interface, notifications, and VAT invoices save us hours every week. Finally, a CRM that understands how we work in Saudi Arabia."</p>
+        <div class="testi-author">
+          <div class="testi-av" style="background:linear-gradient(135deg,#c8860a,#f59e0b)">م</div>
+          <div>
+            <div class="testi-name" id="t1n">Majnoon Laila Team</div>
+            <div class="testi-role" id="t1r">Saudi Rice Brand · Riyadh</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card reveal reveal-d1">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-quote" id="t2q">"We were using WhatsApp and Excel to track 80+ leads a month. It was chaos. NexCRM centralized everything — now our sales team knows exactly who to call and when. Our conversion rate went up 30%."</p>
+        <div class="testi-author">
+          <div class="testi-av" style="background:linear-gradient(135deg,#2563eb,#4f46e5)">R</div>
+          <div>
+            <div class="testi-name" id="t2n">RACKS Agency</div>
+            <div class="testi-role" id="t2r">Marketing Agency · Riyadh</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card reveal reveal-d2">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-quote" id="t3q">"The AI WhatsApp reply feature alone is worth it. Our sales rep gets a lead from TikTok at midnight, and by morning he sends a perfect personalized Arabic message. Clients think we never sleep."</p>
+        <div class="testi-author">
+          <div class="testi-av" style="background:linear-gradient(135deg,#16a34a,#15803d)">W</div>
+          <div>
+            <div class="testi-name" id="t3n">Wisam Almajd</div>
+            <div class="testi-role" id="t3r">Marketing Consultant · KSA</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- COMPARISON -->
-<section class="light-section section" style="background:var(--light-bg);padding-top:0">
-  <div class="section-inner">
-    <div class="fade-up" style="text-align:center;margin-bottom:48px">
-      <span class="section-tag" id="comp-tag">Comparison</span>
-      <h2 class="section-title" id="comp-title">Why NexCRM wins<br/>for Saudi agencies</h2>
+<section class="comp-section">
+  <div class="comp-inner">
+    <div class="reveal">
+      <div class="comp-eyebrow" id="comp-eyebrow">The Comparison</div>
+      <h2 class="comp-h2" id="comp-h2">Why Saudi agencies choose NexCRM</h2>
     </div>
-    <div class="fade-up" style="overflow-x:auto">
-      <table class="compare-table">
+    <div class="reveal" style="overflow-x:auto">
+      <table class="comp">
         <thead>
           <tr>
-            <th id="comp-feat">Feature</th>
-            <th class="highlight">NexCRM ✦</th>
+            <th id="ct0">Feature</th>
+            <th class="nex">NexCRM ✦</th>
             <th>String</th>
             <th>HubSpot</th>
             <th>Zoho</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td id="c1">Arabic / RTL support</td>
-            <td class="highlight"><span class="check">✓</span> Native</td>
-            <td><span class="check">✓</span></td>
-            <td><span class="partial">Partial</span></td>
-            <td><span class="partial">Partial</span></td>
-          </tr>
-          <tr>
-            <td id="c2">Hijri calendar</td>
-            <td class="highlight"><span class="check">✓</span> Built-in</td>
-            <td><span class="cross">✗</span></td>
-            <td><span class="cross">✗</span></td>
-            <td><span class="cross">✗</span></td>
-          </tr>
-          <tr>
-            <td id="c3">ZATCA VAT invoices</td>
-            <td class="highlight"><span class="check">✓</span> Built-in</td>
-            <td><span class="cross">✗</span></td>
-            <td><span class="cross">✗</span></td>
-            <td><span class="partial">Add-on</span></td>
-          </tr>
-          <tr>
-            <td id="c4">AI WhatsApp replies</td>
-            <td class="highlight"><span class="check">✓</span> Arabic+EN</td>
-            <td><span class="cross">✗</span></td>
-            <td><span class="partial">English only</span></td>
-            <td><span class="cross">✗</span></td>
-          </tr>
-          <tr>
-            <td id="c5">Multi-client agency model</td>
-            <td class="highlight"><span class="check">✓</span> Built-in</td>
-            <td><span class="cross">✗</span></td>
-            <td><span class="partial">Enterprise</span></td>
-            <td><span class="partial">Add-on</span></td>
-          </tr>
-          <tr>
-            <td id="c6">White-label branding</td>
-            <td class="highlight"><span class="check">✓</span> Per client</td>
-            <td><span class="cross">✗</span></td>
-            <td><span class="cross">✗</span></td>
-            <td><span class="cross">✗</span></td>
-          </tr>
-          <tr>
-            <td id="c7">Price</td>
-            <td class="highlight" style="color:#22c55e;font-weight:700">Free</td>
-            <td>Paid</td>
-            <td style="color:#ef4444;font-weight:600">$800+/mo</td>
-            <td>$300+/mo</td>
-          </tr>
+          <tr><td id="c1">Arabic / RTL</td><td class="nex"><span class="ck">✓</span> Native</td><td><span class="ck">✓</span></td><td><span class="cp">Partial</span></td><td><span class="cp">Partial</span></td></tr>
+          <tr><td id="c2">Hijri Calendar</td><td class="nex"><span class="ck">✓</span> Built-in</td><td><span class="cx">✗</span></td><td><span class="cx">✗</span></td><td><span class="cx">✗</span></td></tr>
+          <tr><td id="c3">ZATCA VAT Invoices</td><td class="nex"><span class="ck">✓</span> Built-in</td><td><span class="cx">✗</span></td><td><span class="cx">✗</span></td><td><span class="cp">Add-on</span></td></tr>
+          <tr><td id="c4">AI WhatsApp Replies</td><td class="nex"><span class="ck">✓</span> Arabic+EN</td><td><span class="cx">✗</span></td><td><span class="cp">EN only</span></td><td><span class="cx">✗</span></td></tr>
+          <tr><td id="c5">Multi-client Agency</td><td class="nex"><span class="ck">✓</span> Built-in</td><td><span class="cx">✗</span></td><td><span class="cp">Enterprise</span></td><td><span class="cp">Add-on</span></td></tr>
+          <tr><td id="c6">White-label Branding</td><td class="nex"><span class="ck">✓</span> Per client</td><td><span class="cx">✗</span></td><td><span class="cx">✗</span></td><td><span class="cx">✗</span></td></tr>
+          <tr><td id="c7">Price</td><td class="nex" style="color:#22c55e;font-weight:700">Free</td><td>Paid</td><td style="color:#ef4444;font-weight:600">$800+/mo</td><td>$300+/mo</td></tr>
         </tbody>
       </table>
     </div>
+    <p class="comp-note reveal" id="comp-note">* String is the closest Saudi competitor. NexCRM is free and has features String doesn't offer.</p>
   </div>
 </section>
 
-<!-- TESTIMONIAL -->
-<div class="testimonial-section">
-  <div class="testimonial-card fade-up">
-    <div class="stars"><svg viewBox="0 0 120 20" width="120" height="20" fill="#f59e0b"><path d="M10 2l2.4 7.4H20l-6.2 4.5 2.4 7.4L10 17l-6.2 4.3 2.4-7.4L0 9.4h7.6z"/><path d="M34 2l2.4 7.4H44l-6.2 4.5 2.4 7.4L34 17l-6.2 4.3 2.4-7.4L24 9.4h7.6z"/><path d="M58 2l2.4 7.4H68l-6.2 4.5 2.4 7.4L58 17l-6.2 4.3 2.4-7.4L48 9.4h7.6z"/><path d="M82 2l2.4 7.4H90l-6.2 4.5 2.4 7.4L82 17l-6.2 4.3 2.4-7.4L72 9.4h7.6z"/><path d="M106 2l2.4 7.4H116l-6.2 4.5 2.4 7.4L106 17l-6.2 4.3 2.4-7.4L96 9.4h7.6z"/></svg></div>
-    <div class="testimonial-quote" id="test-quote">"NexCRM transformed how we manage leads from our Snapchat campaigns. The Arabic interface, automatic notifications, and VAT invoices save us hours every week. It's built exactly for how we work in Saudi Arabia."</div>
-    <div class="testimonial-author">
-      <div class="testimonial-avatar">م</div>
-      <div>
-        <div class="testimonial-name" id="test-name">Majnoon Laila Team</div>
-        <div class="testimonial-role" id="test-role">Saudi Rice Brand — Riyadh, KSA</div>
-      </div>
-    </div>
-  </div>
-</div>
-
 <!-- PRICING -->
-<section class="light-section section" id="pricing">
-  <div class="section-inner">
-    <div class="fade-up" style="text-align:center;margin-bottom:56px">
-      <span class="section-tag" id="price-tag">Pricing</span>
-      <h2 class="section-title" id="price-title">Simple, honest pricing</h2>
-      <p class="section-sub" style="margin:0 auto;text-align:center" id="price-sub">Start free. Upgrade when you're ready. No hidden fees.</p>
+<section class="price-section" id="pricing">
+  <div class="price-inner">
+    <div class="reveal">
+      <div class="price-eyebrow" id="price-eyebrow">Pricing</div>
+      <h2 class="price-h2" id="price-h2">Simple, honest pricing</h2>
+      <p class="price-sub" id="price-sub">Start free today. Upgrade when you're ready. No contracts. No hidden fees. Cancel anytime.</p>
     </div>
-    <div class="pricing-grid fade-up">
-      <div class="pricing-card">
-        <div class="pricing-plan" id="plan1-name">Free Forever</div>
-        <div class="pricing-price">SAR 0</div>
-        <div class="pricing-period" id="plan1-period">No credit card required</div>
-        <ul class="pricing-features" id="plan1-features">
+    <div class="price-grid reveal">
+      <div class="price-card">
+        <div class="price-plan" id="pl1">Free Forever</div>
+        <div class="price-amount">SAR 0</div>
+        <div class="price-period" id="pp1">No credit card required</div>
+        <ul class="price-list" id="pf1">
           <li>1 client workspace</li>
           <li>Unlimited leads</li>
           <li>Pipeline & analytics</li>
@@ -459,23 +1018,23 @@ footer{background:var(--dark);border-top:1px solid var(--border);padding:40px 24
           <li>Arabic/English toggle</li>
           <li>Hijri calendar</li>
         </ul>
-        <a href="https://htmlmaster22.github.io/nexcrm/" target="_blank" class="pricing-btn free" id="plan1-btn">Get Started Free</a>
+        <a href="https://htmlmaster22.github.io/nexcrm/" target="_blank" class="price-btn free" id="pb1">Get Started Free →</a>
       </div>
-      <div class="pricing-card pro">
-        <div class="pricing-badge" id="pro-badge">Most Popular</div>
-        <div class="pricing-plan" style="color:var(--text2)" id="plan2-name">Pro Agency</div>
-        <div class="pricing-price" style="color:#fff">SAR 299</div>
-        <div class="pricing-period" id="plan2-period">per month · billed monthly</div>
-        <ul class="pricing-features" id="plan2-features">
+      <div class="price-card hot">
+        <div class="price-badge" id="p-badge">Most Popular</div>
+        <div class="price-plan" id="pl2">Pro Agency</div>
+        <div class="price-amount" style="color:#fff">SAR 299</div>
+        <div class="price-period" id="pp2">per month · billed monthly</div>
+        <ul class="price-list" id="pf2">
           <li>Unlimited client workspaces</li>
           <li>AI lead scoring (Claude)</li>
           <li>AI WhatsApp reply suggestions</li>
           <li>White-label branding per client</li>
-          <li>Priority support</li>
+          <li>Priority WhatsApp support</li>
           <li>Custom domain</li>
           <li>Everything in Free</li>
         </ul>
-        <a href="https://htmlmaster22.github.io/nexcrm/" target="_blank" class="pricing-btn paid" id="plan2-btn">Start 14-Day Trial</a>
+        <a href="https://wa.me/966590599288" target="_blank" class="price-btn paid" id="pb2">Start 14-Day Trial →</a>
       </div>
     </div>
   </div>
@@ -483,12 +1042,15 @@ footer{background:var(--dark);border-top:1px solid var(--border);padding:40px 24
 
 <!-- CTA -->
 <section class="cta-section">
-  <div class="fade-up">
-    <h2 id="cta-title">Ready to close more deals?</h2>
-    <p id="cta-sub">Join Saudi marketing agencies already using NexCRM to manage their leads, campaigns, and clients in one place.</p>
+  <div class="reveal">
+    <h2 id="cta-h">Ready to stop losing leads?</h2>
+    <p id="cta-p">Join Saudi marketing agencies and car dealerships already using NexCRM. Set up in 5 minutes. Your first lead could come in today.</p>
     <div class="cta-btns">
-      <a href="https://htmlmaster22.github.io/nexcrm/" target="_blank" class="btn-white" id="cta-btn1">Start Free Today →</a>
-      <a href="https://wa.me/966590599288" target="_blank" class="btn-outline-white" id="cta-btn2">WhatsApp Us</a>
+      <a href="https://htmlmaster22.github.io/nexcrm/" target="_blank" class="btn-white" id="cta-b1">Start Free Today →</a>
+      <a href="https://wa.me/966590599288" target="_blank" class="btn-wa-cta" id="cta-b2">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        <span id="cta-b2-t">Book a Demo on WhatsApp</span>
+      </a>
     </div>
   </div>
 </section>
@@ -496,112 +1058,154 @@ footer{background:var(--dark);border-top:1px solid var(--border);padding:40px 24
 <!-- FOOTER -->
 <footer>
   <div class="footer-logo">NexCRM</div>
-  <p id="footer-tagline">The CRM built for Saudi Marketing Agencies</p>
+  <p class="footer-sub" id="foot-sub">The CRM built for Saudi marketing agencies and car dealerships.</p>
   <div class="footer-links">
     <a href="https://htmlmaster22.github.io/nexcrm/" target="_blank" id="fl1">Live Demo</a>
     <a href="#features" id="fl2">Features</a>
-    <a href="#pricing" id="fl3">Pricing</a>
-    <a href="https://wa.me/966590599288" target="_blank" id="fl4">Contact</a>
+    <a href="#dealers" id="fl3">For Car Dealers</a>
+    <a href="#pricing" id="fl4">Pricing</a>
+    <a href="https://wa.me/966590599288" target="_blank" id="fl5">Contact</a>
   </div>
-  <p style="margin-top:16px">🇸🇦 Made in Saudi Arabia · <span id="footer-copy">© 2025 NexCRM</span></p>
+  <p class="footer-copy">🇸🇦 Made in Saudi Arabia · © 2026 NexCRM</p>
 </footer>
 
 <script>
-// Language toggle
-let currentLang = 'en';
-const translations = {
-  en: {
-    'lang-btn':'🇸🇦 عربي','nav-cta-btn':'Try Free →',
-    'badge-text':'Built for Saudi Marketing Agencies',
-    'hero-h1':'The CRM that speaks<br/><span class="accent">Arabic, WhatsApp &</span><br/>Saudi business',
-    'hero-sub':'Turn every lead from Snapchat, TikTok and Instagram into a closed deal. NexCRM is the only CRM with Hijri calendar, ZATCA VAT invoices, and Arabic-first design — built for the Saudi market.',
-    'hero-cta1':'🚀 Start Free Today','hero-cta2':'See Features →',
-    'stat1-label':'Saudi Market Fit','stat2-label':'vs $800/month competitors',
-    'stat3-label':'WhatsApp Reply Suggestions','stat4-label':'Modules built-in',
-    'feat-tag':'Everything Saudi agencies need',
-    'feat-title':'Built different.<br/>Built for Saudi.',
-    'feat-sub':'Other CRMs are built for the US market and translated. NexCRM is built from the ground up for Saudi marketing agencies.',
-    'f1-title':'Arabic-First Design','f1-desc':'Full RTL support, Arabic/English toggle, Tajawal font. Not an afterthought — built from day one for Arabic speakers.',
-    'f2-title':'WhatsApp Inbox + AI Replies','f2-desc':'See all lead conversations in one place. Claude AI generates personalized WhatsApp replies in Arabic or English with one tap.',
-    'f3-title':'Hijri Calendar','f3-desc':'Dual Hijri/Gregorian date display throughout the CRM. Perfect for Saudi business workflows and Ramadan campaigns.',
-    'f4-title':'ZATCA VAT Invoices','f4-desc':'Generate ZATCA-compliant VAT invoices with QR codes automatically. SAR currency everywhere. Built for Saudi regulations.',
-    'f5-title':'Multi-Client Agency Model','f5-desc':'Manage multiple clients from one login. Each client gets their own isolated workspace with custom branding and logo.',
-    'f6-title':'AI Lead Scoring','f6-desc':'Claude AI scores every lead 1-10, identifies strengths and risks, and recommends the best next action for your team.',
-    'comp-tag':'Comparison','comp-title':'Why NexCRM wins<br/>for Saudi agencies','comp-feat':'Feature',
-    'c1':'Arabic / RTL support','c2':'Hijri calendar','c3':'ZATCA VAT invoices',
-    'c4':'AI WhatsApp replies','c5':'Multi-client agency model','c6':'White-label branding','c7':'Price',
-    'test-quote':'"NexCRM transformed how we manage leads from our Snapchat campaigns. The Arabic interface, automatic notifications, and VAT invoices save us hours every week. It\'s built exactly for how we work in Saudi Arabia."',
-    'test-name':'Majnoon Laila Team','test-role':'Saudi Rice Brand — Riyadh, KSA',
-    'price-tag':'Pricing','price-title':'Simple, honest pricing',
-    'price-sub':'Start free. Upgrade when you\'re ready. No hidden fees.',
-    'plan1-name':'Free Forever','plan1-period':'No credit card required','plan1-btn':'Get Started Free',
-    'pro-badge':'Most Popular','plan2-name':'Pro Agency','plan2-period':'per month · billed monthly','plan2-btn':'Start 14-Day Trial',
-    'cta-title':'Ready to close more deals?',
-    'cta-sub':'Join Saudi marketing agencies already using NexCRM to manage their leads, campaigns, and clients in one place.',
-    'cta-btn1':'Start Free Today →','cta-btn2':'WhatsApp Us',
-    'footer-tagline':'The CRM built for Saudi Marketing Agencies','footer-copy':'© 2025 NexCRM',
-    'fl1':'Live Demo','fl2':'Features','fl3':'Pricing','fl4':'Contact',
+// ── LANGUAGE ──
+let lang = 'en';
+const T = {
+  en:{
+    'lang-btn':'🇸🇦 عربي','nav-cta':'Try Free →','book-text':'Book a Demo','nav-book':'',
+    'hero-badge':'🇸🇦 Built for Saudi Business',
+    'hero-h1':'Your leads are<br/><em>slipping away.</em><br/>Stop the leak.',
+    'hero-sub':'Every day, your sales team is juggling <strong>WhatsApp, Excel, and sticky notes</strong> while your competitors are closing deals faster. NexCRM is the Arabic-first CRM that turns every Instagram, Snapchat and TikTok lead into a closed deal — built specifically for Saudi business.',
+    'hero-cta1':'Start Free — No Card Needed','hero-cta2':'Book a WhatsApp Demo',
+    'n1':'Free','n1l':'vs $800/mo for HubSpot','n2':'Arabic','n2l':'RTL-first design',
+    'n3':'ZATCA','n3l':'VAT invoices built-in','n4':'AI','n4l':'WhatsApp reply generator',
+    'pain-eyebrow':'The Reality','pain-h2':'Sound familiar?',
+    'pain-lead':'You\'re running a <strong>successful agency</strong>. Clients trust you with their marketing. But behind the scenes, your team is drowning in chaos — and leads are falling through the cracks every single day.',
+    'p1t':'The Excel Nightmare','p1d':'Your lead sheet has 400 rows, 6 tabs, and nobody knows which version is current. A lead who messaged 3 days ago just bought from your competitor.',
+    'p2t':'The WhatsApp Chaos','p2d':'Sales reps are DMing from personal numbers. When they quit, they take the conversations with them. You have zero visibility into what\'s being said.',
+    'p3t':'The Invoice Headache','p3d':'You\'re manually creating ZATCA invoices in Word, calculating 15% VAT by hand, and praying the QR code is right. Every invoice costs you 30 minutes.',
+    'sol-h':'NexCRM solves all of this — in one place, in Arabic, for free.',
+    'sol-p':'Every lead automatically captured. Every WhatsApp conversation tracked. Every invoice ZATCA-compliant with one click. <strong>Built for the Saudi market, not translated from Silicon Valley.</strong>',
+    'feat-eyebrow':'What\'s Inside','feat-h2':'Everything your agency needs.<br/>Nothing you don\'t.',
+    'feat-sub':'8 fully built modules. One login. No per-user fees. No setup fees. No American support team that doesn\'t understand Saudi business hours.',
+    'f1t':'WhatsApp Inbox + AI Replies','f1d':'All your lead conversations in one place. Claude AI writes personalized Arabic or English WhatsApp replies in one tap — so your team closes faster.',
+    'f2t':'AI Lead Scoring','f2d':'Every lead gets scored 1-10 by AI. Strengths, risks, and the exact next action your team should take. No more guessing who to call first.',
+    'f3t':'ZATCA VAT Invoices','f3d':'Generate fully compliant VAT invoices with QR codes in 30 seconds. SAR currency. Arabic + English. Never hand-calculate VAT again.',
+    'f4t':'Hijri Calendar','f4d':'Dual Hijri and Gregorian dates everywhere. Schedule Ramadan campaigns, Eid follow-ups, and Saudi national holiday timelines naturally.',
+    'f5t':'Pipeline & Analytics','f5d':'Visual kanban board, monthly performance charts, lead source breakdown. Know exactly which platform is making you money.',
+    'f6t':'Multi-Client Agency','f6d':'Manage multiple clients from one login. Each client sees only their data. White-label branding per workspace.',
+    'deal-eyebrow':'🚗 Built for Car Showrooms',
+    'deal-h2':'The showroom is busy.<br/>Your leads shouldn\'t be ignored.',
+    'deal-p':'A customer DMs you on Snapchat about a Land Cruiser at 11pm. By 9am, they\'ve already bought from a dealer who replied faster. <strong>NexCRM makes sure your team never misses a lead again.</strong>',
+    'df1t':'Instant Lead Alerts','df1d':'Telegram notification the second a lead submits from any platform — Instagram, Snapchat, TikTok or your website form.',
+    'df2t':'AI WhatsApp Reply','df2d':'One tap to generate a personalized Arabic WhatsApp reply. "مرحباً فهد، شكراً لاهتمامك بـ Land Cruiser..."',
+    'df3t':'Source Tracking','df3d':'Know exactly which ad, platform and campaign brought the lead. Stop spending budget on Snapchat if Instagram is closing 80% of your deals.',
+    'df4t':'ZATCA Invoices in 30 Seconds','df4d':'Generate fully compliant VAT invoices for every sale. QR code, 15% VAT, seller details — all automatic.',
+    'testi-eyebrow':'What They\'re Saying','testi-h2':'Saudi businesses are closing more deals.',
+    't1q':'"NexCRM transformed how we manage leads from our Snapchat campaigns. The Arabic interface, notifications, and VAT invoices save us hours every week. Finally, a CRM that understands how we work in Saudi Arabia."',
+    't1n':'Majnoon Laila Team','t1r':'Saudi Rice Brand · Riyadh',
+    't2q':'"We were using WhatsApp and Excel to track 80+ leads a month. It was chaos. NexCRM centralized everything — now our sales team knows exactly who to call and when. Our conversion rate went up 30%."',
+    't2n':'RACKS Agency','t2r':'Marketing Agency · Riyadh',
+    't3q':'"The AI WhatsApp reply feature alone is worth it. Our sales rep gets a lead from TikTok at midnight, and by morning he sends a perfect personalized Arabic message. Clients think we never sleep."',
+    't3n':'Wisam Almajd','t3r':'Marketing Consultant · KSA',
+    'comp-eyebrow':'The Comparison','comp-h2':'Why Saudi agencies choose NexCRM',
+    'ct0':'Feature','c1':'Arabic / RTL','c2':'Hijri Calendar','c3':'ZATCA VAT Invoices','c4':'AI WhatsApp Replies','c5':'Multi-client Agency','c6':'White-label Branding','c7':'Price',
+    'comp-note':'* String is the closest Saudi competitor. NexCRM is free and has features String doesn\'t offer.',
+    'price-eyebrow':'Pricing','price-h2':'Simple, honest pricing',
+    'price-sub':'Start free today. Upgrade when you\'re ready. No contracts. No hidden fees. Cancel anytime.',
+    'pl1':'Free Forever','pp1':'No credit card required','pb1':'Get Started Free →',
+    'p-badge':'Most Popular','pl2':'Pro Agency','pp2':'per month · billed monthly','pb2':'Start 14-Day Trial →',
+    'cta-h':'Ready to stop losing leads?',
+    'cta-p':'Join Saudi marketing agencies and car dealerships already using NexCRM. Set up in 5 minutes. Your first lead could come in today.',
+    'cta-b1':'Start Free Today →','cta-b2-t':'Book a Demo on WhatsApp',
+    'foot-sub':'The CRM built for Saudi marketing agencies and car dealerships.',
+    'fl1':'Live Demo','fl2':'Features','fl3':'For Car Dealers','fl4':'Pricing','fl5':'Contact',
   },
-  ar: {
-    'lang-btn':'🇬🇧 English','nav-cta-btn':'جرب مجاناً ←',
-    'badge-text':'مبني لوكالات التسويق السعودية',
-    'hero-h1':'نظام إدارة العملاء الذي يتحدث<br/><span class="accent">العربية، واتساب و</span><br/>لغة السوق السعودي',
-    'hero-sub':'حوّل كل عميل من سناب شات وتيك توك وانستقرام إلى صفقة مغلقة. NexCRM هو النظام الوحيد بتقويم هجري وفواتير ضريبية (زاتكا) وتصميم عربي أصيل — مبني للسوق السعودي.',
-    'hero-cta1':'🚀 ابدأ مجاناً اليوم','hero-cta2':'← استكشف المميزات',
-    'stat1-label':'ملاءمة للسوق السعودي','stat2-label':'مقابل $800/شهر عند المنافسين',
-    'stat3-label':'اقتراحات ردود واتساب بالذكاء الاصطناعي','stat4-label':'وحدات متكاملة',
-    'feat-tag':'كل ما تحتاجه وكالات التسويق السعودية',
-    'feat-title':'مختلف في تصميمه.<br/>مبني للسعودية.',
-    'feat-sub':'أنظمة CRM الأخرى مبنية للسوق الأمريكي وتُترجم. NexCRM مبني من الأساس لوكالات التسويق السعودية.',
-    'f1-title':'تصميم عربي أصيل','f1-desc':'دعم كامل للكتابة من اليمين لليسار، تبديل عربي/إنجليزي، خط تجوال. ليس إضافة — مبني من اليوم الأول للمتحدثين بالعربية.',
-    'f2-title':'صندوق واتساب + ردود ذكية','f2-desc':'شاهد جميع محادثات عملائك في مكان واحد. يولّد الذكاء الاصطناعي ردود واتساب شخصية بالعربية أو الإنجليزية بنقرة واحدة.',
-    'f3-title':'التقويم الهجري','f3-desc':'عرض مزدوج للتاريخ الهجري والميلادي في جميع أنحاء النظام. مثالي لسير العمل السعودي وحملات رمضان.',
-    'f4-title':'فواتير ضريبية ZATCA','f4-desc':'توليد فواتير ضريبية متوافقة مع زاتكا مع رموز QR تلقائياً. عملة SAR في كل مكان. مبني للوائح السعودية.',
-    'f5-title':'نموذج الوكالة متعدد العملاء','f5-desc':'أدر عملاء متعددين من تسجيل دخول واحد. يحصل كل عميل على مساحة عمل معزولة مع هويته البصرية الخاصة.',
-    'f6-title':'تقييم العملاء بالذكاء الاصطناعي','f6-desc':'يقيّم الذكاء الاصطناعي كل عميل من 1-10، يحدد نقاط القوة والمخاطر، ويوصي بأفضل خطوة تالية لفريقك.',
-    'comp-tag':'المقارنة','comp-title':'لماذا NexCRM يفوز<br/>لوكالات السعودية','comp-feat':'الميزة',
-    'c1':'دعم العربية / RTL','c2':'التقويم الهجري','c3':'فواتير ضريبية ZATCA',
-    'c4':'ردود واتساب بالذكاء الاصطناعي','c5':'نموذج وكالة متعدد العملاء','c6':'العلامة التجارية البيضاء','c7':'السعر',
-    'test-quote':'"NexCRM غيّر طريقة إدارتنا للعملاء من حملات سناب شات. الواجهة العربية والإشعارات التلقائية وفواتير الضريبة توفر علينا ساعات كل أسبوع. مبني تماماً لطريقة عملنا في السعودية."',
-    'test-name':'فريق مجنون ليلى','test-role':'علامة أرز سعودية — الرياض، المملكة العربية السعودية',
-    'price-tag':'الأسعار','price-title':'أسعار بسيطة وصادقة',
-    'price-sub':'ابدأ مجاناً. طوّر عندما تكون جاهزاً. بدون رسوم خفية.',
-    'plan1-name':'مجاني للأبد','plan1-period':'لا يلزم بطاقة ائتمانية','plan1-btn':'ابدأ مجاناً',
-    'pro-badge':'الأكثر شعبية','plan2-name':'الوكالة الاحترافية','plan2-period':'شهرياً · دفع شهري','plan2-btn':'ابدأ تجربة 14 يوم',
-    'cta-title':'مستعد لإغلاق صفقات أكثر؟',
-    'cta-sub':'انضم لوكالات التسويق السعودية التي تستخدم NexCRM لإدارة عملائها وحملاتها في مكان واحد.',
-    'cta-btn1':'← ابدأ مجاناً اليوم','cta-btn2':'تواصل واتساب',
-    'footer-tagline':'نظام CRM مبني لوكالات التسويق السعودية','footer-copy':'© 2025 NexCRM',
-    'fl1':'تجربة مباشرة','fl2':'المميزات','fl3':'الأسعار','fl4':'تواصل معنا',
+  ar:{
+    'lang-btn':'🇬🇧 English','nav-cta':'جرب مجاناً ←','book-text':'احجز عرضاً',
+    'hero-badge':'🇸🇦 مبني للأعمال السعودية',
+    'hero-h1':'عملاؤك المحتملون<br/><em>يهربون منك.</em><br/>أوقف النزيف.',
+    'hero-sub':'كل يوم، فريق مبيعاتك منشغل بـ <strong>واتساب وإكسل وملاحظات ورقية</strong> بينما منافسوك يغلقون الصفقات بسرعة أكبر. NexCRM هو نظام CRM عربي أولاً يحول كل عميل من انستقرام وسناب شات وتيك توك إلى صفقة مغلقة — مبني خصيصاً للسوق السعودي.',
+    'hero-cta1':'ابدأ مجاناً — بدون بطاقة','hero-cta2':'احجز عرضاً على واتساب',
+    'n1':'مجاني','n1l':'مقابل $800/شهر لـ HubSpot','n2':'عربي','n2l':'تصميم RTL أصيل',
+    'n3':'ZATCA','n3l':'فواتير ضريبية مدمجة','n4':'ذكاء','n4l':'مولد ردود واتساب',
+    'pain-eyebrow':'الواقع','pain-h2':'هل هذا يبدو مألوفاً؟',
+    'pain-lead':'أنت تدير <strong>وكالة ناجحة</strong>. العملاء يثقون بك في تسويقهم. لكن خلف الكواليس، فريقك يغرق في الفوضى — والعملاء المحتملون يضيعون كل يوم.',
+    'p1t':'كابوس الإكسل','p1d':'جدول العملاء لديك فيه 400 صف و6 تبويبات، ولا أحد يعرف أي نسخة محدّثة. عميل راسلك قبل 3 أيام اشترى للتو من منافسك.',
+    'p2t':'فوضى واتساب','p2d':'مندوبو المبيعات يراسلون من أرقامهم الشخصية. حين يستقيلون، يأخذون المحادثات معهم. لديك صفر رؤية لما يُقال.',
+    'p3t':'صداع الفواتير','p3d':'تصمم فواتير ZATCA يدوياً في Word، تحسب 15% ضريبة بيدك، وتصلي أن يكون رمز QR صحيحاً. كل فاتورة تكلفك 30 دقيقة.',
+    'sol-h':'NexCRM يحل كل هذا — في مكان واحد، بالعربية، مجاناً.',
+    'sol-p':'كل عميل يُسجَّل تلقائياً. كل محادثة واتساب تُتابع. كل فاتورة متوافقة مع ZATCA بنقرة واحدة. <strong>مبني للسوق السعودي، لا مترجم من سيليكون فالي.</strong>',
+    'feat-eyebrow':'ما في الداخل','feat-h2':'كل ما تحتاجه وكالتك.<br/>لا أكثر ولا أقل.',
+    'feat-sub':'8 وحدات مبنية بالكامل. تسجيل دخول واحد. بدون رسوم لكل مستخدم. بدون فريق دعم أمريكي لا يفهم ساعات العمل السعودية.',
+    'f1t':'صندوق واتساب + ردود ذكية','f1d':'جميع محادثات عملائك في مكان واحد. يكتب الذكاء الاصطناعي ردود واتساب شخصية بالعربية أو الإنجليزية بنقرة واحدة.',
+    'f2t':'تقييم العملاء بالذكاء الاصطناعي','f2d':'كل عميل يحصل على تقييم من 1-10 بالذكاء الاصطناعي. نقاط القوة والمخاطر والإجراء التالي الدقيق. لا مزيد من التخمين.',
+    'f3t':'فواتير ضريبية ZATCA','f3d':'أنشئ فواتير ضريبية متوافقة مع رموز QR في 30 ثانية. عملة SAR. عربي + إنجليزي. لا مزيد من حساب الضريبة يدوياً.',
+    'f4t':'التقويم الهجري','f4d':'تواريخ هجرية وميلادية في كل مكان. جدول حملات رمضان ومتابعات العيد ومناسبات اليوم الوطني بشكل طبيعي.',
+    'f5t':'خط المبيعات والتحليلات','f5d':'لوحة كانبان مرئية، مخططات الأداء الشهري، تحليل مصادر العملاء. اعرف بالضبط أي منصة تجلب لك المال.',
+    'f6t':'نموذج الوكالة المتعددة','f6d':'أدر عدة عملاء من تسجيل دخول واحد. كل عميل يرى بياناته فقط. علامة تجارية خاصة لكل مساحة عمل.',
+    'deal-eyebrow':'🚗 مبني لمعارض السيارات',
+    'deal-h2':'المعرض مشغول.<br/>عملاؤك لا يجب أن يُتجاهلوا.',
+    'deal-p':'عميل راسلك على سناب شات عن لاند كروزر الساعة 11 مساءً. بالساعة 9 صباحاً، اشترى من معرض رد أسرع منك. <strong>NexCRM يضمن أن فريقك لا يفوّت أي عميل أبداً.</strong>',
+    'df1t':'تنبيهات فورية للعملاء','df1d':'إشعار تيليجرام فور تسجيل العميل من أي منصة — انستقرام، سناب شات، تيك توك أو نموذج موقعك.',
+    'df2t':'رد واتساب بالذكاء الاصطناعي','df2d':'نقرة واحدة لتوليد رد واتساب عربي شخصي. "مرحباً فهد، شكراً لاهتمامك بـ Land Cruiser..."',
+    'df3t':'تتبع المصادر','df3d':'اعرف بالضبط أي إعلان ومنصة وحملة أحضرت العميل. توقف عن إنفاق ميزانيتك على سناب شات إذا كان انستقرام يغلق 80% من صفقاتك.',
+    'df4t':'فواتير ZATCA في 30 ثانية','df4d':'أنشئ فواتير ضريبية متوافقة لكل عملية بيع. رمز QR و15% ضريبة وبيانات البائع — كل شيء تلقائي.',
+    'testi-eyebrow':'ماذا يقولون','testi-h2':'الشركات السعودية تغلق صفقات أكثر.',
+    't1q':'"NexCRM غيّر طريقة إدارتنا للعملاء من حملات سناب شات. الواجهة العربية والإشعارات والفواتير الضريبية توفر ساعات كل أسبوع. أخيراً، نظام CRM يفهم طريقة عملنا في السعودية."',
+    't1n':'فريق مجنون ليلى','t1r':'علامة أرز سعودية · الرياض',
+    't2q':'"كنا نستخدم واتساب وإكسل لتتبع أكثر من 80 عميل شهرياً. كانت فوضى عارمة. NexCRM مركز كل شيء — الآن فريق المبيعات يعرف بالضبط من يتصل به ومتى. معدل التحويل ارتفع 30%."',
+    't2n':'وكالة RACKS','t2r':'وكالة تسويق · الرياض',
+    't3q':'"ميزة رد واتساب بالذكاء الاصطناعي وحدها تستحق كل شيء. مندوب مبيعاتنا يحصل على عميل من تيك توك منتصف الليل، وفي الصباح يرسل رسالة عربية شخصية مثالية."',
+    't3n':'وسام الماجد','t3r':'مستشار تسويق · المملكة',
+    'comp-eyebrow':'المقارنة','comp-h2':'لماذا تختار الوكالات السعودية NexCRM',
+    'ct0':'الميزة','c1':'العربية / RTL','c2':'التقويم الهجري','c3':'فواتير ZATCA','c4':'ردود واتساب بالذكاء الاصطناعي','c5':'وكالة متعددة العملاء','c6':'علامة تجارية خاصة','c7':'السعر',
+    'comp-note':'* String هو أقرب منافس سعودي. NexCRM مجاني ولديه مميزات لا توفرها String.',
+    'price-eyebrow':'الأسعار','price-h2':'أسعار بسيطة وصادقة',
+    'price-sub':'ابدأ مجاناً اليوم. طوّر عندما تكون جاهزاً. بدون عقود. بدون رسوم خفية. إلغاء في أي وقت.',
+    'pl1':'مجاني للأبد','pp1':'لا يلزم بطاقة ائتمانية','pb1':'ابدأ مجاناً ←',
+    'p-badge':'الأكثر شعبية','pl2':'الوكالة الاحترافية','pp2':'شهرياً · دفع شهري','pb2':'ابدأ تجربة 14 يوم ←',
+    'cta-h':'مستعد لإيقاف خسارة العملاء؟',
+    'cta-p':'انضم لوكالات التسويق ومعارض السيارات السعودية التي تستخدم NexCRM. إعداد في 5 دقائق. عميلك الأول قد يأتي اليوم.',
+    'cta-b1':'ابدأ مجاناً اليوم ←','cta-b2-t':'احجز عرضاً على واتساب',
+    'foot-sub':'نظام CRM مبني لوكالات التسويق ومعارض السيارات السعودية.',
+    'fl1':'تجربة مباشرة','fl2':'المميزات','fl3':'لمعارض السيارات','fl4':'الأسعار','fl5':'تواصل معنا',
   }
 };
 
-function toggleLang() {
-  currentLang = currentLang === 'en' ? 'ar' : 'en';
-  const isAr = currentLang === 'ar';
-  document.documentElement.lang = currentLang;
-  document.documentElement.dir = isAr ? 'rtl' : 'ltr';
-  document.body.classList.toggle('ar', isAr);
-  const t = translations[currentLang];
-  Object.keys(t).forEach(id => {
+function toggleLang(){
+  lang = lang==='en'?'ar':'en';
+  const ar = lang==='ar';
+  document.documentElement.lang = lang;
+  document.documentElement.dir = ar?'rtl':'ltr';
+  document.body.classList.toggle('ar', ar);
+  const t = T[lang];
+  Object.keys(t).forEach(id=>{
     const el = document.getElementById(id);
-    if (el) el.innerHTML = t[id];
+    if(el) el.innerHTML = t[id];
   });
-  // Update plan features
-  if (isAr) {
-    document.getElementById('plan1-features').innerHTML = ['مساحة عمل عميل واحد','عملاء غير محدودين','خط المبيعات والتحليلات','إشعارات تيليجرام','مولّد فواتير ضريبية','تبديل عربي/إنجليزي','التقويم الهجري'].map(f=>`<li>${f}</li>`).join('');
-    document.getElementById('plan2-features').innerHTML = ['مساحات عمل غير محدودة','تقييم العملاء بالذكاء الاصطناعي','ردود واتساب الذكية','علامة تجارية خاصة لكل عميل','دعم أولوية','نطاق مخصص','كل مميزات المجاني'].map(f=>`<li>${f}</li>`).join('');
+  if(ar){
+    document.getElementById('pf1').innerHTML=['مساحة عمل واحدة','عملاء غير محدودين','خط المبيعات والتحليلات','إشعارات تيليجرام','مولد فواتير ZATCA','تبديل عربي/إنجليزي','التقويم الهجري'].map(f=>`<li>${f}</li>`).join('');
+    document.getElementById('pf2').innerHTML=['مساحات عمل غير محدودة','تقييم العملاء بالذكاء الاصطناعي','ردود واتساب الذكية','علامة خاصة لكل عميل','دعم واتساب أولوية','نطاق مخصص','كل مميزات المجاني'].map(f=>`<li>${f}</li>`).join('');
   } else {
-    document.getElementById('plan1-features').innerHTML = ['1 client workspace','Unlimited leads','Pipeline & analytics','Telegram notifications','VAT invoice generator','Arabic/English toggle','Hijri calendar'].map(f=>`<li>${f}</li>`).join('');
-    document.getElementById('plan2-features').innerHTML = ['Unlimited client workspaces','AI lead scoring (Claude)','AI WhatsApp reply suggestions','White-label branding per client','Priority support','Custom domain','Everything in Free'].map(f=>`<li>${f}</li>`).join('');
+    document.getElementById('pf1').innerHTML=['1 client workspace','Unlimited leads','Pipeline & analytics','Telegram notifications','VAT invoice generator','Arabic/English toggle','Hijri calendar'].map(f=>`<li>${f}</li>`).join('');
+    document.getElementById('pf2').innerHTML=['Unlimited client workspaces','AI lead scoring (Claude)','AI WhatsApp reply suggestions','White-label branding per client','Priority WhatsApp support','Custom domain','Everything in Free'].map(f=>`<li>${f}</li>`).join('');
   }
 }
 
-// Scroll animations
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
-}, { threshold: 0.15 });
-document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+// ── SCROLL REVEAL ──
+const obs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')});
+},{threshold:0.12});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+// ── NAV SCROLL ──
+window.addEventListener('scroll',()=>{
+  document.querySelector('nav').style.background = window.scrollY>60
+    ?'rgba(8,12,20,0.95)':'rgba(8,12,20,0.7)';
+});
 </script>
 </body>
 </html>
