@@ -611,6 +611,241 @@ footer{
   .sol-text h3{font-size:17px}
   .wa-float{bottom:20px;right:16px}
 }
+
+/* ── ANIMATED DEMO SECTION ── */
+.ademo-section { padding: 0 24px 120px; position: relative; }
+.ademo-label { text-align: center; margin-bottom: 20px; }
+.ademo-label span {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(37,99,235,0.1); border: 1px solid rgba(37,99,235,0.2);
+  color: #93c5fd; padding: 6px 18px; border-radius: 100px;
+  font-size: 13px; font-weight: 600;
+}
+.ademo-label span::before {
+  content: ''; width: 7px; height: 7px; border-radius: 50%;
+  background: #60a5fa; animation: blink 1.5s infinite;
+}
+.ademo-wrap {
+  max-width: 1040px; margin: 0 auto;
+  background: #060a12;
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 24px; overflow: hidden;
+  box-shadow: 0 60px 120px rgba(0,0,0,0.85), 0 0 0 1px rgba(37,99,235,0.07);
+  position: relative;
+}
+.ademo-topbar {
+  height: 40px; background: #04070e;
+  display: flex; align-items: center; padding: 0 16px; gap: 7px;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.ademo-dot { width: 12px; height: 12px; border-radius: 50%; }
+.ademo-urlbar {
+  flex: 1; margin: 0 14px; height: 24px;
+  background: rgba(255,255,255,0.04); border-radius: 5px;
+  display: flex; align-items: center; padding: 0 10px;
+  font-size: 11px; color: #374151; font-family: monospace;
+}
+.ademo-chrome {
+  display: grid; grid-template-columns: 190px 1fr;
+  min-height: 520px; position: relative;
+}
+/* Sidebar */
+.ademo-sidebar {
+  background: rgba(0,0,0,0.4); border-right: 1px solid rgba(255,255,255,0.04);
+  padding: 14px 8px; display: flex; flex-direction: column; gap: 2px;
+}
+.ademo-nav-label { font-size: 9px; color: #1f2937; font-weight: 800; text-transform: uppercase; letter-spacing: 1.2px; padding: 10px 10px 4px; }
+.ademo-nav-item {
+  display: flex; align-items: center; gap: 9px;
+  padding: 8px 10px; border-radius: 8px;
+  font-size: 11.5px; color: #374151; transition: all 0.3s;
+}
+.ademo-nav-item.on { background: rgba(37,99,235,0.14); color: #93c5fd; font-weight: 600; }
+.ademo-nav-item svg { flex-shrink: 0; opacity: 0.7; }
+.ademo-nav-item.on svg { opacity: 1; }
+/* Main panel */
+.ademo-main {
+  display: flex; flex-direction: column; gap: 0;
+  position: relative; overflow: hidden;
+}
+/* Scene system */
+.ademo-scene {
+  position: absolute; inset: 0; padding: 18px;
+  display: flex; flex-direction: column; gap: 12px;
+  opacity: 0; transform: translateY(16px);
+  transition: all 0.5s cubic-bezier(0.16,1,0.3,1);
+  pointer-events: none;
+}
+.ademo-scene.active { opacity: 1; transform: none; pointer-events: all; }
+.ademo-scene.exit { opacity: 0; transform: translateY(-16px); }
+/* Stats bar */
+.ademo-stats {
+  display: grid; grid-template-columns: repeat(4,1fr); gap: 8px; flex-shrink: 0;
+}
+.ademo-stat {
+  background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05);
+  border-radius: 10px; padding: 10px 12px; transition: all 0.5s;
+}
+.ademo-stat.lit { border-color: rgba(37,99,235,0.4); background: rgba(37,99,235,0.07); }
+.ademo-stat-l { font-size: 9px; color: #374151; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 5px; }
+.ademo-stat-v { font-family: 'Syne',sans-serif; font-size: 20px; font-weight: 800; }
+/* Shared pill */
+.ap { display: inline-block; padding: 3px 9px; border-radius: 100px; font-size: 10px; font-weight: 600; }
+.ap-new { background: rgba(96,165,250,0.15); color: #60a5fa; }
+.ap-warm { background: rgba(251,191,36,0.15); color: #fbbf24; }
+.ap-won { background: rgba(52,211,153,0.15); color: #34d399; }
+.ap-hot { background: rgba(239,68,68,0.15); color: #f87171; }
+/* Lead table */
+.ademo-table { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 12px; overflow: hidden; flex: 1; }
+.ademo-th { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1.2fr; padding: 9px 14px; border-bottom: 1px solid rgba(255,255,255,0.04); font-size: 9px; color: #1f2937; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; background: rgba(0,0,0,0.2); }
+.ademo-tr { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1.2fr; padding: 11px 14px; border-bottom: 1px solid rgba(255,255,255,0.03); font-size: 11px; align-items: center; transition: all 0.4s; }
+.ademo-tr:last-child { border-bottom: none; }
+.ademo-tr.highlight { background: rgba(37,99,235,0.08); border-left: 2px solid #3b82f6; animation: rowIn 0.5s ease; }
+.ademo-tr.won-row { background: rgba(52,211,153,0.05); border-left: 2px solid #34d399; }
+@keyframes rowIn { from { opacity:0; transform:translateX(-18px); } to { opacity:1; transform:none; } }
+.ademo-name { font-weight: 600; color: #e2e8f0; font-size: 12px; }
+/* Notification */
+.ademo-toast {
+  position: absolute; top: 14px; right: 14px; z-index: 20;
+  background: #0a0f1c; border: 1px solid rgba(37,211,102,0.25);
+  border-radius: 14px; padding: 12px 14px;
+  display: flex; align-items: flex-start; gap: 10px; width: 268px;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.6);
+  transform: translateX(110%); opacity: 0;
+  transition: all 0.4s cubic-bezier(0.16,1,0.3,1);
+}
+.ademo-toast.show { transform: none; opacity: 1; }
+.ademo-toast-icon {
+  width: 34px; height: 34px; border-radius: 9px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+}
+.ademo-toast-title { font-size: 12px; font-weight: 700; color: #e2e8f0; margin-bottom: 2px; }
+.ademo-toast-body { font-size: 11px; color: #4a5568; line-height: 1.4; }
+.ademo-toast-time { font-size: 10px; color: #1f2937; margin-top: 3px; }
+/* AI panel */
+.ademo-ai-box {
+  background: #0c1220; border: 1px solid rgba(37,99,235,0.25);
+  border-radius: 14px; overflow: hidden; flex: 1;
+}
+.ademo-ai-head {
+  background: linear-gradient(135deg,rgba(37,99,235,0.18),rgba(79,70,229,0.18));
+  padding: 11px 14px; display: flex; align-items: center; gap: 10px;
+  border-bottom: 1px solid rgba(37,99,235,0.12);
+}
+.ademo-ai-icon {
+  width: 30px; height: 30px; border-radius: 9px; flex-shrink: 0;
+  background: linear-gradient(135deg,#2563eb,#4f46e5);
+  display: flex; align-items: center; justify-content: center;
+}
+.ademo-ai-title { font-size: 12px; font-weight: 700; color: #e2e8f0; }
+.ademo-ai-sub { font-size: 10px; color: #4a5568; }
+.ademo-ai-body { padding: 12px; display: flex; flex-direction: column; gap: 10px; }
+.ademo-ai-score-row { display: flex; align-items: center; gap: 10px; }
+.ademo-ai-badge {
+  width: 44px; height: 44px; border-radius: 12px; flex-shrink: 0;
+  background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.25);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Syne',sans-serif; font-size: 20px; font-weight: 900; color: #60a5fa;
+}
+.ademo-ai-bar-wrap { flex: 1; }
+.ademo-ai-bar-label { font-size: 10px; color: #4a5568; margin-bottom: 4px; }
+.ademo-ai-bar { height: 5px; background: rgba(255,255,255,0.05); border-radius: 3px; overflow: hidden; }
+.ademo-ai-bar-fill { height: 100%; background: linear-gradient(90deg,#2563eb,#a78bfa); border-radius: 3px; width: 0; transition: width 1.2s ease; }
+.ademo-ai-note { font-size: 11px; color: #64748b; line-height: 1.6; }
+.ademo-ai-reply {
+  background: rgba(37,211,102,0.05); border: 1px solid rgba(37,211,102,0.12);
+  border-radius: 9px; padding: 9px 11px;
+  font-size: 12px; color: #94a3b8; line-height: 1.65;
+  direction: rtl; text-align: right; font-family: 'Tajawal',sans-serif;
+  min-height: 52px;
+}
+.tcursor { display: inline-block; width: 2px; height: 12px; background: #34d399; animation: blink 0.7s infinite; vertical-align: middle; margin-right: 1px; }
+.ademo-ai-btn {
+  width: 100%; padding: 9px; border-radius: 9px; border: none;
+  color: #fff; font-size: 12px; font-weight: 700; cursor: pointer;
+  font-family: inherit; display: flex; align-items: center; justify-content: center; gap: 7px;
+  transition: all 0.3s;
+}
+/* Pipeline scene */
+.ademo-pipeline { display: grid; grid-template-columns: repeat(4,1fr); gap: 8px; flex: 1; }
+.ademo-col { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.04); border-radius: 10px; padding: 10px; display: flex; flex-direction: column; gap: 6px; }
+.ademo-col-head { font-size: 10px; font-weight: 700; color: #374151; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; display: flex; align-items: center; justify-content: space-between; }
+.ademo-col-count { background: rgba(255,255,255,0.06); border-radius: 100px; padding: 1px 7px; font-size: 10px; color: #4a5568; }
+.ademo-deal {
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 8px; padding: 9px 10px; transition: all 0.4s;
+}
+.ademo-deal.moving { animation: dealMove 0.6s ease; border-color: rgba(52,211,153,0.4); background: rgba(52,211,153,0.06); }
+@keyframes dealMove { 0%{transform:scale(1)} 50%{transform:scale(1.04);box-shadow:0 8px 20px rgba(52,211,153,0.2)} 100%{transform:scale(1)} }
+.ademo-deal-name { font-size: 11px; font-weight: 600; color: #cbd5e1; margin-bottom: 3px; }
+.ademo-deal-val { font-size: 11px; color: #4a5568; }
+.ademo-deal-val span { color: #34d399; font-weight: 600; }
+/* Invoice scene */
+.ademo-invoice { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 12px; padding: 16px; flex: 1; }
+.ademo-inv-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
+.ademo-inv-title { font-size: 14px; font-weight: 700; color: #e2e8f0; }
+.ademo-inv-badge { background: rgba(52,211,153,0.12); border: 1px solid rgba(52,211,153,0.2); color: #34d399; padding: 3px 10px; border-radius: 100px; font-size: 10px; font-weight: 700; }
+.ademo-inv-row { display: flex; justify-content: space-between; align-items: center; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.04); font-size: 11px; }
+.ademo-inv-row:last-child { border-bottom: none; }
+.ademo-inv-label { color: #4a5568; }
+.ademo-inv-val { color: #e2e8f0; font-weight: 600; }
+.ademo-inv-val.green { color: #34d399; font-size: 14px; font-weight: 800; font-family: 'Syne',sans-serif; }
+.ademo-inv-qr { width: 48px; height: 48px; background: rgba(255,255,255,0.06); border-radius: 6px; display: flex; align-items: center; justify-content: center; }
+/* Analytics scene */
+.ademo-chart-bars { display: flex; align-items: flex-end; gap: 8px; height: 100px; padding: 0 4px; flex: 1; }
+.ademo-bar { flex: 1; border-radius: 6px 6px 0 0; transition: height 1s cubic-bezier(0.16,1,0.3,1); min-height: 4px; position: relative; }
+.ademo-bar-label { position: absolute; bottom: -18px; left: 50%; transform: translateX(-50%); font-size: 9px; color: #374151; white-space: nowrap; }
+.ademo-sources { display: flex; flex-direction: column; gap: 6px; }
+.ademo-source-row { display: flex; align-items: center; gap: 8px; }
+.ademo-source-name { font-size: 11px; color: #94a3b8; width: 70px; flex-shrink: 0; }
+.ademo-source-bar { flex: 1; height: 6px; background: rgba(255,255,255,0.04); border-radius: 3px; overflow: hidden; }
+.ademo-source-fill { height: 100%; border-radius: 3px; transition: width 1.2s cubic-bezier(0.16,1,0.3,1); width: 0; }
+.ademo-source-pct { font-size: 11px; color: #4a5568; width: 28px; text-align: right; }
+/* Multi-client scene */
+.ademo-clients { display: flex; flex-direction: column; gap: 8px; flex: 1; }
+.ademo-client-row {
+  display: flex; align-items: center; gap: 12px;
+  background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05);
+  border-radius: 10px; padding: 10px 14px; transition: all 0.4s;
+}
+.ademo-client-row.active-client { border-color: rgba(37,99,235,0.35); background: rgba(37,99,235,0.07); }
+.ademo-client-av { width: 32px; height: 32px; border-radius: 9px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 14px; color: #fff; flex-shrink: 0; }
+.ademo-client-name { font-size: 12px; font-weight: 700; color: #e2e8f0; }
+.ademo-client-meta { font-size: 10px; color: #4a5568; }
+.ademo-client-stats { margin-left: auto; text-align: right; }
+.ademo-client-leads { font-size: 12px; font-weight: 700; color: #60a5fa; }
+.ademo-client-conv { font-size: 10px; color: #34d399; }
+/* Bottom progress */
+.ademo-progress-bar { position: absolute; bottom: 0; left: 0; height: 2px; background: linear-gradient(90deg,#2563eb,#a78bfa); transition: width 0.12s linear; width: 0; }
+/* Stage dots */
+.ademo-stages {
+  display: flex; align-items: center; justify-content: center;
+  gap: 0; border-top: 1px solid rgba(255,255,255,0.04);
+  overflow-x: auto; padding: 2px 0;
+}
+.ademo-stage-btn {
+  display: flex; align-items: center; gap: 6px;
+  padding: 10px 14px; font-size: 10px; font-weight: 600;
+  color: #1f2937; text-transform: uppercase; letter-spacing: 0.5px;
+  transition: color 0.3s; white-space: nowrap; cursor: default;
+  border-right: 1px solid rgba(255,255,255,0.04);
+  flex-shrink: 0;
+}
+.ademo-stage-btn:last-child { border-right: none; }
+.ademo-stage-btn .sdot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; transition: all 0.3s; }
+.ademo-stage-btn.on { color: #60a5fa; }
+.ademo-stage-btn.done { color: #34d399; }
+@media(max-width:768px){
+  .ademo-chrome { grid-template-columns: 1fr; }
+  .ademo-sidebar { display: none; }
+  .ademo-stats { grid-template-columns: 1fr 1fr; }
+  .ademo-th, .ademo-tr { grid-template-columns: 2fr 1fr 1fr; }
+  .ademo-th > *:nth-child(4), .ademo-th > *:nth-child(5),
+  .ademo-tr > *:nth-child(4), .ademo-tr > *:nth-child(5) { display: none; }
+  .ademo-pipeline { grid-template-columns: 1fr 1fr; }
+  .ademo-stage-btn { font-size: 9px; padding: 8px 10px; }
+}
+
 </style>
 </head>
 <body>
@@ -681,42 +916,271 @@ footer{
   </div>
 </section>
 
-<!-- SCREEN MOCKUP -->
-<div class="screen-section">
-  <div class="screen-wrap">
-    <div class="screen-top">
-      <div class="s-dot" style="background:#ef4444"></div>
-      <div class="s-dot" style="background:#f59e0b"></div>
-      <div class="s-dot" style="background:#22c55e"></div>
-      <div class="s-url">htmlmaster22.github.io/nexcrm · NexCRM Dashboard</div>
+
+<!-- ANIMATED DEMO -->
+<div class="ademo-section">
+  <div class="ademo-label reveal">
+    <span>Live Platform Demo — Plays automatically</span>
+  </div>
+  <div class="ademo-wrap reveal">
+    <!-- Browser chrome -->
+    <div class="ademo-topbar">
+      <div class="ademo-dot" style="background:#ef4444"></div>
+      <div class="ademo-dot" style="background:#f59e0b"></div>
+      <div class="ademo-dot" style="background:#22c55e"></div>
+      <div class="ademo-urlbar">nexcrm.sa &nbsp;·&nbsp; Majnoon Laila — Dashboard</div>
     </div>
-    <div class="screen-body">
-      <div class="s-sidebar">
-        <div style="font-size:10px;color:var(--text2);padding:4px 8px;font-weight:700;margin-bottom:2px">MAIN</div>
-        <div class="s-nav on"><div class="s-nav-dot"></div>Dashboard</div>
-        <div class="s-nav"><div class="s-nav-dot"></div>Leads</div>
-        <div class="s-nav"><div class="s-nav-dot"></div>Pipeline</div>
-        <div class="s-nav"><div class="s-nav-dot"></div>WhatsApp Inbox</div>
-        <div style="font-size:10px;color:var(--text2);padding:4px 8px;font-weight:700;margin:8px 0 2px">MARKETING</div>
-        <div class="s-nav"><div class="s-nav-dot"></div>Campaigns</div>
-        <div class="s-nav"><div class="s-nav-dot"></div>Analytics</div>
-        <div class="s-nav"><div class="s-nav-dot"></div>Invoices</div>
-      </div>
-      <div class="s-content">
-        <div class="s-cards">
-          <div class="s-card"><div class="s-card-l">Total Leads</div><div class="s-card-v" style="color:#60a5fa">247</div></div>
-          <div class="s-card"><div class="s-card-l">Pipeline (SAR)</div><div class="s-card-v" style="color:#a78bfa">1.2M</div></div>
-          <div class="s-card"><div class="s-card-l">Conversion</div><div class="s-card-v" style="color:#34d399">34%</div></div>
-          <div class="s-card"><div class="s-card-l">AI Score Avg</div><div class="s-card-v" style="color:#fbbf24">7.8</div></div>
+    <div class="ademo-chrome">
+      <!-- Sidebar nav -->
+      <div class="ademo-sidebar">
+        <div class="ademo-nav-label">Main</div>
+        <div class="ademo-nav-item" id="dnav-dash">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+          Dashboard
         </div>
-        <div class="s-table">
-          <div class="s-row head"><span style="flex:2">Name</span><span style="flex:1">Source</span><span style="flex:1">Status</span><span style="flex:1">AI</span></div>
-          <div class="s-row"><span style="flex:2;font-weight:600">محمد الغامدي</span><span style="flex:1;color:#fbbf24">Snapchat</span><span style="flex:1"><span class="s-pill" style="background:rgba(245,158,11,0.15);color:#fbbf24">Warm</span></span><span style="flex:1"><span class="s-ai">💬 AI Reply</span></span></div>
-          <div class="s-row"><span style="flex:2;font-weight:600">Sara Al-Mutairi</span><span style="flex:1;color:#f472b6">Instagram</span><span style="flex:1"><span class="s-pill" style="background:rgba(34,197,94,0.15);color:#34d399">Won ✓</span></span><span style="flex:1"><span class="s-ai">💬 AI Reply</span></span></div>
-          <div class="s-row"><span style="flex:2;font-weight:600">فهد العتيبي</span><span style="flex:1;color:#f87171">TikTok</span><span style="flex:1"><span class="s-pill" style="background:rgba(96,165,250,0.15);color:#60a5fa">New</span></span><span style="flex:1"><span class="s-ai">💬 AI Reply</span></span></div>
-          <div class="s-row"><span style="flex:2;font-weight:600">Nora Al-Qahtani</span><span style="flex:1;color:#34d399">WhatsApp</span><span style="flex:1"><span class="s-pill" style="background:rgba(167,139,250,0.15);color:#a78bfa">Active</span></span><span style="flex:1"><span class="s-ai">💬 AI Reply</span></span></div>
+        <div class="ademo-nav-item" id="dnav-leads">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          Leads
+        </div>
+        <div class="ademo-nav-item" id="dnav-pipe">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          Pipeline
+        </div>
+        <div class="ademo-nav-item" id="dnav-wa">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          WhatsApp
+        </div>
+        <div class="ademo-nav-label">Marketing</div>
+        <div class="ademo-nav-item" id="dnav-inv">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          Invoices
+        </div>
+        <div class="ademo-nav-item" id="dnav-analytics">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+          Analytics
+        </div>
+        <div class="ademo-nav-label">Clients</div>
+        <div class="ademo-nav-item" id="dnav-clients">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="18" rx="2"/><path d="M8 21V10M16 21V10M2 10h20"/></svg>
+          Multi-Client
         </div>
       </div>
+
+      <!-- Main area with scenes -->
+      <div class="ademo-main" id="ademo-main" style="min-height:520px">
+
+        <!-- SCENE 1: Lead arrives -->
+        <div class="ademo-scene" id="scene-1">
+          <div class="ademo-stats">
+            <div class="ademo-stat" id="s1-stat1"><div class="ademo-stat-l">Total Leads</div><div class="ademo-stat-v" style="color:#60a5fa" id="s1-leads">24</div></div>
+            <div class="ademo-stat"><div class="ademo-stat-l">Pipeline SAR</div><div class="ademo-stat-v" style="color:#a78bfa">847K</div></div>
+            <div class="ademo-stat"><div class="ademo-stat-l">Conversion</div><div class="ademo-stat-v" style="color:#34d399">31%</div></div>
+            <div class="ademo-stat"><div class="ademo-stat-l">AI Avg Score</div><div class="ademo-stat-v" style="color:#fbbf24">7.4</div></div>
+          </div>
+          <div class="ademo-table">
+            <div class="ademo-th"><span>Name</span><span>Source</span><span>Status</span><span>Score</span><span>Action</span></div>
+            <div class="ademo-tr"><span class="ademo-name">Sara Al-Mutairi</span><span style="color:#f472b6;font-size:10px">Instagram</span><span><span class="ap ap-won">Closed</span></span><span style="color:#34d399;font-weight:700;font-size:13px">9.1</span><span style="color:#4a5568;font-size:10px">Done</span></div>
+            <div class="ademo-tr"><span class="ademo-name">Khalid Al-Dosari</span><span style="color:#fbbf24;font-size:10px">Snapchat</span><span><span class="ap ap-warm">Warm</span></span><span style="color:#fbbf24;font-weight:700;font-size:13px">7.8</span><span style="color:#60a5fa;font-size:10px">Reply</span></div>
+            <div class="ademo-tr" id="s1-newrow" style="display:none"></div>
+          </div>
+          <!-- notification -->
+          <div class="ademo-toast" id="s1-toast">
+            <div class="ademo-toast-icon" style="background:rgba(37,211,102,0.1);border:1px solid rgba(37,211,102,0.2)">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#25d366" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+            </div>
+            <div>
+              <div class="ademo-toast-title">New Lead — Snapchat</div>
+              <div class="ademo-toast-body">فهد السبيعي · Land Cruiser GX enquiry</div>
+              <div class="ademo-toast-time">Just now · AI scoring...</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SCENE 2: AI Scoring -->
+        <div class="ademo-scene" id="scene-2">
+          <div class="ademo-stats">
+            <div class="ademo-stat ademo-stat lit"><div class="ademo-stat-l">Total Leads</div><div class="ademo-stat-v" style="color:#60a5fa">25</div></div>
+            <div class="ademo-stat"><div class="ademo-stat-l">Pipeline SAR</div><div class="ademo-stat-v" style="color:#a78bfa">847K</div></div>
+            <div class="ademo-stat"><div class="ademo-stat-l">Conversion</div><div class="ademo-stat-v" style="color:#34d399">31%</div></div>
+            <div class="ademo-stat ademo-stat lit"><div class="ademo-stat-l">AI Avg Score</div><div class="ademo-stat-v" style="color:#fbbf24">7.8</div></div>
+          </div>
+          <div class="ademo-ai-box">
+            <div class="ademo-ai-head">
+              <div class="ademo-ai-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+              </div>
+              <div>
+                <div class="ademo-ai-title">AI Analysis</div>
+                <div class="ademo-ai-sub">فهد السبيعي — New Lead from Snapchat</div>
+              </div>
+            </div>
+            <div class="ademo-ai-body">
+              <div class="ademo-ai-score-row">
+                <div class="ademo-ai-badge" id="s2-score">8.4</div>
+                <div class="ademo-ai-bar-wrap">
+                  <div class="ademo-ai-bar-label">Lead Score — High Intent</div>
+                  <div class="ademo-ai-bar"><div class="ademo-ai-bar-fill" id="s2-fill"></div></div>
+                </div>
+              </div>
+              <div class="ademo-ai-note">High intent buyer. Responded within 2 minutes. Asked about pricing and availability. Recommended: send personalized offer immediately.</div>
+              <div style="display:flex;gap:6px;flex-wrap:wrap">
+                <span style="background:rgba(52,211,153,0.1);border:1px solid rgba(52,211,153,0.2);color:#34d399;padding:3px 9px;border-radius:100px;font-size:10px;font-weight:600">Fast responder</span>
+                <span style="background:rgba(37,99,235,0.1);border:1px solid rgba(37,99,235,0.2);color:#93c5fd;padding:3px 9px;border-radius:100px;font-size:10px;font-weight:600">High budget signals</span>
+                <span style="background:rgba(251,191,36,0.1);border:1px solid rgba(251,191,36,0.2);color:#fbbf24;padding:3px 9px;border-radius:100px;font-size:10px;font-weight:600">Ready to buy</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SCENE 3: WhatsApp AI Reply -->
+        <div class="ademo-scene" id="scene-3">
+          <div class="ademo-ai-box" style="flex:1">
+            <div class="ademo-ai-head">
+              <div class="ademo-ai-icon" style="background:linear-gradient(135deg,#25d366,#16a34a)">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+              </div>
+              <div>
+                <div class="ademo-ai-title">WhatsApp AI Reply</div>
+                <div class="ademo-ai-sub">Generating personalized Arabic message...</div>
+              </div>
+            </div>
+            <div class="ademo-ai-body">
+              <div class="ademo-ai-note" style="margin-bottom:4px">Lead: فهد السبيعي · Snapchat · Score 8.4/10 · Interested in: Land Cruiser GX</div>
+              <div class="ademo-ai-reply" id="s3-reply"></div>
+              <div style="display:flex;gap:8px">
+                <button class="ademo-ai-btn" id="s3-btn" style="background:linear-gradient(135deg,#25d366,#16a34a)">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                  Send via WhatsApp
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SCENE 4: Pipeline -->
+        <div class="ademo-scene" id="scene-4">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px;flex-shrink:0">
+            <div style="font-size:13px;font-weight:700;color:#e2e8f0">Sales Pipeline</div>
+            <div style="font-size:12px;color:#34d399;font-weight:600">SAR 1.2M total</div>
+          </div>
+          <div class="ademo-pipeline">
+            <div class="ademo-col">
+              <div class="ademo-col-head">New <span class="ademo-col-count">3</span></div>
+              <div class="ademo-deal"><div class="ademo-deal-name">فهد السبيعي</div><div class="ademo-deal-val">Land Cruiser · <span>SAR 280K</span></div></div>
+              <div class="ademo-deal"><div class="ademo-deal-name">Amal Hassan</div><div class="ademo-deal-val">Camry · <span>SAR 95K</span></div></div>
+            </div>
+            <div class="ademo-col">
+              <div class="ademo-col-head">Contacted <span class="ademo-col-count">4</span></div>
+              <div class="ademo-deal"><div class="ademo-deal-name">محمد العتيبي</div><div class="ademo-deal-val">Prado · <span>SAR 220K</span></div></div>
+              <div class="ademo-deal"><div class="ademo-deal-name">Reem Al-Ghamdi</div><div class="ademo-deal-val">Patrol · <span>SAR 310K</span></div></div>
+            </div>
+            <div class="ademo-col">
+              <div class="ademo-col-head">Negotiating <span class="ademo-col-count">2</span></div>
+              <div class="ademo-deal" id="s4-deal"><div class="ademo-deal-name">Khalid Al-Dosari</div><div class="ademo-deal-val">GX · <span>SAR 175K</span></div></div>
+            </div>
+            <div class="ademo-col" id="s4-won-col">
+              <div class="ademo-col-head" style="color:#34d399">Won <span class="ademo-col-count" id="s4-won-count">2</span></div>
+              <div class="ademo-deal won-row"><div class="ademo-deal-name">Sara Al-Mutairi</div><div class="ademo-deal-val">Civic · <span>SAR 88K</span></div></div>
+              <div class="ademo-deal won-row" id="s4-new-won" style="display:none"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SCENE 5: Invoice -->
+        <div class="ademo-scene" id="scene-5">
+          <div style="font-size:13px;font-weight:700;color:#e2e8f0;margin-bottom:4px;flex-shrink:0;display:flex;align-items:center;gap:8px">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            ZATCA VAT Invoice — Auto Generated
+          </div>
+          <div class="ademo-invoice">
+            <div class="ademo-inv-head">
+              <div>
+                <div class="ademo-inv-title">INV-2026-047</div>
+                <div style="font-size:10px;color:#4a5568;margin-top:2px">Khalid Al-Dosari · Land Cruiser GX</div>
+              </div>
+              <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px">
+                <div class="ademo-inv-badge" id="s5-badge">Generating...</div>
+                <div class="ademo-inv-qr" id="s5-qr">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#374151" stroke-width="1.5"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><path d="M14 14h.01M14 17h.01M17 14h.01M17 17h.01M20 14h.01M20 17h.01M20 20h.01M17 20h.01M14 20h.01"/></svg>
+                </div>
+              </div>
+            </div>
+            <div class="ademo-inv-row"><span class="ademo-inv-label">Seller</span><span class="ademo-inv-val">Hussein Motors — الرياض</span></div>
+            <div class="ademo-inv-row"><span class="ademo-inv-label">Item</span><span class="ademo-inv-val">Land Cruiser GX 2026</span></div>
+            <div class="ademo-inv-row"><span class="ademo-inv-label">Subtotal</span><span class="ademo-inv-val" id="s5-sub">—</span></div>
+            <div class="ademo-inv-row"><span class="ademo-inv-label">VAT (15%)</span><span class="ademo-inv-val" id="s5-vat">—</span></div>
+            <div class="ademo-inv-row"><span class="ademo-inv-label" style="font-weight:700;color:#e2e8f0">Total</span><span class="ademo-inv-val green" id="s5-total">—</span></div>
+          </div>
+        </div>
+
+        <!-- SCENE 6: Analytics -->
+        <div class="ademo-scene" id="scene-6">
+          <div style="font-size:13px;font-weight:700;color:#e2e8f0;margin-bottom:4px;flex-shrink:0;display:flex;align-items:center;gap:8px">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#06b6d4" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+            Analytics — Lead Sources
+          </div>
+          <div style="display:flex;gap:12px;flex:1">
+            <div class="ademo-chart-bars" style="flex:1.2">
+              <div class="ademo-bar" id="b1" style="height:0%;background:linear-gradient(180deg,#f59e0b,#d97706)"><span class="ademo-bar-label">Jan</span></div>
+              <div class="ademo-bar" id="b2" style="height:0%;background:linear-gradient(180deg,#3b82f6,#2563eb)"><span class="ademo-bar-label">Feb</span></div>
+              <div class="ademo-bar" id="b3" style="height:0%;background:linear-gradient(180deg,#8b5cf6,#6d28d9)"><span class="ademo-bar-label">Mar</span></div>
+              <div class="ademo-bar" id="b4" style="height:0%;background:linear-gradient(180deg,#10b981,#059669)"><span class="ademo-bar-label">Apr</span></div>
+              <div class="ademo-bar" id="b5" style="height:0%;background:linear-gradient(180deg,#f472b6,#ec4899)"><span class="ademo-bar-label">May</span></div>
+              <div class="ademo-bar" id="b6" style="height:0%;background:linear-gradient(180deg,#60a5fa,#3b82f6)"><span class="ademo-bar-label">Jun</span></div>
+            </div>
+            <div class="ademo-sources" style="flex:1;padding-top:4px">
+              <div style="font-size:10px;color:#374151;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px">By Platform</div>
+              <div class="ademo-source-row"><span class="ademo-source-name" style="color:#f472b6">Instagram</span><div class="ademo-source-bar"><div class="ademo-source-fill" id="sf1" style="background:#ec4899"></div></div><span class="ademo-source-pct">38%</span></div>
+              <div class="ademo-source-row"><span class="ademo-source-name" style="color:#fbbf24">Snapchat</span><div class="ademo-source-bar"><div class="ademo-source-fill" id="sf2" style="background:#f59e0b"></div></div><span class="ademo-source-pct">29%</span></div>
+              <div class="ademo-source-row"><span class="ademo-source-name" style="color:#f87171">TikTok</span><div class="ademo-source-bar"><div class="ademo-source-fill" id="sf3" style="background:#ef4444"></div></div><span class="ademo-source-pct">21%</span></div>
+              <div class="ademo-source-row"><span class="ademo-source-name" style="color:#34d399">WhatsApp</span><div class="ademo-source-bar"><div class="ademo-source-fill" id="sf4" style="background:#25d366"></div></div><span class="ademo-source-pct">12%</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SCENE 7: Multi-client -->
+        <div class="ademo-scene" id="scene-7">
+          <div style="font-size:13px;font-weight:700;color:#e2e8f0;margin-bottom:8px;flex-shrink:0;display:flex;align-items:center;gap:8px">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2"><rect x="2" y="3" width="20" height="18" rx="2"/><path d="M8 21V10M16 21V10M2 10h20"/></svg>
+            Multi-Client Workspaces
+          </div>
+          <div class="ademo-clients">
+            <div class="ademo-client-row" id="cl1">
+              <div class="ademo-client-av" style="background:linear-gradient(135deg,#c8860a,#f59e0b)">م</div>
+              <div><div class="ademo-client-name">Majnoon Laila</div><div class="ademo-client-meta">Rice Brand · 47 leads this month</div></div>
+              <div class="ademo-client-stats"><div class="ademo-client-leads">47 leads</div><div class="ademo-client-conv">34% conversion</div></div>
+            </div>
+            <div class="ademo-client-row" id="cl2">
+              <div class="ademo-client-av" style="background:linear-gradient(135deg,#2563eb,#4f46e5)">R</div>
+              <div><div class="ademo-client-name">RACKS Agency</div><div class="ademo-client-meta">Marketing Agency · 83 leads</div></div>
+              <div class="ademo-client-stats"><div class="ademo-client-leads">83 leads</div><div class="ademo-client-conv">28% conversion</div></div>
+            </div>
+            <div class="ademo-client-row" id="cl3">
+              <div class="ademo-client-av" style="background:linear-gradient(135deg,#d97706,#f59e0b)">H</div>
+              <div><div class="ademo-client-name">Hussein Motors</div><div class="ademo-client-meta">Car Showroom · 31 leads</div></div>
+              <div class="ademo-client-stats"><div class="ademo-client-leads">31 leads</div><div class="ademo-client-conv">41% conversion</div></div>
+            </div>
+            <div class="ademo-client-row" id="cl4">
+              <div class="ademo-client-av" style="background:linear-gradient(135deg,#16a34a,#15803d)">W</div>
+              <div><div class="ademo-client-name">Wisam Almajd</div><div class="ademo-client-meta">Consultant · 19 leads</div></div>
+              <div class="ademo-client-stats"><div class="ademo-client-leads">19 leads</div><div class="ademo-client-conv">52% conversion</div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ademo-progress-bar" id="ademo-prog"></div>
+      </div>
+    </div>
+
+    <!-- Scene tabs -->
+    <div class="ademo-stages" id="ademo-stages">
+      <div class="ademo-stage-btn" id="st1"><span class="sdot"></span>Lead Arrives</div>
+      <div class="ademo-stage-btn" id="st2"><span class="sdot"></span>AI Scores</div>
+      <div class="ademo-stage-btn" id="st3"><span class="sdot"></span>WhatsApp Reply</div>
+      <div class="ademo-stage-btn" id="st4"><span class="sdot"></span>Pipeline</div>
+      <div class="ademo-stage-btn" id="st5"><span class="sdot"></span>Invoice</div>
+      <div class="ademo-stage-btn" id="st6"><span class="sdot"></span>Analytics</div>
+      <div class="ademo-stage-btn" id="st7"><span class="sdot"></span>Multi-Client</div>
     </div>
   </div>
 </div>
@@ -773,7 +1237,7 @@ footer{
         </div>
         <div class="feat-title" id="f1t">WhatsApp Inbox + AI Replies</div>
         <div class="feat-desc" id="f1d">All your lead conversations in one place. Claude AI writes personalized Arabic or English WhatsApp replies in one tap — so your team closes faster.</div>
-        <span class="feat-tag">🤖 Claude AI</span>
+        <span class="feat-tag">AI Powered</span>
       </div>
       <div class="feat-card reveal reveal-d1">
         <div class="feat-icon" style="background:rgba(37,99,235,0.1)">
@@ -823,7 +1287,7 @@ footer{
 <section class="dealer-section" id="dealers">
   <div class="dealer-inner">
     <div class="dealer-left reveal">
-      <div class="eyebrow" id="deal-eyebrow">🚗 Built for Car Showrooms</div>
+      <div class="eyebrow" id="deal-eyebrow"><span style="display:inline-flex;align-items:center;gap:8px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17H3a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h1l2-4h10l2 4h1a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2h-2"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></svg> Built for Car Showrooms</span></div>
       <h2 id="deal-h2">The showroom is busy.<br/>Your leads shouldn't be ignored.</h2>
       <p id="deal-p">A customer DMs you on Snapchat about a Land Cruiser at 11pm. By 9am, they've already bought from a dealer who replied faster. <strong>NexCRM makes sure your team never misses a lead again.</strong></p>
       <div class="dealer-features">
@@ -897,7 +1361,7 @@ footer{
             <div class="dc-lead-name">فهد السبيعي</div>
             <div class="dc-lead-source">Snapchat · 11 minutes ago · New</div>
           </div>
-          <span class="dc-badge">💬 AI Reply Ready</span>
+          <span class="dc-badge" style="display:inline-flex;align-items:center;gap:5px"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> AI Reply Ready</span>
         </div>
         <div class="dc-lead">
           <div>
@@ -911,7 +1375,7 @@ footer{
             <div class="dc-lead-name">Nora Al-Qahtani</div>
             <div class="dc-lead-source">TikTok · Yesterday · Won ✓</div>
           </div>
-          <span class="dc-badge" style="background:rgba(34,197,94,0.15);color:#34d399">✓ Closed</span>
+          <span class="dc-badge" style="background:rgba(34,197,94,0.15);color:#34d399" style="display:inline-flex;align-items:center;gap:5px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Closed</span>
         </div>
       </div>
     </div>
@@ -975,7 +1439,7 @@ footer{
         <thead>
           <tr>
             <th id="ct0">Feature</th>
-            <th class="nex">NexCRM ✦</th>
+            <th class="nex">NexCRM <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.88 5.76a1 1 0 0 0 .95.69h6.06l-4.9 3.56a1 1 0 0 0-.36 1.12L17.5 20l-4.9-3.56a1 1 0 0 0-1.18 0L6.5 20l1.87-5.87a1 1 0 0 0-.36-1.12L3.11 9.45h6.06a1 1 0 0 0 .95-.69L12 3z"/></svg></th>
             <th>String</th>
             <th>HubSpot</th>
             <th>Zoho</th>
@@ -1096,7 +1560,7 @@ const T = {
     'f4t':'Hijri Calendar','f4d':'Dual Hijri and Gregorian dates everywhere. Schedule Ramadan campaigns, Eid follow-ups, and Saudi national holiday timelines naturally.',
     'f5t':'Pipeline & Analytics','f5d':'Visual kanban board, monthly performance charts, lead source breakdown. Know exactly which platform is making you money.',
     'f6t':'Multi-Client Agency','f6d':'Manage multiple clients from one login. Each client sees only their data. White-label branding per workspace.',
-    'deal-eyebrow':'🚗 Built for Car Showrooms',
+    'deal-eyebrow':'<span style="display:inline-flex;align-items:center;gap:8px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17H3a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h1l2-4h10l2 4h1a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2h-2"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></svg> Built for Car Showrooms</span>',
     'deal-h2':'The showroom is busy.<br/>Your leads shouldn\'t be ignored.',
     'deal-p':'A customer DMs you on Snapchat about a Land Cruiser at 11pm. By 9am, they\'ve already bought from a dealer who replied faster. <strong>NexCRM makes sure your team never misses a lead again.</strong>',
     'df1t':'Instant Lead Alerts','df1d':'Telegram notification the second a lead submits from any platform — Instagram, Snapchat, TikTok or your website form.',
@@ -1146,7 +1610,7 @@ const T = {
     'f4t':'التقويم الهجري','f4d':'تواريخ هجرية وميلادية في كل مكان. جدول حملات رمضان ومتابعات العيد ومناسبات اليوم الوطني بشكل طبيعي.',
     'f5t':'خط المبيعات والتحليلات','f5d':'لوحة كانبان مرئية، مخططات الأداء الشهري، تحليل مصادر العملاء. اعرف بالضبط أي منصة تجلب لك المال.',
     'f6t':'نموذج الوكالة المتعددة','f6d':'أدر عدة عملاء من تسجيل دخول واحد. كل عميل يرى بياناته فقط. علامة تجارية خاصة لكل مساحة عمل.',
-    'deal-eyebrow':'🚗 مبني لمعارض السيارات',
+    'deal-eyebrow':'<span style="display:inline-flex;align-items:center;gap:8px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17H3a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h1l2-4h10l2 4h1a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2h-2"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></svg> مبني لمعارض السيارات</span>',
     'deal-h2':'المعرض مشغول.<br/>عملاؤك لا يجب أن يُتجاهلوا.',
     'deal-p':'عميل راسلك على سناب شات عن لاند كروزر الساعة 11 مساءً. بالساعة 9 صباحاً، اشترى من معرض رد أسرع منك. <strong>NexCRM يضمن أن فريقك لا يفوّت أي عميل أبداً.</strong>',
     'df1t':'تنبيهات فورية للعملاء','df1d':'إشعار تيليجرام فور تسجيل العميل من أي منصة — انستقرام، سناب شات، تيك توك أو نموذج موقعك.',
@@ -1195,6 +1659,202 @@ function toggleLang(){
   }
 }
 
+
+// ── ANIMATED DEMO ENGINE ──
+(function(){
+  const SCENES = 7;
+  const DURATION = [4000,4000,6000,4000,4500,4500,4000]; // ms per scene
+  let cur = 0, timer = null, progTimer = null, started = false;
+
+  const waReply = 'مرحباً فهد، شكراً لتواصلك معنا! رأيت اهتمامك بلاند كروزر GX الجديد وهو خيار ممتاز. لدينا توافر فوري بألوان متعددة وتمويل مريح. متى يناسبك زيارة المعرض لتجربة السيارة؟';
+
+  function setNav(ids) {
+    ['dnav-dash','dnav-leads','dnav-pipe','dnav-wa','dnav-inv','dnav-analytics','dnav-clients']
+      .forEach(id => { const el=document.getElementById(id); if(el) el.className='ademo-nav-item'; });
+    ids.forEach(id => { const el=document.getElementById(id); if(el) el.classList.add('on'); });
+  }
+
+  function setStages(active) {
+    for(let i=1;i<=SCENES;i++){
+      const el=document.getElementById('st'+i);
+      if(!el) continue;
+      el.className = 'ademo-stage-btn' + (i<active?' done':i===active?' on':'');
+    }
+  }
+
+  function showScene(n) {
+    for(let i=1;i<=SCENES;i++){
+      const el=document.getElementById('scene-'+i);
+      if(!el) continue;
+      el.classList.remove('active','exit');
+      if(i===n) el.classList.add('active');
+    }
+    setStages(n);
+    animateProgress(DURATION[n-1]);
+    runSceneLogic(n);
+  }
+
+  function animateProgress(dur) {
+    clearInterval(progTimer);
+    const bar = document.getElementById('ademo-prog');
+    if(!bar) return;
+    bar.style.transition='none'; bar.style.width='0%';
+    let p=0; const step=100/(dur/80);
+    progTimer = setInterval(()=>{
+      p+=step; bar.style.transition='width 0.08s linear'; bar.style.width=Math.min(p,100)+'%';
+      if(p>=100) clearInterval(progTimer);
+    },80);
+  }
+
+  function typeText(el, text, speed, cb){
+    el.innerHTML='<span class="tcursor"></span>';
+    let i=0;
+    const iv=setInterval(()=>{
+      if(i<text.length){ el.innerHTML=text.slice(0,++i)+'<span class="tcursor"></span>'; }
+      else{ el.innerHTML=text; clearInterval(iv); if(cb) setTimeout(cb,300); }
+    },speed);
+  }
+
+  function runSceneLogic(n){
+    if(n===1){
+      setNav(['dnav-dash']);
+      // Show notification after 800ms
+      setTimeout(()=>{
+        const t=document.getElementById('s1-toast');
+        if(t) t.classList.add('show');
+      },800);
+      // New lead row slides in at 1.5s
+      setTimeout(()=>{
+        const row=document.getElementById('s1-newrow');
+        if(row){
+          row.style.display='grid';
+          row.innerHTML=`<span class="ademo-name">فهد السبيعي</span><span style="color:#fbbf24;font-size:10px">Snapchat</span><span><span class="ap ap-new">New</span></span><span style="color:#4a5568;font-size:12px">—</span><span style="color:#60a5fa;font-size:10px">Scoring...</span>`;
+          row.classList.add('highlight');
+          const stat=document.getElementById('s1-leads');
+          if(stat) stat.textContent='25';
+          document.getElementById('s1-stat1')?.classList.add('lit');
+        }
+      },1500);
+      // Hide toast at 3.5s
+      setTimeout(()=>{
+        const t=document.getElementById('s1-toast');
+        if(t) t.classList.remove('show');
+      },3500);
+    }
+
+    if(n===2){
+      setNav(['dnav-leads']);
+      setTimeout(()=>{
+        const fill=document.getElementById('s2-fill');
+        if(fill) fill.style.width='84%';
+      },400);
+    }
+
+    if(n===3){
+      setNav(['dnav-wa']);
+      setTimeout(()=>{
+        const reply=document.getElementById('s3-reply');
+        if(reply) typeText(reply, waReply, 25, ()=>{
+          const btn=document.getElementById('s3-btn');
+          if(btn){ btn.style.background='linear-gradient(135deg,#16a34a,#15803d)'; }
+        });
+      },600);
+    }
+
+    if(n===4){
+      setNav(['dnav-pipe']);
+      setTimeout(()=>{
+        const deal=document.getElementById('s4-deal');
+        const wonCol=document.getElementById('s4-won-col');
+        const newWon=document.getElementById('s4-new-won');
+        const wonCount=document.getElementById('s4-won-count');
+        if(deal) deal.classList.add('moving');
+        setTimeout(()=>{
+          if(deal) deal.style.display='none';
+          if(newWon){
+            newWon.style.display='block';
+            newWon.className='ademo-deal won-row';
+            newWon.innerHTML='<div class="ademo-deal-name">Khalid Al-Dosari</div><div class="ademo-deal-val">GX · <span>SAR 175K</span></div>';
+          }
+          if(wonCount) wonCount.textContent='3';
+        },700);
+      },1800);
+    }
+
+    if(n===5){
+      setNav(['dnav-inv']);
+      setTimeout(()=>{
+        const badge=document.getElementById('s5-badge');
+        const sub=document.getElementById('s5-sub');
+        const vat=document.getElementById('s5-vat');
+        const total=document.getElementById('s5-total');
+        const qr=document.getElementById('s5-qr');
+        if(badge) badge.textContent='ZATCA Ready';
+        if(badge) badge.style.background='rgba(52,211,153,0.12)';
+        if(badge) badge.style.borderColor='rgba(52,211,153,0.2)';
+        setTimeout(()=>{ if(sub) sub.textContent='SAR 152,174'; },300);
+        setTimeout(()=>{ if(vat) vat.textContent='SAR 22,826'; },600);
+        setTimeout(()=>{ if(total) total.textContent='SAR 175,000'; },900);
+        setTimeout(()=>{
+          if(qr) qr.style.background='rgba(52,211,153,0.08)';
+          if(qr) qr.style.border='1px solid rgba(52,211,153,0.2)';
+        },1000);
+      },700);
+    }
+
+    if(n===6){
+      setNav(['dnav-analytics']);
+      const bars = [{id:'b1',h:42},{id:'b2',h:58},{id:'b3',h:71},{id:'b4',h:88},{id:'b5',h:65},{id:'b6',h:95}];
+      bars.forEach((b,i)=>{
+        setTimeout(()=>{
+          const el=document.getElementById(b.id);
+          if(el) el.style.height=b.h+'%';
+        }, 300+i*120);
+      });
+      const sources=[{id:'sf1',w:'76%'},{id:'sf2',w:'58%'},{id:'sf3',w:'42%'},{id:'sf4',w:'24%'}];
+      sources.forEach((s,i)=>{
+        setTimeout(()=>{
+          const el=document.getElementById(s.id);
+          if(el) el.style.width=s.w;
+        },400+i*180);
+      });
+    }
+
+    if(n===7){
+      setNav(['dnav-clients']);
+      const clients=['cl1','cl2','cl3','cl4'];
+      clients.forEach((id,i)=>{
+        setTimeout(()=>{
+          clients.forEach(c=>document.getElementById(c)?.classList.remove('active-client'));
+          document.getElementById(id)?.classList.add('active-client');
+        }, i*900);
+      });
+    }
+  }
+
+  function nextScene(){
+    cur = (cur % SCENES) + 1;
+    showScene(cur);
+    timer = setTimeout(nextScene, DURATION[cur-1]);
+  }
+
+  function startDemo(){
+    if(started) return;
+    started=true;
+    cur=1;
+    showScene(1);
+    timer = setTimeout(nextScene, DURATION[0]);
+  }
+
+  // Trigger when visible
+  const wrap = document.querySelector('.ademo-wrap');
+  if(wrap){
+    const obs = new IntersectionObserver(entries=>{
+      entries.forEach(e=>{ if(e.isIntersecting) startDemo(); });
+    },{threshold:0.25});
+    obs.observe(wrap);
+  }
+})();
 // ── SCROLL REVEAL ──
 const obs = new IntersectionObserver(entries=>{
   entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')});
