@@ -845,6 +845,11 @@ footer{
 .ademo-client-stats { margin-left: auto; text-align: right; }
 .ademo-client-leads { font-size: 12px; font-weight: 700; color: #60a5fa; }
 .ademo-client-conv { font-size: 10px; color: #34d399; }
+/* Video-ad scene checklist */
+.s11-step{display:flex;align-items:center;gap:8px;font-size:11px;color:#4a5568;transition:color .35s}
+.s11-step.lit{color:#e2e8f0}
+.s11-dot{width:5px;height:5px;border-radius:50%;background:#374151;flex-shrink:0;transition:background .35s}
+.s11-step.lit .s11-dot{background:#f472b6}
 /* Bottom progress */
 .ademo-progress-bar { position: absolute; bottom: 0; left: 0; height: 2px; background: linear-gradient(90deg,#2563eb,#a78bfa); transition: width 0.12s linear; width: 0; }
 /* Stage dots */
@@ -1283,6 +1288,35 @@ footer{
           </div>
         </div>
 
+        <!-- SCENE 11: AI Video Ad Generator -->
+        <div class="ademo-scene" id="scene-11">
+          <div style="font-size:13px;font-weight:700;color:#e2e8f0;margin-bottom:10px;flex-shrink:0;display:flex;align-items:center;gap:8px">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#f472b6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4.5" width="14.5" height="11" rx="2"/><path d="M16.5 9.3l5-3v9.4l-5-3z"/></svg>
+            AI Video Ad Generator
+          </div>
+          <div style="display:flex;gap:14px;flex:1;min-height:0">
+            <div style="flex:1;display:flex;flex-direction:column;gap:10px;min-width:0">
+              <div style="background:#0d1628;border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:10px 12px">
+                <div style="font-size:9px;color:#4a5568;text-transform:uppercase;letter-spacing:.5px;margin-bottom:5px">Prompt</div>
+                <div id="s11-prompt" style="font-size:12px;color:#e2e8f0;min-height:34px;line-height:1.5"></div>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:8px">
+                <div class="s11-step" id="s11-st1"><span class="s11-dot"></span>Generating video from photo</div>
+                <div class="s11-step" id="s11-st2"><span class="s11-dot"></span>Writing Arabic voiceover script</div>
+                <div class="s11-step" id="s11-st3"><span class="s11-dot"></span>Syncing lips to audio</div>
+              </div>
+            </div>
+            <div style="flex:0 0 104px;position:relative">
+              <div style="width:104px;height:100%;min-height:148px;border-radius:12px;background:linear-gradient(160deg,#1a1030,#2b1140);border:1px solid rgba(244,114,182,0.25);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden">
+                <div id="s11-play" style="width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,0.14);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .4s">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg>
+                </div>
+                <div id="s11-ready" style="position:absolute;bottom:6px;left:6px;right:6px;background:rgba(52,211,153,0.15);border:1px solid rgba(52,211,153,0.3);border-radius:6px;padding:3px 4px;font-size:8.5px;color:#34d399;text-align:center;opacity:0;transition:opacity .4s">Ready to post ✓</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div class="ademo-progress-bar" id="ademo-prog"></div>
       </div>
     </div>
@@ -1299,6 +1333,7 @@ footer{
       <div class="ademo-stage-btn" id="st8"><span class="sdot"></span>Call Logs</div>
       <div class="ademo-stage-btn" id="st9"><span class="sdot"></span>Export</div>
       <div class="ademo-stage-btn" id="st10"><span class="sdot"></span>Port Number</div>
+      <div class="ademo-stage-btn" id="st11"><span class="sdot"></span>AI Video Ad</div>
     </div>
   </div>
 </div>
@@ -1909,8 +1944,8 @@ function toggleLang(){
 
 // ── ANIMATED DEMO ENGINE ──
 (function(){
-  const SCENES = 10;
-  const DURATION = [4000,4000,6000,4000,4500,4500,4000,5000,5000,5500]; // ms per scene
+  const SCENES = 11;
+  const DURATION = [4000,4000,6000,4000,4500,4500,4000,5000,5000,5500,6000]; // ms per scene
   let cur = 0, timer = null, progTimer = null, started = false;
 
   const waReply = 'مرحباً فهد، شكراً لتواصلك معنا! رأيت اهتمامك بلاند كروزر GX الجديد وهو خيار ممتاز. لدينا توافر فوري بألوان متعددة وتمويل مريح. متى يناسبك زيارة المعرض لتجربة السيارة؟';
@@ -1944,6 +1979,12 @@ function toggleLang(){
       const el=document.getElementById(id);
       if(el) el.textContent=id==="s8-avg"?"0m":"0";
     });
+    const s11p=document.getElementById("s11-prompt");
+    if(s11p) s11p.innerHTML="";
+    ["s11-st1","s11-st2","s11-st3"].forEach(id=>document.getElementById(id)?.classList.remove('lit'));
+    const s11play=document.getElementById("s11-play"), s11ready=document.getElementById("s11-ready");
+    if(s11play) s11play.style.opacity="0";
+    if(s11ready) s11ready.style.opacity="0";
     for(let i=1;i<=SCENES;i++){
       const el=document.getElementById('scene-'+i);
       if(!el) continue;
@@ -2140,6 +2181,16 @@ function toggleLang(){
           if(el){el.style.opacity='1';el.style.transform='translateX(0)';}
         },300+i*1000);
       });
+    }
+    if(n===11){
+      const el=id=>document.getElementById(id);
+      const prompt=el('s11-prompt');
+      if(prompt) typeText(prompt,'Land Cruiser GX — عرض الصيف، فيديو ترويجي 15 ثانية',22);
+      ['s11-st1','s11-st2','s11-st3'].forEach((id,i)=>{
+        setTimeout(()=>{ el(id)?.classList.add('lit'); },1500+i*950);
+      });
+      setTimeout(()=>{ if(el('s11-play')) el('s11-play').style.opacity='1'; },4600);
+      setTimeout(()=>{ if(el('s11-ready')) el('s11-ready').style.opacity='1'; },5000);
     }
   }
 
