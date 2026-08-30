@@ -1,0 +1,17 @@
+# NexCRM
+
+> Arabic-first CRM built for Saudi business. AI lead scoring, a unified WhatsApp inbox, ZATCA-compliant VAT invoices, pipeline analytics, and Hijri-calendar support — one flat monthly price, not per seat.
+
+NexCRM is a SaaS CRM made for the Saudi market: bilingual (Arabic RTL + English), SAR pricing, and workflows built around WhatsApp — where Saudi sales actually happen.
+
+## Product
+
+- [NexCRM home](https://getnexcrm.com/): features, pricing, and free trial signup
+- Pricing: Starter SAR 349/mo · Pro SAR 699/mo · Agency SAR 1,199/mo — flat, not per seat; 14-day free trial, no card needed
+- White-Glove setup: SAR 1,500 one-time (full configuration, data import, team training)
+- Key modules: WhatsApp inbox with AI replies, AI lead scoring, ZATCA VAT invoices (QR code, 15% VAT, SAR), sales pipeline and analytics, Hijri + Gregorian calendar, campaigns (email/SMS/WhatsApp), lead capture from Instagram, TikTok and Snapchat ads
+
+## Contact
+
+- WhatsApp: +966 54 833 4354
+- Market: Saudi Arabia and GCC
