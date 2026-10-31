@@ -65,7 +65,7 @@
    "url": "https://getnexcrm.com/",
    "applicationCategory": "BusinessApplication",
    "operatingSystem": "Web",
-   "description": "Arabic-first CRM built for Saudi business — AI lead scoring, WhatsApp inbox, ZATCA-compliant VAT invoices, and pipeline analytics.",
+   "description": "Arabic-first CRM built for Saudi business — AI lead scoring, WhatsApp inbox, VAT invoices with ZATCA QR codes, and pipeline analytics.",
    "offers": {
     "@type": "AggregateOffer",
     "lowPrice": "349",
@@ -114,7 +114,7 @@
      "name": "Are the invoices VAT compliant?",
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "Simplified VAT invoices with QR code and 15% VAT are built in, in SAR, Arabic and English."
+      "text": "Simplified VAT invoices with QR code and 15% VAT are built in, in SAR, Arabic and English (ZATCA e-invoicing Phase 1)."
      }
     }
    ]
@@ -192,6 +192,13 @@ nav{
 }
 @media(min-width:640px){.nav-book{display:inline-flex;align-items:center;gap:6px}}
 .nav-book:hover{background:rgba(37,211,102,0.18);color:#fff}
+.cta-short{display:none}
+@media(max-width:640px){
+  .nav-right{gap:8px}
+  .nav-demo{white-space:nowrap;padding:8px 13px;font-size:13px}
+  .nav-lang{padding:6px 10px;font-size:12px;white-space:nowrap}
+  .cta-long{display:none}.cta-short{display:inline}
+}
 
 /* ── HERO ── */
 .hero{
@@ -1049,7 +1056,7 @@ details.faq p{padding:0 22px 18px;font-size:14px;color:#64748b;line-height:1.7}
       <span id="book-text">Book a Demo</span>
     </a>
     <button class="nav-lang" onclick="toggleLang()" id="lang-btn">🇸🇦 عربي</button>
-    <a href="#pricing" onclick="openLeadModal(event,'trial')" class="nav-demo" id="nav-cta">Start Free Trial →</a>
+    <a href="#pricing" onclick="openLeadModal(event,'trial')" class="nav-demo" id="nav-cta"><span class="cta-long">Start Free Trial →</span><span class="cta-short">Try Free →</span></a>
   </div>
 </nav>
 
@@ -1517,7 +1524,7 @@ details.faq p{padding:0 22px 18px;font-size:14px;color:#64748b;line-height:1.7}
       </div>
       <div class="sol-text">
         <h3 id="sol-h">NexCRM solves all of this — in one place, in Arabic, for free.</h3>
-        <p id="sol-p">Every lead automatically captured. Every WhatsApp conversation tracked. Every invoice ZATCA-compliant with one click. <strong>Built for the Saudi market, not translated from Silicon Valley.</strong></p>
+        <p id="sol-p">Every lead automatically captured. Every WhatsApp conversation tracked. Every invoice with a ZATCA QR code in one click. <strong>Built for the Saudi market, not translated from Silicon Valley.</strong></p>
       </div>
     </div>
     <div class="stats-band reveal reveal-d2">
@@ -1574,7 +1581,7 @@ details.faq p{padding:0 22px 18px;font-size:14px;color:#64748b;line-height:1.7}
           <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M4.6 3.4a1.8 1.8 0 0 1 1.8-1.8h7.4l5.6 5.6v13.4a1.8 1.8 0 0 1-1.8 1.8H6.4a1.8 1.8 0 0 1-1.8-1.8z" fill="url(#g3)"/><path d="M13.8 1.6l5.6 5.6h-4.2a1.4 1.4 0 0 1-1.4-1.4z" fill="#fde68a"/><rect x="7.3" y="12.6" width="3.5" height="3.5" rx=".6" fill="#fff"/><rect x="12.5" y="12.6" width="3.5" height="3.5" rx=".6" fill="#fff" opacity=".55"/><rect x="7.3" y="17.3" width="3.5" height="3.5" rx=".6" fill="#fff" opacity=".55"/><rect x="13.6" y="18.4" width="2.4" height="2.4" rx=".5" fill="#fff"/><path d="M7.6 8.8h5.2" stroke="#fff" stroke-width="1.4" stroke-linecap="round" opacity=".9"/><defs><linearGradient id="g3" x1="12" y1="1.6" x2="12" y2="22.4" gradientUnits="userSpaceOnUse"><stop stop-color="#f59e0b"/><stop offset="1" stop-color="#d97706"/></linearGradient></defs></svg>
         </div>
         <div class="feat-title" id="f3t">ZATCA VAT Invoices</div>
-        <div class="feat-desc" id="f3d">Generate fully compliant VAT invoices with QR codes in 30 seconds. SAR currency. Arabic + English. Never hand-calculate VAT again.</div>
+        <div class="feat-desc" id="f3d">Generate VAT invoices with the ZATCA QR code in 30 seconds. SAR currency. Arabic + English. Never hand-calculate VAT again.</div>
         <span class="feat-tag">✅ ZATCA Ready</span>
       </div>
       <!-- 4 · Hijri Calendar -->
@@ -1677,7 +1684,7 @@ details.faq p{padding:0 22px 18px;font-size:14px;color:#64748b;line-height:1.7}
         <span class="feat-tag">💡 Never a blank page</span>
       </div>
       <!-- 15 · In-App Payment Links -->
-      <div class="feat-card reveal reveal-d2">
+      <div class="feat-card reveal reveal-d2" style="display:none"><!-- hidden until in-app payment links ship -->
         <div class="feat-icon" style="background:rgba(13,148,136,0.1)">
           <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><rect x="2" y="5.4" width="15.6" height="11" rx="2.4" fill="url(#g15)"/><rect x="2" y="8.4" width="15.6" height="2.3" fill="#0f766e" opacity=".35"/><rect x="4.2" y="12.6" width="5" height="1.7" rx=".6" fill="#fff" opacity=".9"/><circle cx="19.6" cy="18.2" r="3.7" fill="#f8faff"/><path d="M17.9 18.3l1.3 1.3 2.4-2.5" stroke="#0d9488" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/><defs><linearGradient id="g15" x1="9.8" y1="5.4" x2="9.8" y2="16.4" gradientUnits="userSpaceOnUse"><stop stop-color="#2dd4bf"/><stop offset="1" stop-color="#0d9488"/></linearGradient></defs></svg>
         </div>
@@ -1703,7 +1710,7 @@ details.faq p{padding:0 22px 18px;font-size:14px;color:#64748b;line-height:1.7}
           </div>
           <div class="d-feat-text">
             <h4 id="df1t">Instant Lead Alerts</h4>
-            <p id="df1d">Telegram notification the second a lead submits from any platform — Instagram, Snapchat, TikTok or your website form.</p>
+            <p id="df1d">Leads from your website form and your Instagram, Snapchat and TikTok lead ads (via Zapier or Make) land in the pipeline instantly — and the rep you assign gets an email alert.</p>
           </div>
         </div>
         <div class="d-feat">
@@ -1730,7 +1737,7 @@ details.faq p{padding:0 22px 18px;font-size:14px;color:#64748b;line-height:1.7}
           </div>
           <div class="d-feat-text">
             <h4 id="df4t">ZATCA Invoices in 30 Seconds</h4>
-            <p id="df4d">Generate fully compliant VAT invoices for every sale. QR code, 15% VAT, seller details — all automatic. No accountant required.</p>
+            <p id="df4d">Generate a VAT invoice with the ZATCA QR code for every sale. 15% VAT and seller details filled in automatically. No accountant required.</p>
           </div>
         </div>
       </div>
@@ -1923,7 +1930,7 @@ details.faq p{padding:0 22px 18px;font-size:14px;color:#64748b;line-height:1.7}
       <details class="faq"><summary id="fq2">Where is my data stored and how is it protected?</summary><p id="fa2">On enterprise-grade PostgreSQL infrastructure with full isolation between companies (row-level security) and an audit log of every change.</p></details>
       <details class="faq"><summary id="fq3">How fast can we start?</summary><p id="fa3">Same day. Request your trial, and we set up your account and contact you on WhatsApp within hours.</p></details>
       <details class="faq"><summary id="fq4">Can you do the full setup for us?</summary><p id="fa4">Yes — the White-Glove package (SAR 1,500 one-time): we configure everything, import your data, and train your team.</p></details>
-      <details class="faq"><summary id="fq5">Are the invoices VAT compliant?</summary><p id="fa5">Simplified VAT invoices with QR code and 15% VAT are built in, in SAR, Arabic and English.</p></details>
+      <details class="faq"><summary id="fq5">Are the invoices VAT compliant?</summary><p id="fa5">Simplified VAT invoices with QR code and 15% VAT are built in, in SAR, Arabic and English (ZATCA e-invoicing Phase 1).</p></details>
     </div>
   </div>
 </section>
@@ -1949,7 +1956,7 @@ details.faq p{padding:0 22px 18px;font-size:14px;color:#64748b;line-height:1.7}
     <div class="lm-close" onclick="closeLeadModal()">✕</div>
     <div id="lm-form-view">
       <h3>ابدأ تجربتك المجانية — 14 يوم</h3>
-      <div class="lm-sub">سجّل بياناتك وهنجهّز حسابك ونتواصل معك على واتساب خلال ساعات. بدون بطاقة، بدون التزام.</div>
+      <div class="lm-sub">سجّل بياناتك ونجهّز حسابك ونتواصل معك على واتساب خلال ساعات. بدون بطاقة، بدون التزام.</div>
       <div class="lm-field"><label>الاسم</label><input id="lm-name" placeholder="اسمك الكامل" /></div>
       <div class="lm-field"><label>اسم الشركة</label><input id="lm-company" placeholder="مثال: معرض النخبة للسيارات" /></div>
       <div class="lm-field"><label>الإيميل</label><input id="lm-email" type="email" placeholder="you@company.com" /></div>
@@ -1998,12 +2005,12 @@ const T = {
     'p2t':'The WhatsApp Chaos','p2d':'Sales reps are DMing from personal numbers. When they quit, they take the conversations with them. You have zero visibility into what\'s being said.',
     'p3t':'The Invoice Headache','p3d':'You\'re manually creating ZATCA invoices in Word, calculating 15% VAT by hand, and praying the QR code is right. Every invoice costs you 30 minutes.',
     'sol-h':'NexCRM solves all of this — in one place, in Arabic, for free.',
-    'sol-p':'Every lead automatically captured. Every WhatsApp conversation tracked. Every invoice ZATCA-compliant with one click. <strong>Built for the Saudi market, not translated from Silicon Valley.</strong>',
+    'sol-p':'Every lead automatically captured. Every WhatsApp conversation tracked. Every invoice with a ZATCA QR code in one click. <strong>Built for the Saudi market, not translated from Silicon Valley.</strong>',
     'feat-eyebrow':'What\'s Inside','feat-h2':'Every module. One login.<br/>One price — not per seat.',
     'feat-sub':'No setup fees, no onboarding contract, and no American support team that goes quiet during Saudi business hours.',
     'f1t':'WhatsApp Inbox + AI Replies','f1d':'All your lead conversations in one place. Claude AI writes personalized Arabic or English WhatsApp replies in one tap — so your team closes faster.',
     'f2t':'AI Lead Scoring','f2d':'Every lead gets scored 1-10 by AI. Strengths, risks, and the exact next action your team should take. No more guessing who to call first.',
-    'f3t':'ZATCA VAT Invoices','f3d':'Generate fully compliant VAT invoices with QR codes in 30 seconds. SAR currency. Arabic + English. Never hand-calculate VAT again.',
+    'f3t':'ZATCA VAT Invoices','f3d':'Generate VAT invoices with the ZATCA QR code in 30 seconds. SAR currency. Arabic + English. Never hand-calculate VAT again.',
     'f4t':'Hijri Calendar','f4d':'Dual Hijri and Gregorian dates everywhere. Schedule Ramadan campaigns, Eid follow-ups, and Saudi national holiday timelines naturally.',
     'f5t':'Pipeline & Analytics','f5d':'Visual kanban board, monthly performance charts, lead source breakdown. Know exactly which platform is making you money.',
     'f6t':'Multi-Client Agency','f6d':'Manage every client from one login. Each client sees only their data. White-label branding per workspace.',
@@ -2020,10 +2027,10 @@ const T = {
     'deal-eyebrow':'<span style="display:inline-flex;align-items:center;gap:8px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17H3a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h1l2-4h10l2 4h1a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2h-2"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></svg> Built for Car Showrooms</span>',
     'deal-h2':'The showroom is busy.<br/>Your leads shouldn\'t be ignored.',
     'deal-p':'A customer DMs you on Snapchat about a Land Cruiser at 11pm. By 9am, they\'ve already bought from a dealer who replied faster. <strong>NexCRM makes sure your team never misses a lead again.</strong>',
-    'df1t':'Instant Lead Alerts','df1d':'Telegram notification the second a lead submits from any platform — Instagram, Snapchat, TikTok or your website form.',
+    'df1t':'Instant Lead Alerts','df1d':'Leads from your website form and your Instagram, Snapchat and TikTok lead ads (via Zapier or Make) land in the pipeline instantly — and the rep you assign gets an email alert.',
     'df2t':'AI WhatsApp Reply','df2d':'One tap to generate a personalized Arabic WhatsApp reply. "مرحباً فهد، شكراً لاهتمامك بـ Land Cruiser..."',
     'df3t':'Source Tracking','df3d':'Know exactly which ad, platform and campaign brought the lead. Stop spending budget on Snapchat if Instagram is closing 80% of your deals.',
-    'df4t':'ZATCA Invoices in 30 Seconds','df4d':'Generate fully compliant VAT invoices for every sale. QR code, 15% VAT, seller details — all automatic.',
+    'df4t':'ZATCA Invoices in 30 Seconds','df4d':'Generate a VAT invoice with the ZATCA QR code for every sale. 15% VAT and seller details filled in automatically.',
     'testi-eyebrow':'The Proof','testi-h2':'Three businesses that stopped losing leads.',
     't1q':'"NexCRM transformed how we manage leads from our Snapchat campaigns. The Arabic interface, notifications, and VAT invoices save us hours every week. Finally, a CRM that understands how we work in Saudi Arabia."',
     't1n':'Majnoon Laila Team','t1r':'Saudi Rice Brand · Riyadh',
@@ -2045,7 +2052,7 @@ const T = {
     'fl1':'Live Demo','fl2':'Features','fl3':'For Car Dealers','fl4':'Pricing','fl5':'Contact',
     'n1':'14d','n1l':'Full free trial — no card',
     'st4v':'349','st4l':'SAR/mo flat.<br/>Not per seat.',
-    'nav-cta':'Start Free Trial →','hero-cta1':'Start Free Trial — 14 Days','cta-b1':'Start Your Trial →',
+    'nav-cta':'<span class="cta-long">Start Free Trial →</span><span class="cta-short">Try Free →</span>','hero-cta1':'Start Free Trial — 14 Days','cta-b1':'Start Your Trial →',
     'price-h2':'One flat price. Not per seat.',
     'price-sub':'Every plan starts with a full 14-day free trial — no credit card. Cancel anytime.',
     'plA':'Starter','ppA':'per month · flat, not per seat','pbA':'Start 14-Day Trial →',
@@ -2065,7 +2072,7 @@ const T = {
     'fq2':'Where is my data stored and how is it protected?','fa2':'On enterprise-grade PostgreSQL infrastructure with full isolation between companies (row-level security) and an audit log of every change.',
     'fq3':'How fast can we start?','fa3':'Same day. Request your trial, and we set up your account and contact you on WhatsApp within hours.',
     'fq4':'Can you do the full setup for us?','fa4':'Yes — the White-Glove package (SAR 1,500 one-time): we configure everything, import your data, and train your team.',
-    'fq5':'Are the invoices VAT compliant?','fa5':'Simplified VAT invoices with QR code and 15% VAT are built in, in SAR, Arabic and English.',
+    'fq5':'Are the invoices VAT compliant?','fa5':'Simplified VAT invoices with QR code and 15% VAT are built in, in SAR, Arabic and English (ZATCA e-invoicing Phase 1).',
   },
   ar:{
     'lang-btn':'🇬🇧 English','nav-cta':'جرب مجاناً ←','book-text':'احجز عرضاً',
@@ -2081,12 +2088,12 @@ const T = {
     'p2t':'فوضى واتساب','p2d':'مندوبو المبيعات يراسلون من أرقامهم الشخصية. حين يستقيلون، يأخذون المحادثات معهم. لديك صفر رؤية لما يُقال.',
     'p3t':'صداع الفواتير','p3d':'تصمم فواتير ZATCA يدوياً في Word، تحسب 15% ضريبة بيدك، وتصلي أن يكون رمز QR صحيحاً. كل فاتورة تكلفك 30 دقيقة.',
     'sol-h':'NexCRM يحل كل هذا — في مكان واحد، بالعربية، مجاناً.',
-    'sol-p':'كل عميل يُسجَّل تلقائياً. كل محادثة واتساب تُتابع. كل فاتورة متوافقة مع ZATCA بنقرة واحدة. <strong>مبني للسوق السعودي، لا مترجم من سيليكون فالي.</strong>',
+    'sol-p':'كل عميل يُسجَّل تلقائياً. كل محادثة واتساب تُتابع. كل فاتورة برمز QR بصيغة ZATCA بنقرة واحدة. <strong>مبني للسوق السعودي، لا مترجم من سيليكون فالي.</strong>',
     'feat-eyebrow':'ما في الداخل','feat-h2':'كل الأنظمة. تسجيل دخول واحد.<br/>سعر واحد — وليس لكل مستخدم.',
     'feat-sub':'بدون رسوم إعداد، بدون عقد تهيئة، وبدون فريق دعم أمريكي يختفي في ساعات العمل السعودية.',
     'f1t':'صندوق واتساب + ردود ذكية','f1d':'جميع محادثات عملائك في مكان واحد. يكتب الذكاء الاصطناعي ردود واتساب شخصية بالعربية أو الإنجليزية بنقرة واحدة.',
     'f2t':'تقييم العملاء بالذكاء الاصطناعي','f2d':'كل عميل يحصل على تقييم من 1-10 بالذكاء الاصطناعي. نقاط القوة والمخاطر والإجراء التالي الدقيق. لا مزيد من التخمين.',
-    'f3t':'فواتير ضريبية ZATCA','f3d':'أنشئ فواتير ضريبية متوافقة مع رموز QR في 30 ثانية. عملة SAR. عربي + إنجليزي. لا مزيد من حساب الضريبة يدوياً.',
+    'f3t':'فواتير ضريبية ZATCA','f3d':'أنشئ فواتير ضريبية برمز QR بصيغة هيئة الزكاة (ZATCA) في 30 ثانية. بالريال السعودي. عربي + إنجليزي. لا مزيد من حساب الضريبة يدوياً.',
     'f4t':'التقويم الهجري','f4d':'تواريخ هجرية وميلادية في كل مكان. جدول حملات رمضان ومتابعات العيد ومناسبات اليوم الوطني بشكل طبيعي.',
     'f5t':'خط المبيعات والتحليلات','f5d':'لوحة كانبان مرئية، مخططات الأداء الشهري، تحليل مصادر العملاء. اعرف بالضبط أي منصة تجلب لك المال.',
     'f6t':'نموذج الوكالة المتعددة','f6d':'أدر عدة عملاء من تسجيل دخول واحد. كل عميل يرى بياناته فقط. علامة تجارية خاصة لكل مساحة عمل.',
@@ -2103,10 +2110,10 @@ const T = {
     'deal-eyebrow':'<span style="display:inline-flex;align-items:center;gap:8px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17H3a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h1l2-4h10l2 4h1a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2h-2"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></svg> مبني لمعارض السيارات</span>',
     'deal-h2':'المعرض مشغول.<br/>عملاؤك لا يجب أن يُتجاهلوا.',
     'deal-p':'عميل راسلك على سناب شات عن لاند كروزر الساعة 11 مساءً. بالساعة 9 صباحاً، اشترى من معرض رد أسرع منك. <strong>NexCRM يضمن أن فريقك لا يفوّت أي عميل أبداً.</strong>',
-    'df1t':'تنبيهات فورية للعملاء','df1d':'إشعار تيليجرام فور تسجيل العميل من أي منصة — انستقرام، سناب شات، تيك توك أو نموذج موقعك.',
+    'df1t':'تنبيهات فورية للعملاء','df1d':'العملاء من نموذج موقعك ومن إعلانات انستقرام وسناب شات وتيك توك (عبر Zapier أو Make) يدخلون خط المبيعات فوراً — والمندوب المسؤول يوصله تنبيه بالإيميل.',
     'df2t':'رد واتساب بالذكاء الاصطناعي','df2d':'نقرة واحدة لتوليد رد واتساب عربي شخصي. "مرحباً فهد، شكراً لاهتمامك بـ Land Cruiser..."',
     'df3t':'تتبع المصادر','df3d':'اعرف بالضبط أي إعلان ومنصة وحملة أحضرت العميل. توقف عن إنفاق ميزانيتك على سناب شات إذا كان انستقرام يغلق 80% من صفقاتك.',
-    'df4t':'فواتير ZATCA في 30 ثانية','df4d':'أنشئ فواتير ضريبية متوافقة لكل عملية بيع. رمز QR و15% ضريبة وبيانات البائع — كل شيء تلقائي.',
+    'df4t':'فواتير ZATCA في 30 ثانية','df4d':'أنشئ فاتورة ضريبية برمز QR بصيغة ZATCA لكل عملية بيع. ضريبة 15% وبيانات البائع تُعبّأ تلقائياً.',
     'testi-eyebrow':'الدليل','testi-h2':'ثلاث شركات توقفت عن خسارة عملائها.',
     't1q':'"NexCRM غيّر طريقة إدارتنا للعملاء من حملات سناب شات. الواجهة العربية والإشعارات والفواتير الضريبية توفر ساعات كل أسبوع. أخيراً، نظام CRM يفهم طريقة عملنا في السعودية."',
     't1n':'فريق مجنون ليلى','t1r':'علامة أرز سعودية · الرياض',
@@ -2127,13 +2134,13 @@ const T = {
     'foot-sub':'نظام CRM مبني لوكالات التسويق ومعارض السيارات السعودية.',
     'fl1':'تجربة مباشرة','fl2':'المميزات','fl3':'لمعارض السيارات','fl4':'الأسعار','fl5':'تواصل معنا',
     'n1':'١٤ يوم','n1l':'تجربة كاملة — بدون بطاقة',
-    'st4v':'349','st4l':'ريال/شهر ثابت.<br/>مش لكل مستخدم.',
-    'nav-cta':'ابدأ تجربة مجانية ←','hero-cta1':'ابدأ تجربة 14 يوم — بدون بطاقة','cta-b1':'ابدأ تجربتك ←',
-    'price-h2':'سعر واحد ثابت. مش لكل مستخدم.',
+    'st4v':'349','st4l':'ريال شهرياً، ثابت.<br/>وليس لكل مستخدم.',
+    'nav-cta':'<span class="cta-long">ابدأ تجربة مجانية ←</span><span class="cta-short">جرّب مجاناً ←</span>','hero-cta1':'ابدأ تجربة 14 يوم — بدون بطاقة','cta-b1':'ابدأ تجربتك ←',
+    'price-h2':'سعر واحد ثابت. وليس لكل مستخدم.',
     'price-sub':'كل باقة تبدأ بتجربة مجانية كاملة 14 يوم — بدون بطاقة ائتمانية. ألغِ في أي وقت.',
-    'plA':'Starter','ppA':'شهرياً · ثابت مش لكل مستخدم','pbA':'ابدأ تجربة 14 يوم ←',
-    'plB':'Pro','ppB':'شهرياً · ثابت مش لكل مستخدم','pbB':'ابدأ تجربة 14 يوم ←',
-    'plC':'Agency','ppC':'شهرياً · ثابت مش لكل مستخدم','pbC':'ابدأ تجربة 14 يوم ←',
+    'plA':'Starter','ppA':'شهرياً · سعر ثابت للفريق كله','pbA':'ابدأ تجربة 14 يوم ←',
+    'plB':'Pro','ppB':'شهرياً · سعر ثابت للفريق كله','pbB':'ابدأ تجربة 14 يوم ←',
+    'plC':'Agency','ppC':'شهرياً · سعر ثابت للفريق كله','pbC':'ابدأ تجربة 14 يوم ←',
     'plD':'Custom','pdV':'كلمنا','ppD':'لمعارض السيارات والفرق الأكبر','pbD':'تواصل واتساب ←',
     'pfA':'<li>مساحة عمل واحدة · 3 مستخدمين</li><li>عملاء بلا حدود</li><li>صندوق واتساب</li><li>فواتير ZATCA بـ QR</li><li>خط مبيعات وتحليلات</li><li>تقويم هجري</li>',
     'pfB':'<li>كل مميزات Starter</li><li>10 مستخدمين</li><li>تقييم العملاء بالذكاء الاصطناعي</li><li>ردود واتساب AI (500/شهر)</li><li>سجل مكالمات + تفريغ نصي</li><li>تصدير PDF / Excel / CSV</li><li>دعم أولوية</li>',
@@ -2143,12 +2150,12 @@ const T = {
     'ct-loc':'CRM محلي','c7a':'من 349 ريال · ثابت','c7b':'مدفوع','c7c':'لكل مستخدم $$','c7d':'لكل مستخدم $',
     'comp-note':'* الأنظمة العالمية تحاسبك عن كل مستخدم شهرياً. NexCRM سعر ثابت واحد للفريق كله.',
     'demo-note':'* واجهة المنتج الفعلية — الأرقام المعروضة توضيحية',
-    'faq-eyebrow':'أسئلة شائعة','faq-h2':'الأسئلة اللي بتوصلنا على واتساب.',
-    'fq1':'هل في عقد طويل المدى؟','fa1':'لا — الباقات شهرية وتقدر تلغي في أي وقت. الدفع السنوي اختياري وبيديك شهرين مجاناً.',
-    'fq2':'بياناتي متخزنة فين ومحمية إزاي؟','fa2':'على بنية PostgreSQL بمستوى مؤسسي مع عزل كامل بين الشركات (Row-Level Security) وسجل تدقيق لكل تغيير.',
-    'fq3':'نبدأ بسرعة قد إيه؟','fa3':'نفس اليوم. اطلب تجربتك، وهنجهّز حسابك ونتواصل معك واتساب خلال ساعات.',
-    'fq4':'تقدروا تعملوا الإعداد كله بدالنا؟','fa4':'أيوه — باقة White-Glove (1,500 ريال مرة واحدة): نجهّز كل حاجة، ننقل بياناتك، وندرّب فريقك.',
-    'fq5':'الفواتير متوافقة مع الضريبة؟','fa5':'فواتير ضريبية مبسطة بـ QR وضريبة 15% مدمجة، بالريال، عربي وإنجليزي.',
+    'faq-eyebrow':'أسئلة شائعة','faq-h2':'أكثر الأسئلة التي تصلنا على واتساب.',
+    'fq1':'هل يوجد عقد طويل المدى؟','fa1':'لا — الباقات شهرية وتقدر تلغي في أي وقت. الدفع السنوي اختياري ويمنحك شهرين مجاناً.',
+    'fq2':'أين تُحفظ بياناتي وكيف تُحمى؟','fa2':'على بنية PostgreSQL بمستوى مؤسسي مع عزل كامل بين الشركات (Row-Level Security) وسجل تدقيق لكل تغيير.',
+    'fq3':'متى نقدر نبدأ؟','fa3':'في نفس اليوم. اطلب تجربتك، ونجهّز حسابك ونتواصل معك على واتساب خلال ساعات.',
+    'fq4':'هل تتولون الإعداد كاملاً عنا؟','fa4':'نعم — باقة White-Glove (1,500 ريال مرة واحدة): نجهّز كل شيء، وننقل بياناتك، وندرّب فريقك.',
+    'fq5':'هل الفواتير متوافقة مع متطلبات الضريبة؟','fa5':'فواتير ضريبية مبسطة برمز QR وضريبة 15% مدمجة، بالريال، عربي وإنجليزي (المرحلة الأولى من الفوترة الإلكترونية).',
   }
 };
 
@@ -2482,9 +2489,9 @@ window.addEventListener('scroll',()=>{
 });
 </script>
 <script>
-// ── TRIAL FORM → Supabase (insert-only, RLS-protected) ──
+// ── TRIAL FORM → Supabase (insert-only, RLS-protected; publishable key is safe to expose) ──
 const NX_SB_URL = 'https://xpcmoaxosppgaoprjnhu.supabase.co';
-const NX_SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhwY21vYXhvc3BwZ2FvcHJqbmh1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM1Mjk3NTEsImV4cCI6MjA4OTEwNTc1MX0.h4NClLHPJwnSkhMBccB8hpPJrrMU3hkKMCqHu4KNv8g';
+const NX_SB_KEY = 'sb_publishable_RQ9HH75sKDnC6esaPlrYgg_AtMFRXtY';
 let _leadPlan = 'trial';
 
 function openLeadModal(e, plan){
@@ -2514,7 +2521,7 @@ async function submitLead(){
   try {
     const r = await fetch(NX_SB_URL + '/rest/v1/landing_leads', {
       method: 'POST',
-      headers: { 'Content-Type':'application/json', 'apikey': NX_SB_KEY, 'Authorization': 'Bearer ' + NX_SB_KEY, 'Prefer': 'return=minimal' },
+      headers: { 'Content-Type':'application/json', 'apikey': NX_SB_KEY, 'Prefer': 'return=minimal' },
       body: JSON.stringify({ name, company, email, phone, plan: _leadPlan })
     });
     if(!r.ok) throw new Error('req failed');
