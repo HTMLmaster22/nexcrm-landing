@@ -111,6 +111,14 @@
     },
     {
      "@type": "Question",
+     "name": "Does it fit my type of business?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "If customers contact you before they buy, yes. Clinics, real estate, contractors, agencies, showrooms, training centres and service companies use the same pipeline with their own stages and fields."
+     }
+    },
+    {
+     "@type": "Question",
      "name": "Are the invoices VAT compliant?",
      "acceptedAnswer": {
       "@type": "Answer",
@@ -478,7 +486,7 @@ body.ar .feat-h2{font-family:'IBM Plex Sans Arabic',sans-serif;letter-spacing:0;
 @media(max-width:768px){.feat-grid{grid-template-columns:1fr}}
 @media(min-width:640px) and (max-width:1023px){.feat-grid{grid-template-columns:1fr 1fr}}
 
-/* ── CAR DEALERSHIP SECTION ── */
+/* ── WHO IT'S FOR SECTION ── */
 .dealer-section{
   padding:120px 24px;
   background:linear-gradient(135deg,#0a0f1e,#0e1525);
@@ -1035,6 +1043,27 @@ details.faq p{padding:0 22px 18px;font-size:14px;color:#64748b;line-height:1.7}
 .lm-success .big{font-size:44px;margin-bottom:12px}
 .lm-success h4{color:#fff;font-size:17px;margin-bottom:8px}
 .lm-success p{color:var(--text2);font-size:13px;line-height:1.7;margin-bottom:18px}
+
+/* ── Nov 14 ── */
+.nx-cta{gap:10px}
+.nx-swap{display:inline-grid}
+.nx-swap>span{grid-area:1/1;text-align:center;white-space:nowrap;transition:opacity .2s ease,transform .25s ease}
+.nx-swap .l2{opacity:0;transform:translateY(10px)}
+.nx-plane-box{display:inline-flex}
+body.ar .nx-plane-box{transform:scaleX(-1)}
+@media (hover:hover){
+  .nx-cta:hover .nx-swap>span:first-child{opacity:0;transform:translateY(-10px)}
+  .nx-cta:hover .nx-swap .l2{opacity:1;transform:none}
+  .nx-cta:hover .nx-plane{animation:nxfly 1.15s cubic-bezier(.5,0,.3,1) infinite}
+}
+@keyframes nxfly{0%{transform:translate(0,0);opacity:1}45%{transform:translate(16px,-14px);opacity:0}46%{transform:translate(-14px,12px);opacity:0}100%{transform:translate(0,0);opacity:1}}
+.nx-chips{display:flex;flex-wrap:wrap;gap:8px;margin:-10px 0 32px}
+.nx-chips span{font-size:13px;font-weight:500;color:var(--text);padding:7px 14px;border-radius:999px;border:1px solid rgba(255,255,255,0.12);background:rgba(255,255,255,0.05);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.dealer-left .eyebrow{text-transform:none;letter-spacing:.3px}
+.dealer-card{background:rgba(255,255,255,0.045);-webkit-backdrop-filter:blur(22px) saturate(1.3);backdrop-filter:blur(22px) saturate(1.3);border-color:rgba(255,255,255,0.1)}
+.hero-nums{background:rgba(255,255,255,0.05);-webkit-backdrop-filter:blur(18px) saturate(1.3);backdrop-filter:blur(18px) saturate(1.3);border-color:rgba(255,255,255,0.1)}
+.lead-overlay{background:rgba(4,7,14,0.55);-webkit-backdrop-filter:blur(14px) saturate(1.2);backdrop-filter:blur(14px) saturate(1.2)}
+@media (prefers-reduced-motion:reduce){.nx-cta:hover .nx-plane{animation:none}}
 </style>
 </head>
 <body>
@@ -1070,14 +1099,14 @@ details.faq p{padding:0 22px 18px;font-size:14px;color:#64748b;line-height:1.7}
     <span id="hero-badge">🇸🇦 Built for Saudi Business</span>
   </div>
 
-  <h1 id="hero-h1">Your leads are<br/><em>slipping away.</em><br/>Stop the leak.</h1>
+  <h1 id="hero-h1">Stop losing customers<br/><em>to a slow reply.</em></h1>
 
-  <p class="hero-story" id="hero-sub">Every day, your sales team is juggling <strong>WhatsApp, Excel, and sticky notes</strong> while your competitors are closing deals faster. NexCRM is the Arabic-first CRM that turns every Instagram, Snapchat and TikTok lead into a closed deal — built specifically for Saudi business.</p>
+  <p class="hero-story" id="hero-sub">NexCRM pulls every enquiry from <strong>WhatsApp, your ads and your website</strong> into one place, hands it to the right person on your team, and keeps reminding them until the deal is closed. Built in Arabic for any Saudi business that sells through conversations.</p>
 
   <div class="hero-btns">
-    <a href="#" onclick="openLeadModal(event,'trial')" class="btn-main" id="hero-btn1">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="13 17 18 12 13 7"/><polyline points="6 17 11 12 6 7"/></svg>
-      <span id="hero-cta1">Start Free — No Card Needed</span>
+    <a href="#" onclick="openLeadModal(event,'trial')" class="btn-main nx-cta" id="hero-btn1">
+      <span class="nx-swap"><span id="hero-cta1">Start Free Trial — 14 Days</span><span class="l2" id="hero-cta1b">Let's close your next deal</span></span>
+      <span class="nx-plane-box"><svg class="nx-plane" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4 20-7z"/></svg></span>
     </a>
     <a href="https://wa.me/966548334354" target="_blank" class="btn-wa" id="hero-btn2">
       <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
@@ -1117,7 +1146,7 @@ details.faq p{padding:0 22px 18px;font-size:14px;color:#64748b;line-height:1.7}
       <div class="ademo-dot" style="background:#ef4444"></div>
       <div class="ademo-dot" style="background:#f59e0b"></div>
       <div class="ademo-dot" style="background:#22c55e"></div>
-      <div class="ademo-urlbar">NexCRM &nbsp;·&nbsp; Hussein Motors — Dashboard</div>
+      <div class="ademo-urlbar">NexCRM &nbsp;·&nbsp; Al Nokhba Co. — Dashboard</div>
     </div>
     <div class="ademo-chrome">
       <!-- Sidebar nav -->
@@ -1179,7 +1208,7 @@ details.faq p{padding:0 22px 18px;font-size:14px;color:#64748b;line-height:1.7}
             </div>
             <div>
               <div class="ademo-toast-title">New Lead — Snapchat</div>
-              <div class="ademo-toast-body">فهد السبيعي · Land Cruiser GX enquiry</div>
+              <div class="ademo-toast-body">فهد السبيعي · Quote request</div>
               <div class="ademo-toast-time">Just now · AI scoring...</div>
             </div>
           </div>
@@ -1234,7 +1263,7 @@ details.faq p{padding:0 22px 18px;font-size:14px;color:#64748b;line-height:1.7}
               </div>
             </div>
             <div class="ademo-ai-body">
-              <div class="ademo-ai-note" style="margin-bottom:4px">Lead: فهد السبيعي · Snapchat · Score 8.4/10 · Interested in: Land Cruiser GX</div>
+              <div class="ademo-ai-note" style="margin-bottom:4px">Lead: فهد السبيعي · Snapchat · Score 8.4/10 · Interested in: Annual service contract</div>
               <div class="ademo-ai-reply" id="s3-reply"></div>
               <div style="display:flex;gap:8px">
                 <button class="ademo-ai-btn" id="s3-btn" style="background:linear-gradient(135deg,#25d366,#16a34a)">
@@ -1255,7 +1284,7 @@ details.faq p{padding:0 22px 18px;font-size:14px;color:#64748b;line-height:1.7}
           <div class="ademo-pipeline">
             <div class="ademo-col">
               <div class="ademo-col-head">New <span class="ademo-col-count">3</span></div>
-              <div class="ademo-deal"><div class="ademo-deal-name">فهد السبيعي</div><div class="ademo-deal-val">Land Cruiser · <span>SAR 280K</span></div></div>
+              <div class="ademo-deal"><div class="ademo-deal-name">فهد السبيعي</div><div class="ademo-deal-val">Service contract · <span>SAR 280K</span></div></div>
               <div class="ademo-deal"><div class="ademo-deal-name">Amal Hassan</div><div class="ademo-deal-val">Camry · <span>SAR 95K</span></div></div>
             </div>
             <div class="ademo-col">
@@ -1285,7 +1314,7 @@ details.faq p{padding:0 22px 18px;font-size:14px;color:#64748b;line-height:1.7}
             <div class="ademo-inv-head">
               <div>
                 <div class="ademo-inv-title">INV-2026-047</div>
-                <div style="font-size:10px;color:#4a5568;margin-top:2px">Khalid Al-Dosari · Land Cruiser GX</div>
+                <div style="font-size:10px;color:#4a5568;margin-top:2px">Khalid Al-Dosari · Service contract</div>
               </div>
               <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px">
                 <div class="ademo-inv-badge" id="s5-badge">Generating...</div>
@@ -1294,8 +1323,8 @@ details.faq p{padding:0 22px 18px;font-size:14px;color:#64748b;line-height:1.7}
                 </div>
               </div>
             </div>
-            <div class="ademo-inv-row"><span class="ademo-inv-label">Seller</span><span class="ademo-inv-val">Hussein Motors — الرياض</span></div>
-            <div class="ademo-inv-row"><span class="ademo-inv-label">Item</span><span class="ademo-inv-val">Land Cruiser GX 2026</span></div>
+            <div class="ademo-inv-row"><span class="ademo-inv-label">Seller</span><span class="ademo-inv-val">شركة النخبة — الرياض</span></div>
+            <div class="ademo-inv-row"><span class="ademo-inv-label">Item</span><span class="ademo-inv-val">Annual service contract 2026</span></div>
             <div class="ademo-inv-row"><span class="ademo-inv-label">Subtotal</span><span class="ademo-inv-val" id="s5-sub">—</span></div>
             <div class="ademo-inv-row"><span class="ademo-inv-label">VAT (15%)</span><span class="ademo-inv-val" id="s5-vat">—</span></div>
             <div class="ademo-inv-row"><span class="ademo-inv-label" style="font-weight:700;color:#e2e8f0">Total</span><span class="ademo-inv-val green" id="s5-total">—</span></div>
@@ -1336,7 +1365,7 @@ details.faq p{padding:0 22px 18px;font-size:14px;color:#64748b;line-height:1.7}
           <div class="ademo-clients">
             <div class="ademo-client-row" id="cl1">
               <div class="ademo-client-av" style="background:linear-gradient(135deg,#c8860a,#f59e0b)">م</div>
-              <div><div class="ademo-client-name">معرض النخبة للسيارات</div><div class="ademo-client-meta">Car Showroom · 47 leads this month</div></div>
+              <div><div class="ademo-client-name">عيادات النخبة</div><div class="ademo-client-meta">Clinics · 47 leads this month</div></div>
               <div class="ademo-client-stats"><div class="ademo-client-leads">47 leads</div><div class="ademo-client-conv">34% conversion</div></div>
             </div>
             <div class="ademo-client-row" id="cl2">
@@ -1346,7 +1375,7 @@ details.faq p{padding:0 22px 18px;font-size:14px;color:#64748b;line-height:1.7}
             </div>
             <div class="ademo-client-row" id="cl3">
               <div class="ademo-client-av" style="background:linear-gradient(135deg,#d97706,#f59e0b)">H</div>
-              <div><div class="ademo-client-name">Hussein Motors</div><div class="ademo-client-meta">Car Showroom · 31 leads</div></div>
+              <div><div class="ademo-client-name">دار العقار</div><div class="ademo-client-meta">Real Estate · 31 leads</div></div>
               <div class="ademo-client-stats"><div class="ademo-client-leads">31 leads</div><div class="ademo-client-conv">41% conversion</div></div>
             </div>
             <div class="ademo-client-row" id="cl4">
@@ -1499,7 +1528,7 @@ details.faq p{padding:0 22px 18px;font-size:14px;color:#64748b;line-height:1.7}
     <div class="reveal">
       <div class="story-eyebrow" id="pain-eyebrow">The Reality</div>
       <h2 class="story-h2" id="pain-h2">Sound familiar?</h2>
-      <p class="story-lead" id="pain-lead">You're running a <strong>successful agency</strong>. Clients trust you with their marketing. But behind the scenes, your team is drowning in chaos — and leads are falling through the cracks every single day.</p>
+      <p class="story-lead" id="pain-lead">You're running a <strong>growing business</strong>. Customers message you every day. But behind the scenes, your team is drowning in chaos — and leads are falling through the cracks every single day.</p>
     </div>
     <div class="pain-grid reveal reveal-d1">
       <div class="pain-card">
@@ -1523,7 +1552,7 @@ details.faq p{padding:0 22px 18px;font-size:14px;color:#64748b;line-height:1.7}
         <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
       </div>
       <div class="sol-text">
-        <h3 id="sol-h">NexCRM solves all of this — in one place, in Arabic, for free.</h3>
+        <h3 id="sol-h">NexCRM solves all of this — in one place, in Arabic, at one flat price.</h3>
         <p id="sol-p">Every lead automatically captured. Every WhatsApp conversation tracked. Every invoice with a ZATCA QR code in one click. <strong>Built for the Saudi market, not translated from Silicon Valley.</strong></p>
       </div>
     </div>
@@ -1696,13 +1725,14 @@ details.faq p{padding:0 22px 18px;font-size:14px;color:#64748b;line-height:1.7}
   </div>
 </section>
 
-<!-- CAR DEALERSHIP SECTION -->
+<!-- WHO IT'S FOR -->
 <section class="dealer-section" id="dealers">
   <div class="dealer-inner">
     <div class="dealer-left reveal">
-      <div class="eyebrow" id="deal-eyebrow"><span style="display:inline-flex;align-items:center;gap:8px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17H3a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h1l2-4h10l2 4h1a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2h-2"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></svg> Built for Car Showrooms</span></div>
-      <h2 id="deal-h2">The showroom is busy.<br/>Your leads shouldn't be ignored.</h2>
-      <p id="deal-p">A customer DMs you on Snapchat about a Land Cruiser at 11pm. By 9am, they've already bought from a dealer who replied faster. <strong>NexCRM makes sure your team never misses a lead again.</strong></p>
+      <div class="eyebrow" id="deal-eyebrow">For every business that sells</div>
+      <h2 id="deal-h2">Your team is busy.<br/>Your customers won't wait.</h2>
+      <p id="deal-p">A customer messages you at 11pm asking for a price. By 9am he has bought from whoever replied first. <strong>NexCRM makes sure your team never misses a customer again</strong> — whatever you sell.</p>
+      <div class="nx-chips" id="deal-chips"><span>Clinics</span><span>Real estate</span><span>Contracting</span><span>Showrooms</span><span>Marketing agencies</span><span>Training</span><span>B2B services</span><span>Online stores</span></div>
       <div class="dealer-features">
         <div class="d-feat">
           <div class="d-feat-icon" style="background:rgba(245,158,11,0.1)">
@@ -1719,7 +1749,7 @@ details.faq p{padding:0 22px 18px;font-size:14px;color:#64748b;line-height:1.7}
           </div>
           <div class="d-feat-text">
             <h4 id="df2t">AI WhatsApp Reply</h4>
-            <p id="df2d">One tap to generate a personalized Arabic WhatsApp reply. "مرحباً فهد، شكراً لاهتمامك بـ Land Cruiser..."</p>
+            <p id="df2d">One tap to generate a personalized Arabic WhatsApp reply. "مرحباً فهد، شكراً لتواصلك، عرض السعر جاهز..."</p>
           </div>
         </div>
         <div class="d-feat">
@@ -1745,10 +1775,10 @@ details.faq p{padding:0 22px 18px;font-size:14px;color:#64748b;line-height:1.7}
     <div class="dealer-right reveal reveal-d2">
       <div class="dealer-card">
         <div class="dc-header">
-          <div class="dc-avatar">H</div>
+          <div class="dc-avatar">ن</div>
           <div>
-            <div class="dc-name">Hussein Motors — الرياض</div>
-            <div class="dc-org">Car Showroom · Active workspace</div>
+            <div class="dc-name">شركة النخبة — الرياض</div>
+            <div class="dc-org" id="dc-org">Active workspace · this month</div>
           </div>
         </div>
         <div class="dc-metrics">
@@ -1909,7 +1939,7 @@ details.faq p{padding:0 22px 18px;font-size:14px;color:#64748b;line-height:1.7}
       <div class="price-card">
         <div class="price-plan" id="plD">Custom</div>
         <div class="price-amount" style="font-size:34px;padding-top:10px" id="pdV">Let's talk</div>
-        <div class="price-period" id="ppD">for car showrooms &amp; bigger teams</div>
+        <div class="price-period" id="ppD">for bigger teams &amp; several branches</div>
         <ul class="price-list" id="pfD"><li>Everything in Agency</li><li>AI video ads (metered)</li><li>AI lead generation</li><li>White-glove full setup</li><li>Team training</li><li>SLA support</li></ul>
         <a href="https://wa.me/966548334354?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%B9%D8%B1%D8%B6%20Custom%20%D9%84%D9%80%20NexCRM" target="_blank" class="price-btn paid" id="pbD">Talk on WhatsApp →</a>
       </div>
@@ -1931,6 +1961,7 @@ details.faq p{padding:0 22px 18px;font-size:14px;color:#64748b;line-height:1.7}
       <details class="faq"><summary id="fq3">How fast can we start?</summary><p id="fa3">Same day. Request your trial, and we set up your account and contact you on WhatsApp within hours.</p></details>
       <details class="faq"><summary id="fq4">Can you do the full setup for us?</summary><p id="fa4">Yes — the White-Glove package (SAR 1,500 one-time): we configure everything, import your data, and train your team.</p></details>
       <details class="faq"><summary id="fq5">Are the invoices VAT compliant?</summary><p id="fa5">Simplified VAT invoices with QR code and 15% VAT are built in, in SAR, Arabic and English (ZATCA e-invoicing Phase 1).</p></details>
+      <details class="faq"><summary id="fq6">Does it fit my type of business?</summary><p id="fa6">If customers contact you before they buy, yes. Clinics, real estate, contractors, agencies, showrooms, training centres and service companies use the same pipeline with their own stages and fields.</p></details>
     </div>
   </div>
 </section>
@@ -1941,7 +1972,7 @@ details.faq p{padding:0 22px 18px;font-size:14px;color:#64748b;line-height:1.7}
     <h2 id="cta-h">Ready to stop losing leads?</h2>
     <p id="cta-p">Setup takes about five minutes — no onboarding call, no implementation fee. Your first lead could land today.</p>
     <div class="cta-btns">
-      <a href="#" onclick="openLeadModal(event,'trial')" class="btn-white" id="cta-b1">Start Your Trial →</a>
+      <a href="#" onclick="openLeadModal(event,'trial')" class="btn-white nx-cta"><span class="nx-swap"><span id="cta-b1">Start Your Trial</span><span class="l2" id="cta-b1b">Let's close your next deal</span></span><span class="nx-plane-box"><svg class="nx-plane" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4 20-7z"/></svg></span></a>
       <a href="https://wa.me/966548334354" target="_blank" class="btn-wa-cta" id="cta-b2">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
         <span id="cta-b2-t">Book a Demo on WhatsApp</span>
@@ -1958,7 +1989,7 @@ details.faq p{padding:0 22px 18px;font-size:14px;color:#64748b;line-height:1.7}
       <h3>ابدأ تجربتك المجانية — 14 يوم</h3>
       <div class="lm-sub">سجّل بياناتك ونجهّز حسابك ونتواصل معك على واتساب خلال ساعات. بدون بطاقة، بدون التزام.</div>
       <div class="lm-field"><label>الاسم</label><input id="lm-name" placeholder="اسمك الكامل" /></div>
-      <div class="lm-field"><label>اسم الشركة</label><input id="lm-company" placeholder="مثال: معرض النخبة للسيارات" /></div>
+      <div class="lm-field"><label>اسم الشركة</label><input id="lm-company" placeholder="اسم نشاطك التجاري" /></div>
       <div class="lm-field"><label>الإيميل</label><input id="lm-email" type="email" placeholder="you@company.com" /></div>
       <div class="lm-field"><label>رقم الواتساب</label><input id="lm-phone" type="tel" placeholder="05xxxxxxxx" /></div>
       <input id="lm-hp" style="display:none" tabindex="-1" autocomplete="off" />
@@ -1976,11 +2007,11 @@ details.faq p{padding:0 22px 18px;font-size:14px;color:#64748b;line-height:1.7}
 <!-- FOOTER -->
 <footer>
   <div class="footer-logo">NexCRM</div>
-  <p class="footer-sub" id="foot-sub">The CRM built for Saudi marketing agencies and car dealerships.</p>
+  <p class="footer-sub" id="foot-sub">The sales CRM for Saudi businesses.</p>
   <div class="footer-links">
     <a href="https://nexcrm-jet.vercel.app" target="_blank" id="fl1">Live Demo</a>
     <a href="#features" id="fl2">Features</a>
-    <a href="#dealers" id="fl3">For Car Dealers</a>
+    <a href="#dealers" id="fl3">Who it's for</a>
     <a href="#pricing" id="fl4">Pricing</a>
     <a href="https://wa.me/966548334354" target="_blank" id="fl5">Contact</a>
   </div>
@@ -2158,6 +2189,40 @@ const T = {
     'fq5':'هل الفواتير متوافقة مع متطلبات الضريبة؟','fa5':'فواتير ضريبية مبسطة برمز QR وضريبة 15% مدمجة، بالريال، عربي وإنجليزي (المرحلة الأولى من الفوترة الإلكترونية).',
   }
 };
+Object.assign(T.en, {
+  'hero-h1':'Stop losing customers<br/><em>to a slow reply.</em>',
+  'hero-sub':'NexCRM pulls every enquiry from <strong>WhatsApp, your ads and your website</strong> into one place, hands it to the right person on your team, and keeps reminding them until the deal is closed. Built in Arabic for any Saudi business that sells through conversations.',
+  'hero-cta1':'Start Free Trial — 14 Days','hero-cta1b':'Let\'s close your next deal',
+  'cta-b1':'Start Your Trial','cta-b1b':'Let\'s close your next deal',
+  'pain-lead':'You\'re running a <strong>growing business</strong>. Customers message you every day. But behind the scenes, your team is drowning in chaos — and leads are falling through the cracks every single day.',
+  'sol-h':'NexCRM solves all of this — in one place, in Arabic, at one flat price.',
+  'deal-eyebrow':'For every business that sells',
+  'deal-h2':'Your team is busy.<br/>Your customers won\'t wait.',
+  'deal-p':'A customer messages you at 11pm asking for a price. By 9am he has bought from whoever replied first. <strong>NexCRM makes sure your team never misses a customer again</strong> — whatever you sell.',
+  'deal-chips':'<span>Clinics</span><span>Real estate</span><span>Contracting</span><span>Showrooms</span><span>Marketing agencies</span><span>Training</span><span>B2B services</span><span>Online stores</span>',
+  'df2d':'One tap to generate a personalized Arabic WhatsApp reply. "مرحباً فهد، شكراً لتواصلك، عرض السعر جاهز..."',
+  'dc-org':'Active workspace · this month',
+  'ppD':'for bigger teams & several branches',
+  'foot-sub':'The sales CRM for Saudi businesses.','fl3':'Who it\'s for',
+  'fq6':'Does it fit my type of business?','fa6':'If customers contact you before they buy, yes. Clinics, real estate, contractors, agencies, showrooms, training centres and service companies use the same pipeline with their own stages and fields.'
+});
+Object.assign(T.ar, {
+  'hero-h1':'لا تخسر عميلاً<br/><em>بسبب رد متأخر.</em>',
+  'hero-sub':'NexCRM يجمع كل استفسار من <strong>واتساب وإعلاناتك وموقعك</strong> في مكان واحد، يسلّمه للموظف المناسب في فريقك، ويذكّره بالمتابعة إلى أن تُقفل الصفقة. عربي من الأساس، لأي نشاط سعودي يبيع عبر المحادثة.',
+  'hero-cta1':'ابدأ تجربة 14 يوم — بدون بطاقة','hero-cta1b':'يلا نقفل صفقتك الجاية',
+  'cta-b1':'ابدأ تجربتك','cta-b1b':'يلا نقفل صفقتك الجاية',
+  'pain-lead':'أنت تدير <strong>نشاطاً ينمو</strong>. العملاء يراسلونك كل يوم. لكن خلف الكواليس، فريقك يغرق في الفوضى — والعملاء المحتملون يضيعون كل يوم.',
+  'sol-h':'NexCRM يحل كل هذا — في مكان واحد، بالعربية، وبسعر ثابت.',
+  'deal-eyebrow':'لكل نشاط يبيع',
+  'deal-h2':'فريقك مشغول.<br/>وعميلك لا ينتظر.',
+  'deal-p':'عميل يراسلك الساعة 11 مساءً يسأل عن السعر. الساعة 9 صباحاً يكون قد اشترى ممن ردّ عليه أولاً. <strong>NexCRM يضمن أن فريقك لا يفوّت أي عميل</strong> — مهما كان ما تبيعه.',
+  'deal-chips':'<span>العيادات</span><span>العقار</span><span>المقاولات</span><span>المعارض</span><span>وكالات التسويق</span><span>التدريب</span><span>خدمات الأعمال</span><span>المتاجر الإلكترونية</span>',
+  'df2d':'نقرة واحدة لتوليد رد واتساب عربي شخصي. "مرحباً فهد، شكراً لتواصلك، عرض السعر جاهز..."',
+  'dc-org':'مساحة عمل نشطة · هذا الشهر',
+  'ppD':'للفرق الأكبر وتعدّد الفروع',
+  'foot-sub':'نظام المبيعات وإدارة العملاء للأعمال السعودية.','fl3':'لمن',
+  'fq6':'هل يناسب نوع نشاطي؟','fa6':'إذا كان عملاؤك يتواصلون معك قبل الشراء، نعم. العيادات والعقار والمقاولات والوكالات والمعارض ومراكز التدريب وشركات الخدمات تستخدم نفس خط المبيعات بمراحلها وحقولها الخاصة.'
+});
 
 function toggleLang(){
   lang = lang==='en'?'ar':'en';
@@ -2180,7 +2245,7 @@ function toggleLang(){
   const DURATION = [4000,4000,6000,4000,4500,4500,4000,5000,5000,5500,6000]; // ms per scene
   let cur = 0, timer = null, progTimer = null, started = false;
 
-  const waReply = 'مرحباً فهد، شكراً لتواصلك معنا! رأيت اهتمامك بلاند كروزر GX الجديد وهو خيار ممتاز. لدينا توافر فوري بألوان متعددة وتمويل مريح. متى يناسبك زيارة المعرض لتجربة السيارة؟';
+  const waReply = 'مرحباً فهد، شكراً لتواصلك معنا! استلمنا طلبك لعرض سعر عقد الخدمات السنوي، والعرض جاهز عندنا. نرسله لك اليوم ونرتّب مكالمة قصيرة نشرح فيها التفاصيل. أي وقت يناسبك؟';
 
   function setNav(ids) {
     ['dnav-dash','dnav-leads','dnav-pipe','dnav-wa','dnav-inv','dnav-analytics','dnav-clients']
@@ -2417,7 +2482,7 @@ function toggleLang(){
     if(n===11){
       const el=id=>document.getElementById(id);
       const prompt=el('s11-prompt');
-      if(prompt) typeText(prompt,'Land Cruiser GX — عرض الصيف، فيديو ترويجي 15 ثانية',22);
+      if(prompt) typeText(prompt,'عرض الصيف — فيديو ترويجي 15 ثانية',22);
       ['s11-st1','s11-st2','s11-st3'].forEach((id,i)=>{
         setTimeout(()=>{ el(id)?.classList.add('lit'); },1500+i*950);
       });
@@ -2536,7 +2601,9 @@ async function submitLead(){
 
 // ── ARABIC BY DEFAULT (remember choice) ──
 (function(){
-  try { if(localStorage.getItem('nx_lang') === 'en') return; } catch(e) {}
+  let en = false;
+  try { en = localStorage.getItem('nx_lang') === 'en'; } catch(e) {}
+  if (en) { Object.keys(T.en).forEach(function(id){ const el = document.getElementById(id); if (el) el.innerHTML = T.en[id]; }); return; }
   toggleLang();
 })();
 </script>
