@@ -10,7 +10,7 @@ import { parseHTML } from 'linkedom';
 
 const ROOT = path.dirname(new URL(import.meta.url).pathname);
 const OUT = path.join(ROOT, 'dist');
-const SITE = 'https://getnexcrm.com';
+const SITE = 'https://www.getnexcrm.com';
 const SKIP = new Set(['dist', 'node_modules', '.git', '.github', 'build.mjs', 'package.json',
   'package-lock.json', 'vercel.json', 'README.md', '.gitignore', '.vercel']);
 

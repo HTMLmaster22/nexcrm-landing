@@ -6,7 +6,7 @@ NexCRM is a SaaS CRM made for the Saudi market: bilingual (Arabic RTL + English)
 
 ## Product
 
-- [NexCRM home](https://getnexcrm.com/): features, pricing, and free trial signup
+- [NexCRM home](https://www.getnexcrm.com/): features, pricing, and free trial signup
 - Pricing: Starter SAR 349/mo · Pro SAR 699/mo · Agency SAR 1,199/mo — flat, not per seat; 14-day free trial, no card needed
 - White-Glove setup: SAR 1,500 one-time (full configuration, data import, team training)
 - Key modules: WhatsApp inbox with AI replies, AI lead scoring, ZATCA VAT invoices (QR code, 15% VAT, SAR), sales pipeline and analytics, Hijri + Gregorian calendar, campaigns (email/SMS/WhatsApp), lead capture from Instagram, TikTok and Snapchat ads
