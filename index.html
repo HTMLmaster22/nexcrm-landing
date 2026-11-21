@@ -10,13 +10,15 @@
 <meta property="og:url" content="https://getnexcrm.com/"/>
 <meta property="og:title" content="NexCRM — The CRM Built for Saudi Business"/>
 <meta property="og:description" content="The Arabic-first CRM built for Saudi business. AI lead scoring, WhatsApp inbox, ZATCA invoices — start your 14-day free trial."/>
-<meta property="og:image" content="https://getnexcrm.com/og-image.png"/>
+<meta property="og:image" content="https://getnexcrm.com/og-image.jpg"/>
 <meta property="og:image:width" content="1200"/>
 <meta property="og:image:height" content="630"/>
+<meta property="og:image:type" content="image/jpeg"/>
+<meta property="og:image:alt" content="NexCRM — Arabic-first CRM for Saudi businesses"/>
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:title" content="NexCRM — The CRM Built for Saudi Business"/>
 <meta name="twitter:description" content="The Arabic-first CRM built for Saudi business. AI lead scoring, WhatsApp inbox, ZATCA invoices — start your 14-day free trial."/>
-<meta name="twitter:image" content="https://getnexcrm.com/og-image.png"/>
+<meta name="twitter:image" content="https://getnexcrm.com/og-image.jpg"/>
 <link rel="canonical" href="https://getnexcrm.com/"/>
 <meta name="theme-color" content="#080c14"/>
 <meta property="og:site_name" content="NexCRM"/>
@@ -740,7 +742,7 @@ footer{
 .footer-links{display:flex;gap:24px;justify-content:center;flex-wrap:wrap;margin-bottom:24px}
 .footer-links a{color:var(--text2);text-decoration:none;font-size:13px;transition:color 0.2s}
 .footer-links a:hover{color:#fff}
-.footer-copy{font-size:12px;color:rgba(255,255,255,0.25)}
+.footer-copy{font-size:12px;color:#737f96}
 
 /* ── FLOATING WA ── */
 .wa-float{
@@ -1520,7 +1522,7 @@ body.ar .nx-plane-box{transform:scaleX(-1)}
       <div class="ademo-stage-btn" id="st11"><span class="sdot"></span>AI Video Ad</div>
     </div>
   </div>
-  <p style="text-align:center;font-size:11px;color:#374151;margin-top:12px" id="demo-note">* واجهة المنتج الفعلية — الأرقام المعروضة توضيحية</p>
+  <p style="text-align:center;font-size:11px;color:#737f96;margin-top:12px" id="demo-note">* واجهة المنتج الفعلية — الأرقام المعروضة توضيحية</p>
 </div>
 
 <!-- STORY / PAIN -->
@@ -1989,11 +1991,11 @@ body.ar .nx-plane-box{transform:scaleX(-1)}
     <div id="lm-form-view">
       <h3>ابدأ تجربتك المجانية — 14 يوم</h3>
       <div class="lm-sub">سجّل بياناتك ونجهّز حسابك ونتواصل معك على واتساب خلال ساعات. بدون بطاقة، بدون التزام.</div>
-      <div class="lm-field"><label>الاسم</label><input id="lm-name" placeholder="اسمك الكامل" /></div>
-      <div class="lm-field"><label>اسم الشركة</label><input id="lm-company" placeholder="اسم نشاطك التجاري" /></div>
-      <div class="lm-field"><label>الإيميل</label><input id="lm-email" type="email" placeholder="you@company.com" /></div>
-      <div class="lm-field"><label>رقم الواتساب</label><input id="lm-phone" type="tel" placeholder="05xxxxxxxx" /></div>
-      <input id="lm-hp" style="display:none" tabindex="-1" autocomplete="off" />
+      <div class="lm-field"><label for="lm-name">الاسم</label><input id="lm-name" placeholder="اسمك الكامل" autocomplete="name" maxlength="100" required /></div>
+      <div class="lm-field"><label for="lm-company">اسم الشركة</label><input id="lm-company" placeholder="اسم نشاطك التجاري" autocomplete="organization" maxlength="120" /></div>
+      <div class="lm-field"><label for="lm-email">الإيميل</label><input id="lm-email" type="email" placeholder="you@company.com" autocomplete="email" maxlength="254" required /></div>
+      <div class="lm-field"><label for="lm-phone">رقم الواتساب</label><input id="lm-phone" type="tel" placeholder="05xxxxxxxx" autocomplete="tel" inputmode="tel" maxlength="20" required /></div>
+      <input id="lm-hp" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true" />
       <button class="lm-submit" id="lm-submit" onclick="submitLead()">اطلب التجربة الآن ←</button>
     </div>
     <div id="lm-success-view" style="display:none" class="lm-success">
@@ -2015,13 +2017,16 @@ body.ar .nx-plane-box{transform:scaleX(-1)}
     <a href="#dealers" id="fl3">Who it's for</a>
     <a href="#pricing" id="fl4">Pricing</a>
     <a href="https://wa.me/966548334354" target="_blank" id="fl5">Contact</a>
+    <a href="/privacy" id="fl6">Privacy</a>
+    <a href="/terms" id="fl7">Terms</a>
+    <a href="#" id="fl8" data-cookie-settings>Cookie settings</a>
   </div>
   <p class="footer-copy">🇸🇦 Made in Saudi Arabia · © 2026 NexCRM</p>
 </footer>
 
 <script>
 // ── LANGUAGE ──
-let lang = 'en';
+let lang = (window.NX_PAGE_LANG || 'en');
 const T = {
   en:{
     'lang-btn':'🇸🇦 عربي','nav-cta':'Try Free →','book-text':'Book a Demo',
@@ -2081,7 +2086,7 @@ const T = {
     'cta-p':'Setup takes about five minutes — no onboarding call, no implementation fee. Your first lead could land today.',
     'cta-b1':'Start Free Today →','cta-b2-t':'Book a Demo on WhatsApp',
     'foot-sub':'The CRM built for Saudi marketing agencies and car dealerships.',
-    'fl1':'Live Demo','fl2':'Features','fl3':'For Car Dealers','fl4':'Pricing','fl5':'Contact',
+    'fl1':'Live Demo','fl2':'Features','fl3':'For Car Dealers','fl4':'Pricing','fl5':'Contact','fl6':'Privacy','fl7':'Terms','fl8':'Cookie settings',
     'n1':'14d','n1l':'Full free trial — no card',
     'st4v':'349','st4l':'SAR/mo flat.<br/>Not per seat.',
     'nav-cta':'<span class="cta-long">Start Free Trial →</span><span class="cta-short">Try Free →</span>','hero-cta1':'Start Free Trial — 14 Days','cta-b1':'Start Your Trial →',
@@ -2164,7 +2169,7 @@ const T = {
     'cta-p':'الإعداد يستغرق خمس دقائق تقريباً — بدون مكالمة تهيئة، وبدون رسوم تنفيذ. عميلك الأول قد يصل اليوم.',
     'cta-b1':'ابدأ مجاناً اليوم ←','cta-b2-t':'احجز عرضاً على واتساب',
     'foot-sub':'نظام CRM مبني لوكالات التسويق ومعارض السيارات السعودية.',
-    'fl1':'تجربة مباشرة','fl2':'المميزات','fl3':'لمعارض السيارات','fl4':'الأسعار','fl5':'تواصل معنا',
+    'fl1':'تجربة مباشرة','fl2':'المميزات','fl3':'لمعارض السيارات','fl4':'الأسعار','fl5':'تواصل معنا','fl6':'الخصوصية','fl7':'الشروط والأحكام','fl8':'إعدادات الكوكيز',
     'n1':'١٤ يوم','n1l':'تجربة كاملة — بدون بطاقة',
     'st4v':'349','st4l':'ريال شهرياً، ثابت.<br/>وليس لكل مستخدم.',
     'nav-cta':'<span class="cta-long">ابدأ تجربة مجانية ←</span><span class="cta-short">جرّب مجاناً ←</span>','hero-cta1':'ابدأ تجربة 14 يوم — بدون بطاقة','cta-b1':'ابدأ تجربتك ←',
@@ -2226,6 +2231,13 @@ Object.assign(T.ar, {
 });
 
 function toggleLang(){
+  // Built pages (/ = Arabic, /en/ = English) switch by URL so each language has its own indexable page.
+  if (window.NX_PAGE_LANG) {
+    const to = lang==='en'?'ar':'en';
+    try{localStorage.setItem('nx_lang',to)}catch(e){}
+    location.href = (to==='ar' ? '/' : '/en/') + location.hash;
+    return;
+  }
   lang = lang==='en'?'ar':'en';
   const ar = lang==='ar';
   document.documentElement.lang = lang;
@@ -2559,10 +2571,12 @@ window.addEventListener('scroll',()=>{
 const NX_SB_URL = 'https://xpcmoaxosppgaoprjnhu.supabase.co';
 const NX_SB_KEY = 'sb_publishable_RQ9HH75sKDnC6esaPlrYgg_AtMFRXtY';
 let _leadPlan = 'trial';
+let _leadOpenedAt = 0;
 
 function openLeadModal(e, plan){
   if(e) e.preventDefault();
   _leadPlan = plan || 'trial';
+  _leadOpenedAt = Date.now();
   document.getElementById('lm-form-view').style.display = 'block';
   document.getElementById('lm-success-view').style.display = 'none';
   document.getElementById('lead-overlay').classList.add('open');
@@ -2578,9 +2592,18 @@ async function submitLead(){
   const hp = document.getElementById('lm-hp').value; // honeypot
   const btn = document.getElementById('lm-submit');
   if(hp) return;
-  if(!name || !email.includes('@') || phone.length < 9){
+  const digits = phone.replace(/[^0-9]/g,'');
+  const emailOk = /^[^@\s]+@[^@\s]+\.[a-z]{2,}$/i.test(email) && email.length <= 254;
+  const phoneOk = /^\+?[0-9 ()-]{9,20}$/.test(phone) && digits.length >= 9 && digits.length <= 15;
+  if(name.length < 2 || !emailOk || !phoneOk){
     btn.textContent = 'كمّل البيانات الأساسية (اسم، إيميل صحيح، رقم)'; 
     setTimeout(()=>{ btn.textContent = 'اطلب التجربة الآن ←'; }, 2200);
+    return;
+  }
+  // Time trap: a person can't fill four fields in under 2.5 seconds; bots can.
+  if(Date.now() - _leadOpenedAt < 2500){
+    document.getElementById('lm-form-view').style.display = 'none';
+    document.getElementById('lm-success-view').style.display = 'block';
     return;
   }
   btn.disabled = true; btn.textContent = 'ثواني...';
@@ -2591,6 +2614,7 @@ async function submitLead(){
       body: JSON.stringify({ name, company, email, phone, plan: _leadPlan })
     });
     if(!r.ok) throw new Error('req failed');
+    try { if(window.gtag) gtag('event','generate_lead',{ form:'trial_request', plan:_leadPlan, currency:'SAR', value:1 }); } catch(e) {}
     document.getElementById('lm-form-view').style.display = 'none';
     document.getElementById('lm-success-view').style.display = 'block';
   } catch(err) {
@@ -2604,9 +2628,15 @@ async function submitLead(){
 (function(){
   let en = false;
   try { en = localStorage.getItem('nx_lang') === 'en'; } catch(e) {}
+  if (window.NX_PAGE_LANG) {
+    // Returning visitors who chose English go straight to /en/. Nothing else redirects.
+    if (window.NX_PAGE_LANG === 'ar' && en) location.replace('/en/' + location.hash);
+    return;
+  }
   if (en) { Object.keys(T.en).forEach(function(id){ const el = document.getElementById(id); if (el) el.innerHTML = T.en[id]; }); return; }
   toggleLang();
 })();
 </script>
+<script src="/consent.js" defer></script>
 </body>
 </html>
